@@ -11,6 +11,13 @@ export default defineConfig({
     react(),
     dts({ include: ['lib'] })
   ],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "./lib/main.scss";`
+      }
+    }
+  },
   build: {
     copyPublicDir: false,
     lib: {

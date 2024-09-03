@@ -16,7 +16,9 @@ enum background {
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & IButton;
 
 export const Button : FC<ButtonProps> = ({bg, className, ...props}) => {
-  const unionClassName = [className || "", bg || background.primary, styles.button].join(" ")
+  const unionClassName = [className || "", bg || background.primary, styles.button]
+      .filter(x => x !== "")
+      .join(" ")
 
   return <button className={unionClassName} {...props} />
 }
