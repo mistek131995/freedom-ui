@@ -12,9 +12,12 @@ export default defineConfig({
     dts({ include: ['lib'] })
   ],
   css: {
+    modules: {
+      scopeBehaviour: 'local',
+    },
     preprocessorOptions: {
       scss: {
-        additionalData: `@import "./lib/main.scss";`
+        additionalData: `@import "./lib/styles/_globals.scss";`
       }
     }
   },
