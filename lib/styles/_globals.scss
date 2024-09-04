@@ -13,6 +13,22 @@
     &.primary{
       background-color: var(--primary-btn-color);
     }
+
+    &.secondary{
+      background-color: var(--secondary-btn-color);
+    }
+
+    &.success{
+      background-color: var(--success-btn-color);
+    }
+
+    &.warning{
+      background-color: var(--warning-btn-color);
+    }
+
+    &.danger{
+      background-color: var(--danger-btn-color);
+    }
   }
 
 }

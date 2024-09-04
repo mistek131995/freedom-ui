@@ -1,4 +1,3 @@
-import styles from './styles.module.scss'
 import React, {FC} from "react";
 
 interface IButton {
@@ -16,7 +15,7 @@ enum background {
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & IButton;
 
 export const Button : FC<ButtonProps> = ({bg, className, ...props}) => {
-  const unionClassName = [className || "", bg || background.primary, styles.button]
+  const unionClassName = [className || "", bg || background.primary]
       .filter(x => x !== "")
       .join(" ")
 
