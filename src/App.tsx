@@ -12,7 +12,7 @@ function App() {
               <Button bg={ButtonBackground.danger}>Button danger</Button>
           </div>
           <div style={{display: "flex", justifyContent: "space-around", marginTop: "1rem"}}>
-              <Input/>
+              <Input placeholder="text"/>
           </div>
           </>
           )

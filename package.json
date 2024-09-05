@@ -2,7 +2,7 @@
   "name": "@mistek/freedom-ui",
   "author": "mistek",
   "private": false,
-  "version": "0.0.5",
+  "version": "0.0.6",
   "type": "module",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
@@ -36,10 +36,11 @@
     "glob": "^10.3.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "sass": "^1.77.8",
     "typescript": "^5.4.3",
-    "vite": "^4.5.3",
+    "vite": "^5.4.3",
     "vite-plugin-dts": "^3.7.3",
     "vite-plugin-lib-inject-css": "^2.0.1",
-    "sass": "^1.77.8"
+    "vite-plugin-static-copy": "^1.0.6"
   }
 }

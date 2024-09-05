@@ -1,10 +1,12 @@
 @import "variables";
+@import "fonts";
 
 :global{
   button{
     padding: 0.75rem 1.5rem;
     border: 0;
     border-radius: 3px;
+    font-family: "Overpass-Bold", serif;
 
     &:active{
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
@@ -33,6 +35,7 @@
 
     &.danger{
       background-color: var(--danger-btn-color);
+      color: white;
 
       &:active{
         box-shadow: 0 0 7px rgba(117, 116, 116, 0.79);

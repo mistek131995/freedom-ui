@@ -7,7 +7,7 @@
 
 `<Button bg={ButtonBackground.primary}>Button</Button>`
 
-![Кнопки](https://s.iimg.su/s/04/xNLAsgQ3oI88l3pTlIWGhuwOLp0oNiWKUbuLDvyL.png)
+![Кнопки](https://s.iimg.su/s/05/wkLsxS7XlDZONTY7L4ERMSeBKIz9rS87dhLbi6ps.png)
 
 **Текстовое поле**
 

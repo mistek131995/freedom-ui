@@ -4,12 +4,21 @@ import { fileURLToPath } from 'node:url'
 import { glob } from 'glob'
 import react from '@vitejs/plugin-react'
 import dts from 'vite-plugin-dts'
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
-    dts({ include: ['lib'] })
+    dts({ include: ['lib'] }),
+    viteStaticCopy({
+      targets: [
+        {
+          src: 'lib/assets/fonts/*', // Путь к шрифтам
+          dest: 'assets/fonts' // Куда копировать
+        }
+      ]
+    })
   ],
   css: {
     modules: {
@@ -22,7 +31,7 @@ export default defineConfig({
     }
   },
   build: {
-    copyPublicDir: false,
+    copyPublicDir: true,
     lib: {
       entry: resolve(__dirname, 'lib/main.ts'),
       formats: ['es']
