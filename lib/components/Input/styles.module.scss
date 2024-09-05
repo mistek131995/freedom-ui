@@ -1,6 +1,16 @@
 .input {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
     padding: 0.7rem;
     background-color: var(--input-bg-color);
     border-radius: 3px;
     border: 0.1rem solid var(--input-border-color);
+    outline: none;
+
+    &:focus {
+        border: 0.1rem solid var(--input-border-focus-color);
+        box-shadow: 0 0 1rem var(--input-border-focus-color)
+    }
 }
