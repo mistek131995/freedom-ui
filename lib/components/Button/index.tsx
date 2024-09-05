@@ -9,7 +9,7 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & IButton;
 
 export const Button : FC<ButtonProps> = ({bg, className, ...props}) => {
   const unionClassName = [className || "", bg || ButtonBackground.primary]
-      .filter(x => x !== "")
+      .filter(x => x)
       .join(" ")
 
   return <button className={unionClassName} {...props} />

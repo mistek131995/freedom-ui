@@ -17,6 +17,10 @@
     &.secondary{
       background-color: var(--secondary-btn-color);
       color: white;
+
+      &:active{
+        box-shadow: 0 0 7px rgba(117, 116, 116, 0.79);
+      }
     }
 
     &.success{
@@ -29,6 +33,10 @@
 
     &.danger{
       background-color: var(--danger-btn-color);
+
+      &:active{
+        box-shadow: 0 0 7px rgba(117, 116, 116, 0.79);
+      }
     }
   }
 
