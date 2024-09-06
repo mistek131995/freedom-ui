@@ -2,6 +2,7 @@
 @import "fonts";
 
 :global{
+
   button{
     padding: 0.75rem 1.5rem;
     border: 0;
@@ -43,4 +44,27 @@
     }
   }
 
+  div{
+
+    &.flex{
+      display: flex;
+
+      &.flex-vertical{
+        flex-direction: column;
+      }
+
+      &.flex-horizontal{
+        flex-direction: row;
+      }
+
+      &.flex-vertical-reverse{
+        flex-direction: column-reverse;
+      }
+
+      &.flex-horizontal-reverse{
+        flex-direction: row-reverse;
+      }
+    }
+
+  }
 }
