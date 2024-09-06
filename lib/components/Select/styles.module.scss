@@ -1,0 +1,16 @@
+.select-label{
+  border: 1px solid gray;
+}
+
+.select-list-options{
+  border: 1px solid gray;
+}
+
+.select-option{
+  padding: 5px 0;
+
+  &:hover{
+    background-color: gray;
+    cursor: pointer;
+  }
+}
