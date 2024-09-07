@@ -1,5 +1,6 @@
 import "../dist/assets/style.css"
-import {ButtonBackground, Input, Button, Flex, FlexJustifyContent, FlexAlignmentItems, Select} from "../dist/main";
+import {ButtonBackground, Input, Button, Flex, FlexJustifyContent, FlexAlignmentItems} from "../dist/main";
+import {Select} from "../lib/components/Select";
 
 const App = () => {
   return <>
