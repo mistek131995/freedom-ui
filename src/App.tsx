@@ -16,13 +16,18 @@ const App = () => {
           <Input placeholder="text"/>
       </div>
 
-      <div>
+      <Flex justifyContent={FlexJustifyContent.around} alignItems={FlexAlignmentItems.center}>
           <Select placeholder="Выберите что-то" options={[
               {value: "test1", label: "Test 1"},
               {value: "test2", label: "Test 2"},
               {value: "test3", label: "Test 3"},
           ]}/>
-      </div>
+          <Select placeholder="Выберите что-то" options={[
+              {value: "test1", label: "Test 1"},
+              {value: "test2", label: "Test 2"},
+              {value: "test3", label: "Test 3"},
+          ]}/>
+      </Flex>
   </>
 }
 
