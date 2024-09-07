@@ -10,6 +10,7 @@ export interface ISelect {
 
 export const Select : FC<ISelect> = (props) => {
     const [isOptionsVisible, setVisible] = useState<boolean>(false);
+    const [options, setOptions] = useState<Option[]>(props.options)
     const ref = useRef<HTMLDivElement>(null);
 
     const handleClickOutside = useCallback((event: MouseEvent) => {
@@ -25,14 +26,21 @@ export const Select : FC<ISelect> = (props) => {
         };
     }, [])
 
+    const filterOptions = (value: string) => {
+        if(value)
+            setOptions(props.options.filter(x => x.label.toLowerCase().trim().includes(value.toLowerCase().trim())))
+        else
+            setOptions(props.options)
+    }
+
     return <div className={styles.select} ref={ref}>
-        <SelectLabel onClick={() => setVisible(!isOptionsVisible)}>
+        <SelectLabel onClick={() => setVisible(!isOptionsVisible)} filterOptions={filterOptions}>
             {props.placeholder}
         </SelectLabel>
         <div className={styles.selectListOptions}
-             style={{display: isOptionsVisible ? "block" : "none", width: ref.current!.offsetWidth}}>
+             style={{display: isOptionsVisible ? "block" : "none", width: ref.current?.offsetWidth}}>
             {
-                props.options.map(x => <div className={styles.selectOption} key={x.value}>
+                options.map(x => <div className={styles.selectOption} key={x.value}>
                     {x.label}
                 </div>)
             }

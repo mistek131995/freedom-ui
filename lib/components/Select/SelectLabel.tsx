@@ -1,7 +1,13 @@
 import React, {FC} from "react";
 import styles from "./styles.module.scss"
 
-export const SelectLabel : FC<React.HTMLAttributes<HTMLDivElement>> = ({className, ...props}) => {
+interface ISelectLabel {
+    filterOptions: (value: string) => void
+}
+
+type SelectLabelProps = React.HTMLAttributes<HTMLDivElement> & ISelectLabel
+
+export const SelectLabel : FC<SelectLabelProps> = ({className, ...props}) => {
     const unionClassNames = [className || "", styles.selectLabel].filter(x => x).join(" ")
 
     return <div {...props}
@@ -15,6 +21,7 @@ export const SelectLabel : FC<React.HTMLAttributes<HTMLDivElement>> = ({classNam
                 onBlur={(event) => {
                     event.currentTarget.textContent = props.children!.toString()
                 }}
+                onInput={(event) => props.filterOptions(event.currentTarget.textContent || "")}
                 className={unionClassNames}
                 contentEditable={true}
                 suppressContentEditableWarning={true}/>
