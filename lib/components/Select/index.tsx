@@ -1,21 +1,32 @@
 import {Option} from "./Option.ts";
-import {FC, useCallback, useEffect, useRef, useState} from "react";
+import {createContext, FC, InputHTMLAttributes, useCallback, useEffect, useRef, useState} from "react";
 import styles from "./styles.module.scss";
 import {SelectLabel} from "./SelectLabel.tsx";
+import {ListOptions} from "./ListOptions.tsx";
 
 export interface ISelect {
     placeholder?: string,
-    options: Option[]
+    options: Option[],
+    inputAttributes?: InputHTMLAttributes<HTMLInputElement>
 }
+
+interface ISelectOptions {
+    selectedOptions: Option[],
+    setSelectedOptions: (selectedOptions: Option[]) => void
+}
+
+export const SelectOptionContext = createContext<ISelectOptions | null>(null)
 
 export const Select : FC<ISelect> = (props) => {
     const [isOptionsVisible, setVisible] = useState<boolean>(false);
     const [options, setOptions] = useState<Option[]>(props.options)
+    const [selectedOptions, setSelectedOptions] = useState<Option[]>([])
     const ref = useRef<HTMLDivElement>(null);
 
     const handleClickOutside = useCallback((event: MouseEvent) => {
         if (ref.current && !ref.current.contains(event.target as Node)) {
-            setVisible(false)
+            setVisible(false);
+            setOptions(props.options);
         }
     }, []);
 
@@ -33,17 +44,14 @@ export const Select : FC<ISelect> = (props) => {
             setOptions(props.options)
     }
 
-    return <div className={styles.select} ref={ref}>
-        <SelectLabel onClick={() => setVisible(!isOptionsVisible)} filterOptions={filterOptions}>
-            {props.placeholder}
-        </SelectLabel>
-        <div className={styles.selectListOptions}
-             style={{display: isOptionsVisible ? "block" : "none", width: ref.current?.offsetWidth}}>
-            {
-                options.map(x => <div className={styles.selectOption} key={x.value}>
-                    {x.label}
-                </div>)
-            }
+    return <SelectOptionContext.Provider value={{selectedOptions: selectedOptions, setSelectedOptions: setSelectedOptions}}>
+        <div className={styles.select} ref={ref}>
+            <SelectLabel onClick={() => setVisible(!isOptionsVisible)} filterOptions={filterOptions}>
+                {props.placeholder}
+            </SelectLabel>
+            <ListOptions isOptionsVisible={isOptionsVisible}
+                         width={ref.current?.offsetWidth || 0}
+                         options={options}/>
         </div>
-    </div>
+    </SelectOptionContext.Provider>
 }
