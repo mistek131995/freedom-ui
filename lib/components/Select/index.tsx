@@ -40,7 +40,7 @@ export const Select : FC<ISelect> = (props) => {
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [])
+    }, [handleClickOutside])
 
     useEffect(() => {
         setOptions(props.options.filter(x =>
