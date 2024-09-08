@@ -23,7 +23,8 @@ export const ListOptions : FC<ListOptionsProps> = (props) => {
                 style={{display: props.isOptionsVisible ? "block" : "none", width: props.width}}>
         {
             context?.options.map(x => <div key={x.value}
-                                        className={styles.selectOption} onClick={() => selectValue(x.value)}>
+                                           className={styles.selectOption}
+                                           onClick={() => selectValue(x.value)}>
                 {x.label}
             </div>)
         }
