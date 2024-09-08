@@ -4,8 +4,9 @@
   .select-label{
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row-reverse;
+    flex-direction: row;
     justify-content: start;
+    align-items: center;
     border: 1px solid gray;
 
     .selected-option{
@@ -13,7 +14,7 @@
       text-wrap: nowrap;
       display: flex;
       justify-content: space-between;
-      padding: 0 0.25rem;
+      padding: 0.7rem 0.4rem;
 
       div:first-child{
 
@@ -22,12 +23,14 @@
       div:last-child{
         background-color: darkgray;
         padding: 0 0.2rem;
+        margin-left: 0.5rem;
         cursor: pointer;
       }
     }
 
     .search-field{
-      padding: 0.7rem;
+      min-width: 1rem;
+      padding: 0.7rem 0.25rem;
       flex-grow: 1;
     }
   }

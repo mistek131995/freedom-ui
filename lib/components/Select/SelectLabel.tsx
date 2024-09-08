@@ -24,6 +24,15 @@ export const SelectLabel : FC<SelectLabelProps> = ({className, inputAttributes, 
         <input {...inputAttributes} value={context?.selectedOptions.map(x => x.value)} type="hidden"/>
         <div {...props}
              className={unionClassNames}>
+            {context?.selectedOptions &&
+                context?.selectedOptions.map(x => <div key={x.value}
+                                                       contentEditable={false}
+                                                       className={styles.selectedOption}>
+                    <div>{x.label}</div>
+                    <div onClick={() => deleteOption(x)}>X</div>
+                </div>)
+            }
+
             <div {...props}
                  className={styles.searchField}
                  onClick={(event) => {
@@ -38,14 +47,6 @@ export const SelectLabel : FC<SelectLabelProps> = ({className, inputAttributes, 
                         props.placeholder
                     }
             </div>
-            {context?.selectedOptions &&
-                context?.selectedOptions.map(x => <div key={x.value}
-                                                       contentEditable={false}
-                                                       className={styles.selectedOption}>
-                    <div>{x.label}</div>
-                    <div onClick={() => deleteOption(x)}>X</div>
-                </div>)
-            }
         </div>
     </>
 
