@@ -16,7 +16,12 @@ export default defineConfig({
         {
           src: 'lib/assets/fonts/*', // Путь к шрифтам
           dest: 'assets/fonts' // Куда копировать
-        }
+        },
+        {
+          src: 'lib/assets/images/*', // Путь к шрифтам
+          dest: 'assets/images' // Куда копировать
+        },
+
       ]
     })
   ],

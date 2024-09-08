@@ -29,7 +29,9 @@ export const SelectLabel : FC<SelectLabelProps> = ({className, inputAttributes, 
                                                        contentEditable={false}
                                                        className={styles.selectedOption}>
                     <div>{x.label}</div>
-                    <div onClick={() => deleteOption(x)}>X</div>
+                    <div onClick={() => deleteOption(x)}>
+                        <img width={20} src="../../assets/images/x.svg"/>
+                    </div>
                 </div>)
             }
 
