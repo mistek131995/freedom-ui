@@ -7,7 +7,7 @@ import {ListOptions} from "./ListOptions.tsx";
 export interface ISelect {
     placeholder?: string,
     options: Option[],
-    inputAttributes?: InputHTMLAttributes<HTMLInputElement>
+    inputAttributes: InputHTMLAttributes<HTMLInputElement>
 }
 
 interface ISelectContext {
@@ -58,7 +58,8 @@ export const Select : FC<ISelect> = (props) => {
     }}>
         <div className={styles.select} ref={ref}>
             <SelectLabel onClick={() => setVisible(true)}
-                         placeholder={props.placeholder || ""}/>
+                         placeholder={props.placeholder || ""}
+                         inputAttributes={props.inputAttributes}/>
             <ListOptions isOptionsVisible={isOptionsVisible}
                          width={ref.current?.offsetWidth || 0}
                          options={props.options}/>

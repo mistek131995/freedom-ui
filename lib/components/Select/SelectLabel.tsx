@@ -1,15 +1,16 @@
-import React, {FC, useContext} from "react";
+import React, {FC, InputHTMLAttributes, useContext} from "react";
 import styles from "./styles.module.scss"
 import {SelectContext} from "./index.tsx";
 import {Option} from "./Option.ts";
 
 interface ISelectLabel {
-    placeholder: string
+    placeholder: string,
+    inputAttributes: InputHTMLAttributes<HTMLInputElement>
 }
 
 type SelectLabelProps = React.HTMLAttributes<HTMLDivElement> & ISelectLabel
 
-export const SelectLabel : FC<SelectLabelProps> = ({className, ...props}) => {
+export const SelectLabel : FC<SelectLabelProps> = ({className, inputAttributes, ...props}) => {
     const unionClassNames = [className || "", styles.selectLabel].filter(x => x).join(" ");
     const context = useContext(SelectContext);
 
@@ -20,7 +21,7 @@ export const SelectLabel : FC<SelectLabelProps> = ({className, ...props}) => {
     }
 
     return <>
-        <input value={context?.selectedOptions.map(x => x.value)} type="hidden"/>
+        <input {...inputAttributes} value={context?.selectedOptions.map(x => x.value)} type="hidden"/>
         <div {...props}
              className={unionClassNames}>
             <div {...props}
