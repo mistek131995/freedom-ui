@@ -38,6 +38,10 @@ const App = () => {
                   {value: "test1", label: "Test 1"},
                   {value: "test2", label: "Test 2"},
                   {value: "test3", label: "Test 3"},
+                  {value: "test4", label: "Test 4"},
+                  {value: "test5", label: "Test 5"},
+                  {value: "test6", label: "Test 6"},
+                  {value: "test7", label: "Test 7"},
               ]}/>
               <Select placeholder="Выберите что-то" inputAttributes={{name: "select-single"}} options={[
                   {value: "test1", label: "Test 1"},
