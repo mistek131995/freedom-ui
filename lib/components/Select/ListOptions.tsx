@@ -14,6 +14,8 @@ export const ListOptions : FC<ListOptionsProps> = (props) => {
     const context = useContext(SelectContext)
 
     useEffect(() => {
+        console.log(context?.searchValue)
+
         setOptions(props.options.filter(x => x.label.toLowerCase().trim().includes(context?.searchValue.toLowerCase().trim() || "")))
     }, [context?.searchValue])
 

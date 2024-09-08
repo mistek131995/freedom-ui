@@ -1,21 +1,33 @@
 .select{
   width: 100%;
-}
 
-.select-label{
-  border: 1px solid gray;
-}
+  .select-label{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: start;
+    border: 1px solid gray;
 
-.select-list-options{
-  position: absolute;
-  border: 1px solid gray;
-}
+    .selected-option{
+      background-color: gray;
+      text-wrap: nowrap;
+    }
 
-.select-option{
-  padding: 5px 0;
+    .search-field{
+      width: 100%;
+    }
+  }
 
-  &:hover{
-    background-color: gray;
-    cursor: pointer;
+  .select-list-options{
+    position: absolute;
+    border: 1px solid gray;
+
+    .select-option{
+      padding: 5px 0;
+
+      &:hover{
+        background-color: gray;
+        cursor: pointer;
+      }
+    }
   }
 }

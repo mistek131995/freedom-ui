@@ -2,7 +2,11 @@ import React, {FC, useContext} from "react";
 import styles from "./styles.module.scss"
 import {SelectContext} from "./index.tsx";
 
-type SelectLabelProps = React.HTMLAttributes<HTMLDivElement>
+interface ISelectLabel {
+    placeholder: string
+}
+
+type SelectLabelProps = React.HTMLAttributes<HTMLDivElement> & ISelectLabel
 
 export const SelectLabel : FC<SelectLabelProps> = ({className, ...props}) => {
     const unionClassNames = [className || "", styles.selectLabel].filter(x => x).join(" ");
@@ -11,25 +15,23 @@ export const SelectLabel : FC<SelectLabelProps> = ({className, ...props}) => {
     return <>
         <input value={context?.selectedOptions.map(x => x.value)} type="hidden"/>
         <div {...props}
-             onClick={(event) => {
-                 if (props.onClick) {
-                     props.onClick(event);
-                 }
+             className={unionClassNames}>
+            <div {...props}
+                className={styles.searchField}
+                 onClick={(event) => {
+                     if (props.onClick) {
+                         props.onClick(event);
+                     }
+                 }}
+                 onInput={(event) => context?.setSearchValue(event.currentTarget.textContent || "")}
+                 contentEditable={true}
+                 suppressContentEditableWarning={true}>
 
-                 event.currentTarget.textContent = ""
-             }}
-             onBlur={(event) => {
-                 event.currentTarget.textContent = props.children!.toString()
-             }}
-             onInput={(event) => context?.setSearchValue(event.currentTarget.textContent || "")}
-             className={unionClassNames}
-             contentEditable={true}
-             suppressContentEditableWarning={true}>
-
+            </div>
             {context?.selectedOptions &&
-                context?.selectedOptions.map(x => <div>{x.label}</div>)
+                context?.selectedOptions.map(x => <div contentEditable={false}
+                                                       className={styles.selectedOption}>{x.label}</div>)
             }
-
         </div>
     </>
 
