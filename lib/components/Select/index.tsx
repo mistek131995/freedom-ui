@@ -10,23 +10,25 @@ export interface ISelect {
     inputAttributes?: InputHTMLAttributes<HTMLInputElement>
 }
 
-interface ISelectOptions {
+interface ISelectContext {
+    searchValue: string,
+    setSearchValue: (value: string) => void,
     selectedOptions: Option[],
     setSelectedOptions: (selectedOptions: Option[]) => void
 }
 
-export const SelectOptionContext = createContext<ISelectOptions | null>(null)
+export const SelectContext = createContext<ISelectContext | null>(null)
 
 export const Select : FC<ISelect> = (props) => {
+    const [selectedOptions, setSelectedOptions] = useState<Option[]>([]);
+    const [searchValue, setSearchValue] = useState<string>("");
+
     const [isOptionsVisible, setVisible] = useState<boolean>(false);
-    const [options, setOptions] = useState<Option[]>(props.options)
-    const [selectedOptions, setSelectedOptions] = useState<Option[]>([])
     const ref = useRef<HTMLDivElement>(null);
 
     const handleClickOutside = useCallback((event: MouseEvent) => {
         if (ref.current && !ref.current.contains(event.target as Node)) {
             setVisible(false);
-            setOptions(props.options);
         }
     }, []);
 
@@ -37,21 +39,19 @@ export const Select : FC<ISelect> = (props) => {
         };
     }, [])
 
-    const filterOptions = (value: string) => {
-        if(value)
-            setOptions(props.options.filter(x => x.label.toLowerCase().trim().includes(value.toLowerCase().trim())))
-        else
-            setOptions(props.options)
-    }
-
-    return <SelectOptionContext.Provider value={{selectedOptions: selectedOptions, setSelectedOptions: setSelectedOptions}}>
+    return <SelectContext.Provider value={{
+        searchValue: searchValue,
+        setSearchValue: setSearchValue,
+        selectedOptions: selectedOptions,
+        setSelectedOptions: setSelectedOptions
+    }}>
         <div className={styles.select} ref={ref}>
-            <SelectLabel onClick={() => setVisible(!isOptionsVisible)} filterOptions={filterOptions}>
+            <SelectLabel onClick={() => setVisible(!isOptionsVisible)}>
                 {props.placeholder}
             </SelectLabel>
             <ListOptions isOptionsVisible={isOptionsVisible}
                          width={ref.current?.offsetWidth || 0}
-                         options={options}/>
+                         options={props.options}/>
         </div>
-    </SelectOptionContext.Provider>
+    </SelectContext.Provider>
 }

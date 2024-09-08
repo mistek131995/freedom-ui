@@ -1,7 +1,7 @@
 import styles from "./styles.module.scss"
 import {Option} from "./Option.ts";
-import {FC, useContext} from "react";
-import {SelectOptionContext} from "./index.tsx";
+import {FC, useContext, useEffect, useState} from "react";
+import {SelectContext} from "./index.tsx";
 
 type ListOptionsProps = {
     isOptionsVisible: boolean,
@@ -10,7 +10,12 @@ type ListOptionsProps = {
 }
 
 export const ListOptions : FC<ListOptionsProps> = (props) => {
-    const context = useContext(SelectOptionContext)
+    const [options, setOptions] = useState<Option[]>(props.options)
+    const context = useContext(SelectContext)
+
+    useEffect(() => {
+        setOptions(props.options.filter(x => x.label.toLowerCase().trim().includes(context?.searchValue.toLowerCase().trim() || "")))
+    }, [context?.searchValue])
 
     const selectValue = (value: string) => {
         const option = props.options.find(x => x.value === value)!;
@@ -22,7 +27,7 @@ export const ListOptions : FC<ListOptionsProps> = (props) => {
     return <div className={styles.selectListOptions}
                 style={{display: props.isOptionsVisible ? "block" : "none", width: props.width}}>
         {
-            props.options.map(x => <div key={x.value}
+            options.map(x => <div key={x.value}
                                         className={styles.selectOption} onClick={() => selectValue(x.value)}>
                 {x.label}
             </div>)
