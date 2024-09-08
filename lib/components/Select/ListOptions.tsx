@@ -6,7 +6,7 @@ import {SelectContext} from "./index.tsx";
 type ListOptionsProps = {
     isOptionsVisible: boolean,
     width: number,
-    options: Option[]
+    options: Option[],
 }
 
 export const ListOptions : FC<ListOptionsProps> = (props) => {

@@ -34,7 +34,12 @@ const App = () => {
             }
         }}>
           <Flex justifyContent={FlexJustifyContent.around} alignItems={FlexAlignmentItems.center}>
-              <Select placeholder="Выберите что-то" inputAttributes={{name: "select"}} options={[
+              <Select placeholder="Выберите что-то" inputAttributes={{name: "select-multi"}} options={[
+                  {value: "test1", label: "Test 1"},
+                  {value: "test2", label: "Test 2"},
+                  {value: "test3", label: "Test 3"},
+              ]}/>
+              <Select placeholder="Выберите что-то" inputAttributes={{name: "select-single"}} options={[
                   {value: "test1", label: "Test 1"},
                   {value: "test2", label: "Test 2"},
                   {value: "test3", label: "Test 3"},

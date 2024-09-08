@@ -7,7 +7,6 @@ import {ListOptions} from "./ListOptions.tsx";
 export interface ISelect {
     placeholder?: string,
     options: Option[],
-    isMultiSelect?: boolean,
     inputAttributes: InputHTMLAttributes<HTMLInputElement>
 }
 
