@@ -25,7 +25,8 @@ const App = () => {
             if (formRef.current) {
                 const formData = new FormData(formRef.current);
 
-                formData.forEach((value, key) => {
+                //formData.forEach((value, key) => {
+                formData.forEach((value) => {
                     console.log(value);
                 });
 

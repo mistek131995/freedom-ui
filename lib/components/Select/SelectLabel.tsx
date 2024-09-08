@@ -25,7 +25,7 @@ export const SelectLabel : FC<SelectLabelProps> = ({className, inputAttributes, 
         <div {...props}
              className={unionClassNames}>
             <div {...props}
-                className={styles.searchField}
+                 className={styles.searchField}
                  onClick={(event) => {
                      if (props.onClick) {
                          props.onClick(event);
@@ -34,7 +34,9 @@ export const SelectLabel : FC<SelectLabelProps> = ({className, inputAttributes, 
                  onInput={(event) => context?.setSearchValue(event.currentTarget.textContent || "")}
                  contentEditable={true}
                  suppressContentEditableWarning={true}>
-
+                {!context?.isOptionVisible && context?.selectedOptions.length == 0 &&
+                    props.placeholder
+                }
             </div>
             {context?.selectedOptions &&
                 context?.selectedOptions.map(x => <div key={x.value}

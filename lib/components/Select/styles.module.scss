@@ -33,6 +33,8 @@
   .select-list-options{
     position: absolute;
     border: 1px solid gray;
+    background-color: white;
+    z-index: 50;
 
     .select-option{
       padding: 5px 0;

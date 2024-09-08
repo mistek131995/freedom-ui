@@ -7,6 +7,7 @@ import {ListOptions} from "./ListOptions.tsx";
 export interface ISelect {
     placeholder?: string,
     options: Option[],
+    isMultiSelect?: boolean,
     inputAttributes: InputHTMLAttributes<HTMLInputElement>
 }
 
@@ -16,7 +17,9 @@ interface ISelectContext {
     searchValue: string,
     setSearchValue: (value: string) => void,
     selectedOptions: Option[],
-    setSelectedOptions: (selectedOptions: Option[]) => void
+    setSelectedOptions: (selectedOptions: Option[]) => void,
+    isOptionVisible?: boolean,
+    setIsOptionVisible: (visible: boolean) => void,
 }
 
 export const SelectContext = createContext<ISelectContext | null>(null)
@@ -25,13 +28,13 @@ export const Select : FC<ISelect> = (props) => {
     const [selectedOptions, setSelectedOptions] = useState<Option[]>([]);
     const [searchValue, setSearchValue] = useState<string>("");
     const [options, setOptions] = useState<Option[]>(props.options)
+    const [isOptionsVisible, setOptionsVisible] = useState<boolean>(false);
 
-    const [isOptionsVisible, setVisible] = useState<boolean>(false);
     const ref = useRef<HTMLDivElement>(null);
 
     const handleClickOutside = useCallback((event: MouseEvent) => {
         if (ref.current && !ref.current.contains(event.target as Node)) {
-            setVisible(false);
+            setOptionsVisible(false);
         }
     }, []);
 
@@ -54,10 +57,12 @@ export const Select : FC<ISelect> = (props) => {
         searchValue: searchValue,
         setSearchValue: setSearchValue,
         selectedOptions: selectedOptions,
-        setSelectedOptions: setSelectedOptions
+        setSelectedOptions: setSelectedOptions,
+        isOptionVisible: isOptionsVisible,
+        setIsOptionVisible: setOptionsVisible
     }}>
         <div className={styles.select} ref={ref}>
-            <SelectLabel onClick={() => setVisible(true)}
+            <SelectLabel onClick={() => setOptionsVisible(true)}
                          placeholder={props.placeholder || ""}
                          inputAttributes={props.inputAttributes}/>
             <ListOptions isOptionsVisible={isOptionsVisible}
