@@ -43,8 +43,10 @@ export const Select : FC<ISelect> = (props) => {
     }, [])
 
     useEffect(() => {
-        setOptions(props.options.filter(x => x.label.toLowerCase().trim().includes(searchValue.toLowerCase().trim() || "")))
-    }, [searchValue])
+        setOptions(props.options.filter(x =>
+            x.label.toLowerCase().trim().includes(searchValue.toLowerCase().trim() || "") &&
+            !selectedOptions.includes(x)))
+    }, [searchValue, props.options, selectedOptions])
 
     return <SelectContext.Provider value={{
         options: options,
