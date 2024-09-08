@@ -11,6 +11,8 @@ export interface ISelect {
 }
 
 interface ISelectContext {
+    options: Option[],
+    setOptions: (options: Option[]) => void,
     searchValue: string,
     setSearchValue: (value: string) => void,
     selectedOptions: Option[],
@@ -22,6 +24,7 @@ export const SelectContext = createContext<ISelectContext | null>(null)
 export const Select : FC<ISelect> = (props) => {
     const [selectedOptions, setSelectedOptions] = useState<Option[]>([]);
     const [searchValue, setSearchValue] = useState<string>("");
+    const [options, setOptions] = useState<Option[]>(props.options)
 
     const [isOptionsVisible, setVisible] = useState<boolean>(false);
     const ref = useRef<HTMLDivElement>(null);
@@ -39,7 +42,13 @@ export const Select : FC<ISelect> = (props) => {
         };
     }, [])
 
+    useEffect(() => {
+        setOptions(props.options.filter(x => x.label.toLowerCase().trim().includes(searchValue.toLowerCase().trim() || "")))
+    }, [searchValue])
+
     return <SelectContext.Provider value={{
+        options: options,
+        setOptions: setOptions,
         searchValue: searchValue,
         setSearchValue: setSearchValue,
         selectedOptions: selectedOptions,

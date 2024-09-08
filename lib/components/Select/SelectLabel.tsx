@@ -29,7 +29,8 @@ export const SelectLabel : FC<SelectLabelProps> = ({className, ...props}) => {
 
             </div>
             {context?.selectedOptions &&
-                context?.selectedOptions.map(x => <div contentEditable={false}
+                context?.selectedOptions.map(x => <div key={x.value}
+                                                       contentEditable={false}
                                                        className={styles.selectedOption}>{x.label}</div>)
             }
         </div>
