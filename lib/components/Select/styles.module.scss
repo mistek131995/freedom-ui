@@ -1,9 +1,10 @@
 .select{
   width: 100%;
+  background-color: var(--select-bg-color);
 
   .select-label-container{
     display: flex;
-    border: 1px solid gray;
+    border: 1px solid var(--select-border-color);
 
     .label-options-container{
       display: flex;
@@ -11,12 +12,12 @@
       flex-direction: row;
       justify-content: start;
       align-items: center;
-      border-right: 1px solid gray;
+      border-right: 1px solid var(--select-border-color);
       flex-grow: 1;
       text-indent: 0.5rem;
 
       .selected-option{
-        background-color: gray;
+        background-color: var(--select-selected-option-bg-color);
         text-wrap: nowrap;
         display: flex;
         justify-content: space-between;
@@ -34,7 +35,7 @@
         div:last-child{
           display: flex;
           align-items: center;
-          background-color: darkgray;
+          background-color: var(--select-selected-option-bg-button-color);
           padding: 0.1rem;
           margin-left: 0.5rem;
           cursor: pointer;
@@ -65,23 +66,24 @@
       }
 
       div:not(:last-child){
-        border-right: 1px solid gray;
+        border-right: 1px solid var(--select-border-color);;
       }
     }
   }
 
   .select-list-options{
     position: absolute;
-    border: 1px solid gray;
-    background-color: white;
+    outline: 1px solid var(--select-border-color);
+    background-color: var(--select-bg-color);
     z-index: 50;
 
+
     .select-option{
-      padding: 5px 0;
+      padding: 0.3rem 0.5rem;
       font-family: "Overpass-Regular", serif;
 
       &:hover{
-        background-color: gray;
+        background-color: var(--select-bg-hover-color);
         cursor: pointer;
       }
     }

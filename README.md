@@ -26,3 +26,9 @@ Elements
 >justifyContent={FlexJustifyContent.around} - Горизонтальное позиционирование
 
 >alignItems={FlexAlignmentItems.center} - Вертикальное позиционирование
+
+**Multi Select (Beta)**
+
+`<Select placeholder="Выберите что-то" inputAttributes={{name: "select-multi"}} options={[]}/>`
+
+![Multi Select](https://s.iimg.su/s/09/TVELIyxpjkHrnPjRBRLTCUx1mKLt4UrqocYkPBed.jpg)
