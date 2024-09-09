@@ -31,4 +31,4 @@ Elements
 
 `<Select placeholder="Выберите что-то" inputAttributes={{name: "select-multi"}} options={[]}/>`
 
-![Multi Select](https://s.iimg.su/s/09/TVELIyxpjkHrnPjRBRLTCUx1mKLt4UrqocYkPBed.jpg)
+![Multi Select](https://s.iimg.su/s/09/DeS9hD2KbgZgt7ao6iQOZMfk0CdkL7WHv9oXMnEX.jpg)
