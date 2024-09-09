@@ -2,6 +2,9 @@ import React, {FC, InputHTMLAttributes, useContext, useEffect, useRef} from "rea
 import styles from "./styles.module.scss"
 import {SelectContext} from "./index.tsx";
 import {Option} from "./Option.ts";
+import {X} from "../../assets/images/X.tsx";
+import {ArrowDown} from "../../assets/images/ArrowDown.tsx";
+
 
 interface ISelectLabel {
     placeholder: string,
@@ -36,7 +39,7 @@ export const SelectLabel : FC<SelectLabelProps> = ({className, inputAttributes, 
                                                            className={styles.selectedOption}>
                         <div>{x.label}</div>
                         <div onClick={() => deleteOption(x)}>
-                            <img width={20} src="../../assets/images/x.svg"/>
+                            <X/>
                         </div>
                     </div>)
                 }
@@ -59,7 +62,7 @@ export const SelectLabel : FC<SelectLabelProps> = ({className, inputAttributes, 
             </div>
             <div className={styles.labelButtonContainer}>
                 <div onClick={() => context?.setSelectedOptions([])}>
-                    <img width={25} src="../../assets/images/x.svg"/>
+                    <X/>
                 </div>
                 {!context?.isOptionVisible &&
                     <div onClick={(event) => {
@@ -67,7 +70,7 @@ export const SelectLabel : FC<SelectLabelProps> = ({className, inputAttributes, 
                             props.onClick(event);
                         }
                     }}>
-                        <img width={25} src="../../assets/images/arrow-down-short.svg"/>
+                        <ArrowDown/>
                     </div>
                 }
             </div>
