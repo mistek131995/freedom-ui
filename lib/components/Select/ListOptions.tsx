@@ -17,6 +17,7 @@ export const ListOptions : FC<ListOptionsProps> = (props) => {
         const newSelectedOptions = [...context!.selectedOptions, option];
 
         context?.setSelectedOptions(newSelectedOptions)
+        context?.setSearchValue("")
     }
 
     return <div className={styles.selectListOptions}
