@@ -14,7 +14,7 @@
 
 **Текстовое поле:**
 
->`<Input placeholder="text"/>`
+>`<Input name="name" placeholder="text"/>`
 
 ![Текстовое поле](https://s.iimg.su/s/05/C7I9J8IMcowi5hVSi0okyFDGYc2E4WYyTLV0lmxg.jpg)
 
@@ -41,6 +41,6 @@
 
 **Компонент формы:**
 
-`handleSubmit={(form) => console.log(form)} - Получаем массив [name]: value при срабатывании onSubmit`
-
 >`<Form handleSubmit={(form) => console.log(form)}>Inputs|Select|...</Form>`
+
+`handleSubmit={(form) => console.log(form)} - Получаем массив [name]: value при срабатывании onSubmit`

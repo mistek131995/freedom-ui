@@ -14,12 +14,12 @@ const App = () => {
         </Flex>
 
         <div style={{display: "flex", justifyContent: "space-around", marginTop: "1rem"}}>
-          <Input placeholder="text"/>
+          <Input name="name" placeholder="text"/>
         </div>
 
         <Form handleSubmit={(form) => console.log(form)}>
             <input name="test"/>
-            <Select placeholder="Выберите что-то" inputAttributes={{name: "select-multi"}} options={[
+            <Select placeholder="Выберите что-то" inputAttributes={{style: {width: "50%"}, name: "select-multi"}} options={[
                 {value: "test1", label: "Test 1"},
                 {value: "test2", label: "Test 2"},
                 {value: "test3", label: "Test 3"},
