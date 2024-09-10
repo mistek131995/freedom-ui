@@ -32,6 +32,8 @@ export const Select : FC<ISelect> = (props) => {
     const ref = useRef<HTMLDivElement>(null);
     const {className, style, ...inputAttributes} = props.inputAttributes;
 
+    const unionClassName = [styles.select, className, (isOptionsVisible ? styles.focus : "")].filter(x => x).join(" ")
+
     const handleClickOutside = useCallback((event: MouseEvent) => {
         if (ref.current && !ref.current.contains(event.target as Node)) {
             setOptionsVisible(false);
@@ -61,7 +63,7 @@ export const Select : FC<ISelect> = (props) => {
         isOptionVisible: isOptionsVisible,
         setIsOptionVisible: setOptionsVisible
     }}>
-        <div className={styles.select + " " + className} style={style} ref={ref}>
+        <div className={unionClassName} style={style} ref={ref}>
             <SelectLabel onClick={() => setOptionsVisible(true)}
                          placeholder={props.placeholder || ""}
                          inputAttributes={inputAttributes}/>
