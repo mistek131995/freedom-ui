@@ -22,7 +22,7 @@
         text-wrap: nowrap;
         display: flex;
         justify-content: space-between;
-        padding: 0.7rem 0.4rem;
+        padding: 0.3rem;
         font-family: "Overpass-Regular", serif;
         margin: 0.1rem;
         border-radius: 3px;
@@ -79,7 +79,7 @@
     border: 1px solid var(--select-border-color);
     background-color: var(--select-bg-color);
     z-index: 50;
-    height: var(--select-options-list-height);
+    max-height: var(--select-options-list-height);
     overflow: scroll;
     scrollbar-width: none;
 
