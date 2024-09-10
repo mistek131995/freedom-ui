@@ -17,8 +17,21 @@ export const Form : FC<PropsForm> = ({onSubmit, handleSubmit, ...props}) => {
 
         if (event.currentTarget) {
             const formData = new FormData(event.currentTarget);
+            const data : Record<string, FormDataEntryValue> = Object.fromEntries(formData.entries());
 
-            handleSubmit(Object.fromEntries(formData.entries()));
+            Array.from(event.currentTarget.elements).map(x => {
+                const input = x as HTMLInputElement;
+
+                if(input.type == "checkbox"){
+                    data[input.name] = `${input.checked}`
+                }
+
+                if(input.type == "radio" && input.checked){
+                    data[input.name] = `${input.value}`
+                }
+            })
+
+            handleSubmit(data);
         }
     }
 

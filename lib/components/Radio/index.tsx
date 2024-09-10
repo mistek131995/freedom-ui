@@ -1,3 +1,5 @@
-export const Radio = () => {
-    return <input type="radio"/>
+import {InputHTMLAttributes} from "react";
+
+export const Radio = (props: InputHTMLAttributes<HTMLInputElement>) => {
+    return <input {...props} type="radio"/>
 }

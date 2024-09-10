@@ -1,6 +1,6 @@
 import "../dist/assets/style.css"
 import {ButtonBackground, Input, Button, Flex, FlexJustifyContent, FlexAlignmentItems} from "../dist/main";
-import {Checkbox, Form, Select} from "../lib/main.ts";
+import {Checkbox, FlexOrientation, Form, Radio, Select} from "../lib/main.ts";
 
 const App = () => {
 
@@ -18,7 +18,14 @@ const App = () => {
         <Form handleSubmit={(form) => console.log(form)}>
             <Flex justifyContent={FlexJustifyContent.around}>
                 <Input name="name" placeholder="text"/>
-                <Checkbox/>
+                <Checkbox name="checkbox"/>
+
+                <Flex orientation={FlexOrientation.vertical}>
+                    <Radio name="radio" value="test1"/>
+                    <Radio name="radio" value="test2"/>
+                    <Radio name="radio" value="test3"/>
+                </Flex>
+
                 <Select placeholder="Выберите что-то" inputAttributes={{style: {width: "50%"}, name: "select-multi"}} options={[
                     {value: "test1", label: "Test 1"},
                     {value: "test2", label: "Test 2"},
