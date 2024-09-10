@@ -61,12 +61,11 @@ export const Select : FC<ISelect> = (props) => {
         isOptionVisible: isOptionsVisible,
         setIsOptionVisible: setOptionsVisible
     }}>
-        <div className={styles.select + " " + className} style={style} ref={ref}>
+        <div className={styles.select + " " + className} style={style}>
             <SelectLabel onClick={() => setOptionsVisible(true)}
                          placeholder={props.placeholder || ""}
                          inputAttributes={inputAttributes}/>
             <ListOptions isOptionsVisible={isOptionsVisible}
-                         width={ref.current?.offsetWidth || 0}
                          options={props.options}/>
         </div>
     </SelectContext.Provider>

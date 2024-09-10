@@ -5,7 +5,6 @@ import {SelectContext} from "./index.tsx";
 
 type ListOptionsProps = {
     isOptionsVisible: boolean,
-    width: number,
     options: Option[],
 }
 
@@ -21,7 +20,7 @@ export const ListOptions : FC<ListOptionsProps> = (props) => {
     }
 
     return <div className={styles.selectListOptions}
-                style={{display: props.isOptionsVisible ? "block" : "none", width: props.width}}>
+                style={{display: props.isOptionsVisible ? "block" : "none"}}>
         {
             context?.options.map(x => <div key={x.value}
                                            className={styles.selectOption}

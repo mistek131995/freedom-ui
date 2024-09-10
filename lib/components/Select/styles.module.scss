@@ -1,6 +1,7 @@
 .select{
   width: 100%;
   background-color: var(--select-bg-color);
+  position: relative;
 
   .select-label-container{
     display: flex;
@@ -73,6 +74,8 @@
 
   .select-list-options{
     position: absolute;
+    left: 0;
+    right: 0;
     outline: 1px solid var(--select-border-color);
     background-color: var(--select-bg-color);
     z-index: 50;
