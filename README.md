@@ -1,34 +1,46 @@
-## Возможно это будет UI библиотека
+# Возможно это будет UI библиотека
 
-**Импорт стилей:**
->import "@mistek/freedom-ui/dist/assets/style.css"
+## Импорт стилей:
+
+>`import "@mistek/freedom-ui/dist/assets/style.css"`
+
+## Элементы интерфейса:
 
 **Кнопки:**
 
-`<Button bg={ButtonBackground.primary}>Button</Button>`
+>`<Button bg={ButtonBackground.primary}>Button</Button>`
 
 ![Кнопки](https://s.iimg.su/s/05/wkLsxS7XlDZONTY7L4ERMSeBKIz9rS87dhLbi6ps.png)
 
-**Текстовое поле**
+**Текстовое поле:**
 
-`<Input/>`
+>`<Input placeholder="text"/>`
 
 ![Текстовое поле](https://s.iimg.su/s/05/C7I9J8IMcowi5hVSi0okyFDGYc2E4WYyTLV0lmxg.jpg)
 
-**Flex контейнер**
+
+
+**Multi Select (Beta):**
+
+>`<Select placeholder="Выберите что-то" inputAttributes={{name: "select-multi"}} options={[]}/>`
+
+![Multi Select](https://s.iimg.su/s/09/DeS9hD2KbgZgt7ao6iQOZMfk0CdkL7WHv9oXMnEX.jpg)
+
+## Сетки (Позиционирование элементов)
+
+**Flex контейнер:**
 
 Используется для компоновки других элементов.
 
-`<Flex justifyContent={FlexJustifyContent.around} alignItems={FlexAlignmentItems.center}>
-Elements
-</Flex>`
+>`<Flex justifyContent={FlexJustifyContent.around} alignItems={FlexAlignmentItems.center}>Elements</Flex>`
 
->justifyContent={FlexJustifyContent.around} - Горизонтальное позиционирование
+`justifyContent={FlexJustifyContent.around} - Горизонтальное позиционирование`
+`alignItems={FlexAlignmentItems.center} - Вертикальное позиционирование`
 
->alignItems={FlexAlignmentItems.center} - Вертикальное позиционирование
+## Функциональные компоненты
 
-**Multi Select (Beta)**
+**Компонент формы:**
 
-`<Select placeholder="Выберите что-то" inputAttributes={{name: "select-multi"}} options={[]}/>`
+`handleSubmit={(form) => console.log(form)} - Получаем массив [name]: value при срабатывании onSubmit`
 
-![Multi Select](https://s.iimg.su/s/09/DeS9hD2KbgZgt7ao6iQOZMfk0CdkL7WHv9oXMnEX.jpg)
+>`<Form handleSubmit={(form) => console.log(form)}>Inputs|Select|...</Form>`
