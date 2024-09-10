@@ -1,17 +1,12 @@
 import React, {FC, HTMLAttributes} from "react";
 
-type FormValue = {
-    name: string,
-    value: string,
-}
-
 interface IForm{
-    handleSubmit: (form: FormValue[]) => void
+    handleSubmit: (form: Record<string, FormDataEntryValue>) => void
 }
 
 type PropsForm = HTMLAttributes<HTMLFormElement> & IForm
 
-export const Form : FC<PropsForm> = ({onSubmit, ...props}) => {
+export const Form : FC<PropsForm> = ({onSubmit, handleSubmit, ...props}) => {
 
     const submit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
@@ -22,7 +17,8 @@ export const Form : FC<PropsForm> = ({onSubmit, ...props}) => {
 
         if (event.currentTarget) {
             const formData = new FormData(event.currentTarget);
-            console.log(Object.fromEntries(formData.entries()));
+
+            handleSubmit(Object.fromEntries(formData.entries()));
         }
     }
 
