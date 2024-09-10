@@ -32,7 +32,9 @@ export const Select : FC<ISelect> = (props) => {
     const ref = useRef<HTMLDivElement>(null);
     const {className, style, ...inputAttributes} = props.inputAttributes;
 
-    const unionClassName = [styles.select, className, (isOptionsVisible ? styles.focus : "")].filter(x => x).join(" ")
+    const unionClassName = [styles.select, className, (isOptionsVisible ? styles.focus : "")]
+        .filter(x => x)
+        .join(" ")
 
     const handleClickOutside = useCallback((event: MouseEvent) => {
         if (ref.current && !ref.current.contains(event.target as Node)) {

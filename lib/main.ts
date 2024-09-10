@@ -1,6 +1,8 @@
 export { Button } from './components/Button'
 export { ButtonBackground } from './components/Button/ButtonBackground.ts'
 export { Input } from './components/Input'
+export { Checkbox } from './components/Checkbox'
+export { Radio } from './components/Radio'
 export { Label } from './components/Label'
 export { Flex } from './components/Flex'
 export { FlexOrientation } from './components/Flex/FlexOrientation.ts'
