@@ -79,7 +79,13 @@
     outline: 1px solid var(--select-border-color);
     background-color: var(--select-bg-color);
     z-index: 50;
+    height: var(--select-options-list-height);
+    overflow: scroll;
+    scrollbar-width: none;
 
+    &::-webkit-scrollbar{
+      display: none;
+    }
 
     .select-option{
       padding: 0.3rem 0.5rem;
