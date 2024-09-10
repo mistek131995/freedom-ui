@@ -2,7 +2,7 @@
   "name": "@mistek/freedom-ui",
   "author": "mistek",
   "private": false,
-  "version": "0.0.14",
+  "version": "0.0.17",
   "type": "module",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
@@ -13,6 +13,14 @@
     "type": "git",
     "url": "https://github.com/mistek131995/freedom-ui"
   },
+  "keywords": [
+    "react",
+    "front-end",
+    "ui",
+    "react-component",
+    "components",
+    "component"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc --p ./tsconfig-build.json && vite build",

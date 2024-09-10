@@ -1,0 +1,18 @@
+.checkbox{
+  appearance: none;
+  position: relative;
+  background-color: var(--checkbox-bg-color);
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 0.1rem solid var(--checkbox-border-color);
+  border-radius: 3px;
+
+  &:checked::before {
+    content: '✔';
+    color: black;
+    position: absolute;
+    bottom: 0;
+    left: 0.15rem;
+    font-size: 14px;
+  }
+}
