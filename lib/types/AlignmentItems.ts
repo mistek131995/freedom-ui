@@ -1,4 +1,4 @@
-export enum FlexAlignmentItems{
+export enum AlignmentItems{
     stretch = "align-stretch",
     start = "align-start",
     end = "align-end",

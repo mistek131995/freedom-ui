@@ -1,12 +1,12 @@
-import {FlexOrientation} from "./FlexOrientation.ts";
+import {Orientation} from "../../types/Orientation.ts";
 import React, {FC} from "react";
-import {FlexJustifyContent} from "./FlexJustifyContent.ts";
-import {FlexAlignmentItems} from "./FlexAlignmentItems.ts";
+import {JustifyContent} from "../../types/JustifyContent.ts";
+import {AlignmentItems} from "../../types/AlignmentItems.ts";
 
 interface IFlex{
-    orientation?: FlexOrientation,
-    justifyContent?: FlexJustifyContent,
-    alignItems?: FlexAlignmentItems
+    orientation?: Orientation,
+    justifyContent?: JustifyContent,
+    alignItems?: AlignmentItems
 }
 
 type FlexProps = React.HTMLAttributes<HTMLDivElement> & IFlex
@@ -14,9 +14,9 @@ type FlexProps = React.HTMLAttributes<HTMLDivElement> & IFlex
 export const Flex : FC<FlexProps> = ({orientation, justifyContent, alignItems, className, children, ...props}) => {
     const unionClassName = [
         "flex",
-        orientation || FlexOrientation.horizontal,
-        justifyContent || FlexJustifyContent.start,
-        alignItems || FlexAlignmentItems.stretch,
+        orientation || Orientation.horizontal,
+        justifyContent || JustifyContent.start,
+        alignItems || AlignmentItems.stretch,
         className
     ].filter(x => x).join(" ")
 

@@ -32,10 +32,11 @@
 
 Используется для компоновки других элементов.
 
->`<Flex justifyContent={FlexJustifyContent.around} alignItems={FlexAlignmentItems.center}>Elements</Flex>`
+>`<Flex justifyContent={JustifyContent.around} alignItems={AlignmentItems.center}>Elements</Flex>`
 
-`justifyContent={FlexJustifyContent.around} - Горизонтальное позиционирование`
-`alignItems={FlexAlignmentItems.center} - Вертикальное позиционирование`
+`justifyContent={JustifyContent.around} - Горизонтальное позиционирование`
+
+`alignItems={AlignmentItems.center} - Вертикальное позиционирование`
 
 ## Функциональные компоненты
 

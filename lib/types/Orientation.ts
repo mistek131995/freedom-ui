@@ -1,4 +1,4 @@
-export enum FlexOrientation {
+export enum Orientation {
     vertical = "vertical",
     horizontal = "horizontal",
     vertical_reverse = "vertical-reverse",

@@ -1,5 +1,18 @@
-import {InputHTMLAttributes} from "react";
+import {FC, InputHTMLAttributes} from "react";
+import {Label} from "../../main.ts";
 
-export const Radio = (props: InputHTMLAttributes<HTMLInputElement>) => {
-    return <input {...props} type="radio"/>
+interface IRadio{
+    label?: string;
+}
+
+type RadioProps = InputHTMLAttributes<HTMLInputElement> & IRadio
+
+export const Radio : FC<RadioProps> = ({label, ...props}) => {
+    return <div>
+        {label &&
+            <Label>{label}</Label>
+        }
+        <input {...props} type="radio"/>
+    </div>
+
 }

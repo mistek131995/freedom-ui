@@ -1,4 +1,4 @@
-export enum FlexJustifyContent {
+export enum JustifyContent {
     start = 'justify-start',
     center = 'justify-center',
     end = 'justify-end',
