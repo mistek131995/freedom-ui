@@ -37,8 +37,8 @@ const App = () => {
             <Flex justifyContent={JustifyContent.around}>
                 <Checkbox label="Какой-то чекбокс" name="checkbox"/>
 
-                <Flex >
-                    <Radio label="Test 1" name="radio" value="test1"/>
+                <Flex justifyContent={JustifyContent.around} style={{width: "300px"}}>
+                    <Radio label="Test 1" name="radio" value="test1" checked/>
                     <Radio label="Test 2" name="radio" value="test2"/>
                     <Radio label="Test 3" name="radio" value="test3"/>
                 </Flex>

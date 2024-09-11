@@ -18,7 +18,17 @@
 
 ![Текстовое поле](https://s.iimg.su/s/05/C7I9J8IMcowi5hVSi0okyFDGYc2E4WYyTLV0lmxg.jpg)
 
+**Checkbox:**
 
+>`<Checkbox label="Какой-то чекбокс" name="checkbox"/>`
+
+![Checkbox](https://s.iimg.su/s/11/I2LQGd247kLolNzhrslsCCtyRrtd1yjjrC2IyFFd.png)
+
+**Radio:**
+
+>`<Radio label="Test 1" name="radio" value="test1" checked/>`
+
+![Radio](https://s.iimg.su/s/11/63KGillQbiyOdo0w0gXfCKAJFzZ2PfgXsMBg6ovq.png)
 
 **Multi Select (Beta):**
 
