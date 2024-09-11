@@ -1,11 +1,11 @@
 import "../dist/assets/style.css"
-import {ButtonBackground, Input, Button, Flex, FlexJustifyContent, FlexAlignmentItems} from "../dist/main";
-import {Checkbox, Orientation, Form, Radio, Select} from "../lib/main.ts";
+import {Button, ButtonBackground, Flex, AlignmentItems, JustifyContent, Input} from "../dist/main";
+import {Checkbox, Form, Radio, Select} from "../lib/main.ts";
 
 const App = () => {
 
     return <>
-        <Flex justifyContent={FlexJustifyContent.around} alignItems={FlexAlignmentItems.center}>
+        <Flex justifyContent={JustifyContent.around} alignItems={AlignmentItems.center}>
           <Button bg={ButtonBackground.primary}>Button primary</Button>
           <Button bg={ButtonBackground.secondary}>Button secondary</Button>
           <Button bg={ButtonBackground.success}>Button success</Button>
@@ -16,7 +16,7 @@ const App = () => {
         <br/>
 
         <Form handleSubmit={(form) => console.log(form)}>
-            <Flex justifyContent={FlexJustifyContent.around}>
+            <Flex justifyContent={JustifyContent.around}>
                 <Input name="name" placeholder="text"/>
 
                 <Select placeholder="Выберите что-то" inputAttributes={{style: {width: "50%"}, name: "select-multi"}} options={[
@@ -30,18 +30,22 @@ const App = () => {
                     {value: "test8", label: "Test 8"},
                     {value: "test9", label: "Test 9"},
                 ]}/>
+            </Flex>
+
+            <br/>
+
+            <Flex justifyContent={JustifyContent.around}>
+                <Checkbox label="Какой-то чекбокс" name="checkbox"/>
+
+                <Flex >
+                    <Radio label="Test 1" name="radio" value="test1"/>
+                    <Radio label="Test 2" name="radio" value="test2"/>
+                    <Radio label="Test 3" name="radio" value="test3"/>
+                </Flex>
+
                 <Button bg={ButtonBackground.success} type="submit">
                     Отправить
                 </Button>
-            </Flex>
-            <Flex justifyContent={FlexJustifyContent.around}>
-                <Checkbox label="Какой-то чекбокс" name="checkbox"/>
-
-                <Flex>
-                    <Radio name="radio" value="test1" checked/>
-                    <Radio name="radio" value="test2"/>
-                    <Radio name="radio" value="test3"/>
-                </Flex>
             </Flex>
         </Form>
       </>

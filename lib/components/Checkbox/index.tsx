@@ -9,11 +9,11 @@ interface ICheckbox{
 
 type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & ICheckbox
 
-export const Checkbox : FC<CheckboxProps> = ({label, orientation, ...props}) => {
-    const unionClassName = [styles.checkboxContainer, props.className].filter(x => x).join(" ");
-    orientation = orientation || Orientation.horizontal
+export const Checkbox : FC<CheckboxProps> = ({label, orientation, className, style, ...props}) => {
+    const unionClassName = [styles.checkboxContainer, className].filter(x => x).join(" ");
+    orientation = orientation || Orientation.horizontal;
 
-    return <Flex orientation={orientation} alignItems={AlignmentItems.center} className={unionClassName}>
+    return <Flex orientation={orientation} alignItems={AlignmentItems.center} className={unionClassName} style={style}>
         {label &&
             <Label htmlFor={props.name}>{label}</Label>
         }
