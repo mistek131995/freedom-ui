@@ -34,7 +34,7 @@
 
 >`<Select placeholder="Выберите что-то" inputAttributes={{name: "select-multi"}} options={[]}/>`
 
-![Multi Select](https://s.iimg.su/s/09/DeS9hD2KbgZgt7ao6iQOZMfk0CdkL7WHv9oXMnEX.jpg)
+![Multi Select](https://s2.radikal.cloud/2024/09/11/bandicam-2024-09-11-23-20-33-065.gif)
 
 ## Сетки (Позиционирование элементов)
 
