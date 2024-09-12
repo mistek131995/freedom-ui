@@ -123,5 +123,9 @@
         cursor: pointer;
       }
     }
+
+    .selected-option{
+      background-color: var(--select-bg-hover-color);
+    }
   }
 }

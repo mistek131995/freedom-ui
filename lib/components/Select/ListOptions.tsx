@@ -27,11 +27,16 @@ export const ListOptions : FC<ListOptionsProps> = (props) => {
     return <div className={styles.selectListOptions}
                 style={{display: context?.isOptionVisible ? "block" : "none"}}>
         {
-            context?.options.map(x => <div key={x.value}
-                                           className={styles.selectOption}
-                                           onClick={() => selectValue(x.value)}>
-                {x.label}
-            </div>)
+            context?.options.map(x => {
+                let selectedStyle = x.label === context?.selectedOptions?.[0]?.label ? styles.selectedOption : "";
+                selectedStyle = props.isMulti ? "" : selectedStyle;
+
+                return <div key={x.value}
+                     className={[styles.selectOption, selectedStyle].filter(x => x).join(" ")}
+                     onClick={() => selectValue(x.value)}>
+                    {x.label}
+                </div>
+            })
         }
     </div>
 }
