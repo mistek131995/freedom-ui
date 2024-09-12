@@ -12,6 +12,7 @@
 
   .select-label-container{
     display: flex;
+    height: 100%;
 
     .label-options-container{
       display: flex;
@@ -22,6 +23,7 @@
       border-right: 1px solid var(--select-border-color);
       flex-grow: 1;
       text-indent: 0.5rem;
+      height: 100%;
 
       .selected-multi-option{
         background-color: var(--select-selected-option-bg-color);
@@ -56,10 +58,15 @@
         padding: 0.7rem 0.25rem;
         font-family: "Overpass-Regular", serif;
         background-color: var(--select-bg-color);
-        border-width: 0;
+
+        &::placeholder{
+          font-size: 1rem;
+          color: black;
+        }
 
         &:focus{
           outline: none;
+          padding: 0.7rem 0.25rem;
         }
       }
 

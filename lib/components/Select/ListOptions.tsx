@@ -4,8 +4,8 @@ import {FC, useContext} from "react";
 import {SelectContext} from "./index.tsx";
 
 type ListOptionsProps = {
-    isOptionsVisible: boolean,
     options: Option[],
+    isMulti?: boolean,
 }
 
 export const ListOptions : FC<ListOptionsProps> = (props) => {
@@ -13,14 +13,19 @@ export const ListOptions : FC<ListOptionsProps> = (props) => {
 
     const selectValue = (value: string) => {
         const option = props.options.find(x => x.value === value)!;
-        const newSelectedOptions = [...context!.selectedOptions, option];
 
-        context?.setSelectedOptions(newSelectedOptions)
+        if(props.isMulti){
+            const newSelectedOptions = [...context!.selectedOptions, option];
+            context?.setSelectedOptions(newSelectedOptions)
+        }else{
+            context?.setSelectedOptions([option])
+        }
+
         context?.setSearchValue("")
     }
 
     return <div className={styles.selectListOptions}
-                style={{display: props.isOptionsVisible ? "block" : "none"}}>
+                style={{display: context?.isOptionVisible ? "block" : "none"}}>
         {
             context?.options.map(x => <div key={x.value}
                                            className={styles.selectOption}

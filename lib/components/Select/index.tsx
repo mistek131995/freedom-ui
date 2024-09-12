@@ -52,9 +52,11 @@ export const Select : FC<ISelect> = (props) => {
     }, [handleClickOutside])
 
     useEffect(() => {
-        setOptions(props.options.filter(x =>
-            x.label.toLowerCase().trim().includes(searchValue.toLowerCase().trim() || "") &&
-            !selectedOptions.includes(x)))
+        if(props.isMulti){
+            setOptions(props.options.filter(x =>
+                x.label.toLowerCase().trim().includes(searchValue.toLowerCase().trim() || "") &&
+                !selectedOptions.includes(x)))
+        }
     }, [searchValue, props.options, selectedOptions])
 
     return <SelectContext.Provider value={{
@@ -77,7 +79,7 @@ export const Select : FC<ISelect> = (props) => {
                 <MultiSelectLabel onClick={() => setOptionsVisible(true)}
                                   placeholder={props.placeholder || ""}/>
             }
-            <ListOptions isOptionsVisible={isOptionsVisible}
+            <ListOptions isMulti={props.isMulti}
                          options={props.options}/>
         </div>
     </SelectContext.Provider>

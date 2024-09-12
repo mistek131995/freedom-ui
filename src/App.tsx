@@ -19,7 +19,7 @@ const App = () => {
             <Flex justifyContent={JustifyContent.around}>
                 <Input name="name" placeholder="text"/>
 
-                <Select placeholder="Выберите что-то" inputAttributes={{style: {width: "50%"}, name: "select-multi"}} options={[
+                <Select placeholder="Выберите что-то" inputAttributes={{style: {width: "50%"}, name: "select-single"}} options={[
                     {value: "test1", label: "Test 1"},
                     {value: "test2", label: "Test 2"},
                     {value: "test3", label: "Test 3"},
