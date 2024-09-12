@@ -18,14 +18,13 @@ export const SingleSelectLabel: FC<SelectLabelProps> = ({className, ...props}) =
         <div className={unionClassNames}>
             <div className={styles.labelOptionsContainer}>
                 <input className={styles.selectedSingleOption}
-                       placeholder={props.placeholder}
+                       placeholder={context?.selectedOptions?.[0]?.label || props.placeholder}
                        onClick={() => {
                            context?.setIsOptionVisible(true);
                        }}
                        onChange={(event) => {
                            context?.setSearchValue(event.target.value)
-                        }}
-                       value={context?.selectedOptions?.[0]?.label || context?.searchValue}/>
+                       }}/>
             </div>
             <div className={styles.labelButtonContainer}>
                 <div onClick={() => context?.setSelectedOptions([])}>

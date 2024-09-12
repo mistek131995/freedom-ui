@@ -30,9 +30,9 @@
 
 ![Radio](https://s.iimg.su/s/11/63KGillQbiyOdo0w0gXfCKAJFzZ2PfgXsMBg6ovq.png)
 
-**Multi Select (Beta):**
+**Multi Select && Single Select (Beta):**
 
->`<Select placeholder="Выберите что-то" inputAttributes={{name: "select-multi"}} options={[]}/>`
+>`<Select isMulti={true} placeholder="Выберите что-то" inputAttributes={{name: "select-multi"}} options={[]}/>`
 
 ![Multi Select](https://s2.radikal.cloud/2024/09/11/bandicam-2024-09-11-23-20-33-065.gif)
 
