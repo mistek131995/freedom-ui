@@ -54,19 +54,20 @@
 
       .selected-single-option{
         width: 100%;
-        min-width: 1rem;
-        padding: 0.7rem 0.25rem;
         font-family: "Overpass-Regular", serif;
         background-color: var(--select-bg-color);
+        border-width: 0;
+        margin: 0 0.6rem;
+        font-size: 1rem;
+        color: black;
 
         &::placeholder{
-          font-size: 1rem;
           color: black;
+          font-size: 1rem;
         }
 
         &:focus{
           outline: none;
-          padding: 0.7rem 0.25rem;
         }
       }
 
