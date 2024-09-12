@@ -30,7 +30,7 @@
 
 ![Radio](https://s.iimg.su/s/11/63KGillQbiyOdo0w0gXfCKAJFzZ2PfgXsMBg6ovq.png)
 
-**Multi Select && Single Select (Beta):**
+**Multi Select & Single Select (Beta):**
 
 >`<Select isMulti={true} placeholder="Выберите что-то" inputAttributes={{name: "select-multi"}} options={[]}/>`
 
