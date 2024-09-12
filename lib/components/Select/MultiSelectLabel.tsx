@@ -1,19 +1,17 @@
-import React, {FC, InputHTMLAttributes, useContext, useEffect, useRef} from "react";
+import React, {FC, useContext, useEffect, useRef} from "react";
 import styles from "./styles.module.scss"
 import {SelectContext} from "./index.tsx";
 import {Option} from "./Option.ts";
 import {X} from "../../assets/images/X.tsx";
 import {ArrowDown} from "../../assets/images/ArrowDown.tsx";
 
-
 interface ISelectLabel {
-    placeholder: string,
-    inputAttributes: InputHTMLAttributes<HTMLInputElement>
+    placeholder: string
 }
 
 type SelectLabelProps = React.HTMLAttributes<HTMLDivElement> & ISelectLabel
 
-export const SelectLabel : FC<SelectLabelProps> = ({className, inputAttributes, ...props}) => {
+export const MultiSelectLabel : FC<SelectLabelProps> = ({className, ...props}) => {
     const unionClassNames = [className || "", styles.selectLabelContainer].filter(x => x).join(" ");
     const context = useContext(SelectContext);
     const searchFieldRef = useRef<HTMLInputElement>(null);
@@ -30,13 +28,12 @@ export const SelectLabel : FC<SelectLabelProps> = ({className, inputAttributes, 
     }
 
     return <>
-        <input {...inputAttributes} value={context?.selectedOptions.map(x => x.value)} type="hidden"/>
         <div className={unionClassNames}>
             <div className={styles.labelOptionsContainer}>
                 {context?.selectedOptions &&
                     context?.selectedOptions.map(x => <div key={x.value}
                                                            contentEditable={false}
-                                                           className={styles.selectedOption}>
+                                                           className={styles.selectedMultiOption}>
                         <div>{x.label}</div>
                         <div onClick={() => deleteOption(x)}>
                             <X/>

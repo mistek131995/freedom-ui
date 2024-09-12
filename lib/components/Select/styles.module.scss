@@ -23,7 +23,7 @@
       flex-grow: 1;
       text-indent: 0.5rem;
 
-      .selected-option{
+      .selected-multi-option{
         background-color: var(--select-selected-option-bg-color);
         text-wrap: nowrap;
         display: flex;
@@ -47,6 +47,19 @@
           margin-left: 0.5rem;
           cursor: pointer;
           border-radius: 3px;
+        }
+      }
+
+      .selected-single-option{
+        width: 100%;
+        min-width: 1rem;
+        padding: 0.7rem 0.25rem;
+        font-family: "Overpass-Regular", serif;
+        background-color: var(--select-bg-color);
+        border-width: 0;
+
+        &:focus{
+          outline: none;
         }
       }
 

@@ -1,13 +1,15 @@
 import {Option} from "./Option.ts";
 import {createContext, FC, InputHTMLAttributes, useCallback, useEffect, useRef, useState} from "react";
 import styles from "./styles.module.scss";
-import {SelectLabel} from "./SelectLabel.tsx";
+import {MultiSelectLabel} from "./MultiSelectLabel.tsx";
 import {ListOptions} from "./ListOptions.tsx";
+import {SingleSelectLabel} from "./SingleSelectLabel.tsx";
 
 export interface ISelect {
     placeholder?: string,
     options: Option[],
-    inputAttributes: InputHTMLAttributes<HTMLInputElement>
+    inputAttributes: InputHTMLAttributes<HTMLInputElement>,
+    isMulti?: boolean
 }
 
 interface ISelectContext {
@@ -66,9 +68,15 @@ export const Select : FC<ISelect> = (props) => {
         setIsOptionVisible: setOptionsVisible
     }}>
         <div className={unionClassName} style={style} ref={ref}>
-            <SelectLabel onClick={() => setOptionsVisible(true)}
-                         placeholder={props.placeholder || ""}
-                         inputAttributes={inputAttributes}/>
+            <input {...inputAttributes} value={selectedOptions.map(x => x.value)} type="hidden"/>
+            {!props.isMulti &&
+                <SingleSelectLabel onClick={() => setOptionsVisible(true)}
+                                   placeholder={props.placeholder || ""}/>
+            }
+            {props.isMulti &&
+                <MultiSelectLabel onClick={() => setOptionsVisible(true)}
+                                  placeholder={props.placeholder || ""}/>
+            }
             <ListOptions isOptionsVisible={isOptionsVisible}
                          options={props.options}/>
         </div>
