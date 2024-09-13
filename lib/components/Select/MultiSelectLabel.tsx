@@ -36,7 +36,7 @@ export const MultiSelectLabel : FC<SelectLabelProps> = ({className, ...props}) =
                                                            className={styles.selectedMultiOption}>
                         <div>{x.label}</div>
                         <div onClick={() => deleteOption(x)}>
-                            <X/>
+                            <X color="white"/>
                         </div>
                     </div>)
                 }
