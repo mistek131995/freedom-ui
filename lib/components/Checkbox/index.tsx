@@ -15,7 +15,7 @@ export const Checkbox : FC<CheckboxProps> = ({label, orientation, className, sty
 
     return <Flex orientation={orientation} alignItems={AlignmentItems.center} className={unionClassName} style={style}>
         {label &&
-            <Label htmlFor={props.name}>{label}</Label>
+            <Label htmlFor={props.name} className={styles.checkboxLabel}>{label}</Label>
         }
 
         <input id={props.name} {...props} className={styles.checkbox} type="checkbox"/>

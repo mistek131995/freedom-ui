@@ -20,9 +20,9 @@
 
 **Checkbox:**
 
->`<Checkbox label="Какой-то чекбокс" name="checkbox"/>`
+>`<Checkbox label="Checkbox:" name="checkbox"/>`
 
-![Checkbox](https://s.iimg.su/s/11/I2LQGd247kLolNzhrslsCCtyRrtd1yjjrC2IyFFd.png)
+![Checkbox](https://s.iimg.su/s/13/qUdR0iU4iBQ69yABuOKQaikufya0FfGw3H8L4x4a.jpg)
 
 **Radio:**
 
