@@ -7,6 +7,11 @@
   border: 0.1rem solid var(--checkbox-border-color);
   border-radius: 3px;
 
+  &:checked{
+    border: 0.1rem solid var(--checkbox-border-focus-color);
+    box-shadow: 0 0 1rem var(--checkbox-focus-shadow-color)
+  }
+
   &:checked::before {
     content: '✔';
     color: black;
