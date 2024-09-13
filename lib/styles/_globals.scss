@@ -16,6 +16,10 @@
     &.primary{
       background-color: var(--primary-btn-color);
       color: var(--primary-btn-font-color);
+
+      &:active{
+        box-shadow: 0 0 7px var(--primary-btn-shadow-color);
+      }
     }
 
     &.secondary{
@@ -23,18 +27,26 @@
       color: var(--secondary-btn-font-color);
 
       &:active{
-        box-shadow: 0 0 7px rgba(117, 116, 116, 0.79);
+        box-shadow: 0 0 7px var(--secondary-btn-shadow-color);
       }
     }
 
     &.success{
       background-color: var(--success-btn-color);
       color: var(--success-btn-font-color);
+
+      &:active{
+        box-shadow: 0 0 7px var(--success-btn-shadow-color);
+      }
     }
 
     &.warning{
       background-color: var(--warning-btn-color);
       color: var(--warning-btn-font-color);
+
+      &:active{
+        box-shadow: 0 0 7px var(--warning-btn-shadow-color);
+      }
     }
 
     &.danger{
@@ -42,7 +54,7 @@
       color: var(--danger-btn-font-color);
 
       &:active{
-        box-shadow: 0 0 7px rgba(117, 116, 116, 0.79);
+        box-shadow: 0 0 7px var(--danger-btn-shadow-color);
       }
     }
   }
