@@ -33,13 +33,15 @@
   --checkbox-border-focus-color: #388c73;
   --checkbox-focus-shadow-color: #388c73;
 
-  --radio-bg-color: #f8f2d0;
-  --radio-border-color: #FCBF49;
+  --radio-bg-color: white;
+  --radio-border-color: #277DA1;
 
-  --select-bg-color: #f8f2d0;
-  --select-bg-hover-color: #efd7b3;
-  --select-border-color: #FCBF49;
-  --select-selected-option-bg-color: #efd7b3;
-  --select-selected-option-bg-button-color: #FCBF49;
+  --select-bg-color: white;
+  --select-border-color: #277DA1;
+  --select-bg-hover-color: #43AA8B;
+  --select-selected-option-bg-color: white;
+  --select-selected-option-border-color: #277DA1;
+
+  --select-selected-option-bg-button-color: #277DA1;
   --select-options-list-height: 25vh;
 }

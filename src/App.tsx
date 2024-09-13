@@ -32,9 +32,9 @@ const App = () => {
                 {/*    {value: "test9", label: "Test 9"},*/}
                 {/*]}/>*/}
 
-                <Select placeholder="Выберите что-то"
+                <Select label="Multi-select:" placeholder="Выберите что-то"
                         isMulti={true}
-                        inputAttributes={{style: {width: "50%"}, name: "select-multi"}}
+                        name="milti-select"
                         options={[
                             {value: "test1", label: "Test 1"},
                             {value: "test2", label: "Test 2"},

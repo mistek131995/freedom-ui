@@ -4,13 +4,16 @@ import styles from "./styles.module.scss";
 import {MultiSelectLabel} from "./MultiSelectLabel.tsx";
 import {ListOptions} from "./ListOptions.tsx";
 import {SingleSelectLabel} from "./SingleSelectLabel.tsx";
+import {Label} from "../../main.ts";
 
 export interface ISelect {
     placeholder?: string,
     options: Option[],
-    inputAttributes: InputHTMLAttributes<HTMLInputElement>,
-    isMulti?: boolean
+    isMulti?: boolean,
+    label?: string,
 }
+
+export type SelectProps = InputHTMLAttributes<HTMLInputElement> & ISelect
 
 interface ISelectContext {
     options: Option[],
@@ -25,16 +28,14 @@ interface ISelectContext {
 
 export const SelectContext = createContext<ISelectContext | null>(null)
 
-export const Select : FC<ISelect> = (props) => {
+export const Select : FC<SelectProps> = ({className, style, options, isMulti, placeholder, label, ...props}) => {
     const [selectedOptions, setSelectedOptions] = useState<Option[]>([]);
     const [searchValue, setSearchValue] = useState<string>("");
-    const [options, setOptions] = useState<Option[]>(props.options)
+    const [optionsList, setOptionList] = useState<Option[]>(options)
     const [isOptionsVisible, setOptionsVisible] = useState<boolean>(false);
-
     const ref = useRef<HTMLDivElement>(null);
-    const {className, style, ...inputAttributes} = props.inputAttributes;
 
-    const unionClassName = [styles.select, className, (isOptionsVisible ? styles.focus : "")]
+    const unionClassName = [styles.select, (isOptionsVisible ? styles.focus : "")]
         .filter(x => x)
         .join(" ")
 
@@ -52,21 +53,21 @@ export const Select : FC<ISelect> = (props) => {
     }, [handleClickOutside])
 
     useEffect(() => {
-        if(props.isMulti){
-            setOptions(props.options.filter(x =>
+        if(isMulti){
+            setOptionList(options.filter(x =>
                 x.label.toLowerCase().trim().includes(searchValue.toLowerCase().trim() || "") &&
                 !selectedOptions.includes(x)))
         }
         else
         {
-            setOptions(props.options.filter(x =>
+            setOptionList(options.filter(x =>
                 x.label.toLowerCase().trim().includes(searchValue.toLowerCase().trim() || "")))
         }
-    }, [searchValue, props.options, selectedOptions, props.isMulti])
+    }, [searchValue, options, selectedOptions, isMulti])
 
     return <SelectContext.Provider value={{
-        options: options,
-        setOptions: setOptions,
+        options: optionsList,
+        setOptions: setOptionList,
         searchValue: searchValue,
         setSearchValue: setSearchValue,
         selectedOptions: selectedOptions,
@@ -74,18 +75,25 @@ export const Select : FC<ISelect> = (props) => {
         isOptionVisible: isOptionsVisible,
         setIsOptionVisible: setOptionsVisible
     }}>
-        <div className={unionClassName} style={style} ref={ref}>
-            <input {...inputAttributes} value={selectedOptions.map(x => x.value)} type="hidden"/>
-            {!props.isMulti &&
-                <SingleSelectLabel onClick={() => setOptionsVisible(true)}
-                                   placeholder={props.placeholder || ""}/>
+        <div className={className} style={style}>
+            {label &&
+                <Label>{label}</Label>
             }
-            {props.isMulti &&
-                <MultiSelectLabel onClick={() => setOptionsVisible(true)}
-                                  placeholder={props.placeholder || ""}/>
-            }
-            <ListOptions isMulti={props.isMulti}
-                         options={props.options}/>
+
+            <div className={unionClassName} ref={ref}>
+                <input {...props} value={selectedOptions.map(x => x.value)} type="hidden"/>
+                {!isMulti &&
+                    <SingleSelectLabel onClick={() => setOptionsVisible(true)}
+                                       placeholder={placeholder || ""}/>
+                }
+                {isMulti &&
+                    <MultiSelectLabel onClick={() => setOptionsVisible(true)}
+                                      placeholder={placeholder || ""}/>
+                }
+                <ListOptions isMulti={isMulti}
+                             options={options}/>
+            </div>
         </div>
+
     </SelectContext.Provider>
 }
