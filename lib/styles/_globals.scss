@@ -15,11 +15,12 @@
 
     &.primary{
       background-color: var(--primary-btn-color);
+      color: var(--primary-btn-font-color);
     }
 
     &.secondary{
       background-color: var(--secondary-btn-color);
-      color: white;
+      color: var(--secondary-btn-font-color);
 
       &:active{
         box-shadow: 0 0 7px rgba(117, 116, 116, 0.79);
@@ -28,15 +29,17 @@
 
     &.success{
       background-color: var(--success-btn-color);
+      color: var(--success-btn-font-color);
     }
 
     &.warning{
       background-color: var(--warning-btn-color);
+      color: var(--warning-btn-font-color);
     }
 
     &.danger{
       background-color: var(--danger-btn-color);
-      color: white;
+      color: var(--danger-btn-font-color);
 
       &:active{
         box-shadow: 0 0 7px rgba(117, 116, 116, 0.79);
