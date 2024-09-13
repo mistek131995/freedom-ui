@@ -10,17 +10,17 @@ interface IInput {
 
 type InputProps = InputHTMLAttributes<HTMLInputElement> & IInput
 
-export const Input : FC<InputProps> = ({ label, iconLeft, iconRight, className, ...restProps }) => {
+export const Input : FC<InputProps> = ({ label, iconLeft, iconRight, className, ...props }) => {
 
   return <div className={className}>
     {label &&
-      <Label>{label}</Label>
+      <Label htmlFor={props.name}>{label}</Label>
     }
     <Flex alignItems={AlignmentItems.center} className={styles.inputContainer}>
       {iconLeft &&
           <span className={styles.inputIconLeft}>{iconLeft}</span>
       }
-      <input className={styles.input} {...restProps} />
+      <input className={styles.input} {...props} id={props.name}/>
       {iconRight &&
           <span className={styles.inputIconRight}>{iconRight}</span>
       }

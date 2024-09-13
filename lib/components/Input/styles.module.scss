@@ -20,7 +20,7 @@
 
     &:focus-within {
         border: 0.1rem solid var(--input-border-focus-color);
-        box-shadow: 0 0 1rem var(--input-border-focus-color)
+        box-shadow: 0 0 1rem var(--input-focus-shadow-color)
     }
 
     .input-icon-left{

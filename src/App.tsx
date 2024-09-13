@@ -18,7 +18,7 @@ const App = () => {
 
         <Form handleSubmit={(form) => console.log(form)}>
             <Flex justifyContent={JustifyContent.around}>
-                <Input name="name" placeholder="Placeholder" iconLeft={<Profile/>}/>
+                <Input name="name" placeholder="Placeholder" iconLeft={<Profile/>} label="Label:"/>
 
                 {/*<Select placeholder="Выберите что-то" inputAttributes={{style: {width: "50%"}, name: "select-single"}} options={[*/}
                 {/*    {value: "test1", label: "Test 1"},*/}
