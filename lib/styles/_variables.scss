@@ -1,4 +1,7 @@
 :root{
+  --font-regular: "Overpass-Regular";
+  --font-size: 1rem;
+
   --primary-btn-color: #43AA8B;
   --primary-btn-font-color: white;
   --primary-btn-shadow-color: #388c73;
@@ -19,9 +22,10 @@
   --danger-btn-font-color: white;
   --danger-btn-shadow-color: #a82d2f;
 
-  --input-bg-color: #f8f2d0;
-  --input-border-color: #FCBF49;
-  --input-border-focus-color: #e4a118;
+  --input-bg-color: white;
+  --input-border-color: #277DA1;
+  --input-border-focus-color: #388c73;
+  --input-text-color: black;
 
   --checkbox-bg-color: #f8f2d0;
   --checkbox-border-color: #FCBF49;

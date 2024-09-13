@@ -10,13 +10,13 @@
 
 >`<Button bg={ButtonBackground.primary}>Button</Button>`
 
-![Кнопки](https://s.iimg.su/s/05/wkLsxS7XlDZONTY7L4ERMSeBKIz9rS87dhLbi6ps.png)
+![Кнопки](https://s.iimg.su/s/13/Ak8uet55kAJkCV2dGAqpxWYcrqpm7gVv85qttaPR.png)
 
 **Текстовое поле:**
 
->`<Input name="name" placeholder="text"/>`
+>`<Input label="Label:" name="name" placeholder="Placeholder" iconLeft={<Profile/>}/>`
 
-![Текстовое поле](https://s.iimg.su/s/05/C7I9J8IMcowi5hVSi0okyFDGYc2E4WYyTLV0lmxg.jpg)
+![Текстовое поле](https://s.iimg.su/s/13/5emM2ylsmhQkS4b7NwmlXlkwuHp88G1vqvkUHmsM.jpg)
 
 **Checkbox:**
 

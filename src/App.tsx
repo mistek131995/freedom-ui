@@ -1,6 +1,7 @@
 import "../dist/assets/style.css"
-import {Button, ButtonBackground, Flex, AlignmentItems, JustifyContent, Input} from "../dist/main";
-import {Checkbox, Form, Radio, Select} from "../lib/main.ts";
+import {Button, ButtonBackground, Flex, AlignmentItems, JustifyContent} from "../dist/main";
+import {Checkbox, Form, Input, Radio, Select} from "../lib/main.ts";
+import {Profile} from "./assets/images/Profile.tsx";
 
 const App = () => {
 
@@ -17,19 +18,19 @@ const App = () => {
 
         <Form handleSubmit={(form) => console.log(form)}>
             <Flex justifyContent={JustifyContent.around}>
-                <Input name="name" placeholder="text"/>
+                <Input name="name" placeholder="Placeholder" iconLeft={<Profile/>}/>
 
-                <Select placeholder="Выберите что-то" inputAttributes={{style: {width: "50%"}, name: "select-single"}} options={[
-                    {value: "test1", label: "Test 1"},
-                    {value: "test2", label: "Test 2"},
-                    {value: "test3", label: "Test 3"},
-                    {value: "test4", label: "Test 4"},
-                    {value: "test5", label: "Test 5"},
-                    {value: "test6", label: "Test 6"},
-                    {value: "test7", label: "Test 7"},
-                    {value: "test8", label: "Test 8"},
-                    {value: "test9", label: "Test 9"},
-                ]}/>
+                {/*<Select placeholder="Выберите что-то" inputAttributes={{style: {width: "50%"}, name: "select-single"}} options={[*/}
+                {/*    {value: "test1", label: "Test 1"},*/}
+                {/*    {value: "test2", label: "Test 2"},*/}
+                {/*    {value: "test3", label: "Test 3"},*/}
+                {/*    {value: "test4", label: "Test 4"},*/}
+                {/*    {value: "test5", label: "Test 5"},*/}
+                {/*    {value: "test6", label: "Test 6"},*/}
+                {/*    {value: "test7", label: "Test 7"},*/}
+                {/*    {value: "test8", label: "Test 8"},*/}
+                {/*    {value: "test9", label: "Test 9"},*/}
+                {/*]}/>*/}
 
                 <Select placeholder="Выберите что-то"
                         isMulti={true}

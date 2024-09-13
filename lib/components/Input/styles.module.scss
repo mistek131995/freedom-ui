@@ -1,17 +1,36 @@
-.input {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-
-    padding: 0.7rem;
+.input-container{
+    border: 0.1rem solid var(--input-border-color);
     background-color: var(--input-bg-color);
     border-radius: 3px;
-    border: 0.1rem solid var(--input-border-color);
-    outline: none;
-    font-family: "Overpass-Regular", serif;
 
-    &:focus {
+    .input {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+
+        border-width: 0;
+        outline: none;
+        padding: 0.7rem;
+        color: var(--input-text-color);
+
+        &::placeholder{
+            color: var(--input-text-color);
+        }
+    }
+
+    &:focus-within {
         border: 0.1rem solid var(--input-border-focus-color);
         box-shadow: 0 0 1rem var(--input-border-focus-color)
     }
+
+    .input-icon-left{
+        padding: 0 0.2rem;
+        border-right: 0.1rem solid var(--input-border-color);
+    }
+
+    .input-icon-right{
+        padding: 0 0.2rem;
+        border-left: 0.1rem solid var(--input-border-color);
+    }
 }
+
