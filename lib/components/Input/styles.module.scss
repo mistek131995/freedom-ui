@@ -1,5 +1,5 @@
 .input-container{
-    border: 0.1rem solid var(--input-border-color);
+    outline: 0.1rem solid var(--input-border-color);
     background-color: var(--input-bg-color);
     border-radius: 3px;
 
@@ -10,7 +10,7 @@
 
         border-width: 0;
         outline: none;
-        padding: 0.7rem;
+        padding: 0.73rem;
         color: var(--input-text-color);
 
         &::placeholder{
@@ -19,7 +19,7 @@
     }
 
     &:focus-within {
-        border: 0.1rem solid var(--input-border-focus-color);
+        outline: 0.1rem solid var(--input-border-focus-color);
         box-shadow: 0 0 1rem var(--input-focus-shadow-color)
     }
 

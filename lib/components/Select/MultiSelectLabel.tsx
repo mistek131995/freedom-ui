@@ -17,8 +17,11 @@ export const MultiSelectLabel : FC<SelectLabelProps> = ({className, ...props}) =
     const searchFieldRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
-        if(context?.isOptionVisible && context?.selectedOptions.length > 0)
+        if(context?.isOptionVisible && context?.selectedOptions.length > 0){
+            //searchFieldRef.current!.value = context?.searchValue || ""
             searchFieldRef.current!.innerText = context?.searchValue || ""
+        }
+
     }, [context?.isOptionVisible, context?.selectedOptions.length])
 
     const deleteOption = (option: Option) => {
@@ -32,7 +35,6 @@ export const MultiSelectLabel : FC<SelectLabelProps> = ({className, ...props}) =
             <div className={styles.labelOptionsContainer}>
                 {context?.selectedOptions &&
                     context?.selectedOptions.map(x => <div key={x.value}
-                                                           contentEditable={false}
                                                            className={styles.selectedMultiOption}>
                         <div>{x.label}</div>
                         <div onClick={() => deleteOption(x)}>
@@ -40,6 +42,17 @@ export const MultiSelectLabel : FC<SelectLabelProps> = ({className, ...props}) =
                         </div>
                     </div>)
                 }
+
+                {/*<div className={styles.searchField}>*/}
+                {/*    <input ref={searchFieldRef}*/}
+                {/*           placeholder={props.placeholder}*/}
+                {/*           onClick={(event) => {*/}
+                {/*               if (props.onClick) {*/}
+                {/*                   props.onClick(event);*/}
+                {/*               }*/}
+                {/*           }}*/}
+                {/*           onChange={(event) => context?.setSearchValue(event.currentTarget.value || "")}/>*/}
+                {/*</div>*/}
 
                 <div {...props}
                      ref={searchFieldRef}
