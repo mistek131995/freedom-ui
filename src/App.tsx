@@ -33,7 +33,7 @@ const App = () => {
                 {/*]}/>*/}
 
                 <Select label="Multi-select:" placeholder="Выберите что-то"
-                        //isMulti={true}
+                    //isMulti={true}
                         name="milti-select"
                         options={[
                             {value: "test1", label: "Test 1"},
@@ -49,22 +49,38 @@ const App = () => {
             </Flex>
 
             <br/>
+            <br/>
 
             <Flex justifyContent={JustifyContent.around}>
                 <Checkbox label="Checkbox:" name="checkbox"/>
 
                 <Flex justifyContent={JustifyContent.around} style={{width: "300px"}}>
-                    <Radio label="Test 1" name="radio" value="test1" defaultChecked={true}/>
-                    <Radio label="Test 2" name="radio" value="test2"/>
-                    <Radio label="Test 3" name="radio" value="test3"/>
+                    <Radio label="Radio 1" name="radio" value="test1" defaultChecked={true}/>
+                    <Radio label="Radio 2" name="radio" value="test2"/>
+                    <Radio label="Radio 3" name="radio" value="test3"/>
                 </Flex>
+
+                <Select style={{maxWidth: "20%"}} label="Single-select:" placeholder="Выберите что-то"
+                    //isMulti={true}
+                        name="milti-select"
+                        options={[
+                            {value: "test1", label: "Test 1"},
+                            {value: "test2", label: "Test 2"},
+                            {value: "test3", label: "Test 3"},
+                            {value: "test4", label: "Test 4"},
+                            {value: "test5", label: "Test 5"},
+                            {value: "test6", label: "Test 6"},
+                            {value: "test7", label: "Test 7"},
+                            {value: "test8", label: "Test 8"},
+                            {value: "test9", label: "Test 9"},
+                        ]}/>
 
                 <Button bg={ButtonBackground.success} type="submit">
                     Отправить
                 </Button>
             </Flex>
         </Form>
-      </>
+    </>
       }
 
 export default App

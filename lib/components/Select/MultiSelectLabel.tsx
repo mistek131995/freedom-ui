@@ -57,11 +57,7 @@ export const MultiSelectLabel : FC<SelectLabelProps> = ({className, ...props}) =
                 <div {...props}
                      ref={searchFieldRef}
                      className={styles.searchField}
-                     onClick={(event) => {
-                         if (props.onClick) {
-                             props.onClick(event);
-                         }
-                     }}
+                     onClick={() => context?.setIsOptionVisible(true)}
                      onInput={(event) => context?.setSearchValue(event.currentTarget.textContent || "")}
                      contentEditable={true}
                      suppressContentEditableWarning={true}>

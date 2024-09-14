@@ -24,17 +24,18 @@
 
 ![Checkbox](https://s.iimg.su/s/13/qUdR0iU4iBQ69yABuOKQaikufya0FfGw3H8L4x4a.jpg)
 
-**Radio:**
+**[Radio:](https://github.com/mistek131995/freedom-ui/wiki/%D0%AD%D0%BB%D0%B5%D0%BC%D0%B5%D0%BD%D1%82%D1%8B-%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F#radio)**
 
->`<Radio label="Test 1" name="radio" value="test1" checked/>`
+>`<Radio label="Radio 1" name="radio" value="radio1" checked/>`
 
-![Radio](https://s.iimg.su/s/11/63KGillQbiyOdo0w0gXfCKAJFzZ2PfgXsMBg6ovq.png)
+![Radio](https://s.iimg.su/s/14/mUkK0ORkiPbBRETCmHzMRtNiseelL4NTHrk5qYr0.png)
 
 **Multi Select & Single Select (Beta):**
 
->`<Select isMulti={true} placeholder="Выберите что-то" inputAttributes={{name: "select-multi"}} options={[]}/>`
+>`<Select isMulti={true} placeholder="Выберите что-то" name: "select-multi" options={[]}/>`
 
-![Multi Select](https://s2.radikal.cloud/2024/09/11/bandicam-2024-09-11-23-20-33-065.gif)
+![Multi Select](https://s2.radikal.cloud/2024/09/14/bandicam-2024-09-14-08-41-12-933.gif)
+![Multi Select](https://s2.radikal.cloud/2024/09/14/bandicam-2024-09-14-08-45-09-299.gif)
 
 ## Сетки (Позиционирование элементов)
 

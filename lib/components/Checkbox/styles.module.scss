@@ -15,7 +15,7 @@
 
     &:checked{
       border: 0.1rem solid var(--checkbox-border-focus-color);
-      box-shadow: 0 0 1rem var(--checkbox-focus-shadow-color)
+      box-shadow: 0 0 1rem var(--checkbox-checked-shadow-color)
     }
 
     &:checked::before {
