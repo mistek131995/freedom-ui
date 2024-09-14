@@ -33,7 +33,7 @@ const App = () => {
                 {/*]}/>*/}
 
                 <Select label="Multi-select:" placeholder="Выберите что-то"
-                        isMulti={true}
+                        //isMulti={true}
                         name="milti-select"
                         options={[
                             {value: "test1", label: "Test 1"},

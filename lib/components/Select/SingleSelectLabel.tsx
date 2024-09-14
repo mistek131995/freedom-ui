@@ -30,15 +30,11 @@ export const SingleSelectLabel: FC<SelectLabelProps> = ({className, ...props}) =
                 <div onClick={() => context?.setSelectedOptions([])}>
                     <X/>
                 </div>
-                {!context?.isOptionVisible &&
-                    <div onClick={(event) => {
-                        if (props.onClick) {
-                            props.onClick(event);
-                        }
-                    }}>
-                        <ArrowDown/>
-                    </div>
-                }
+                <div onClick={() => {
+                    context?.setIsOptionVisible(!context?.isOptionVisible)
+                }}>
+                    <ArrowDown/>
+                </div>
             </div>
         </div>
     </>
