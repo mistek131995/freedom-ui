@@ -30,12 +30,12 @@
 
 ![Radio](https://s.iimg.su/s/14/mUkK0ORkiPbBRETCmHzMRtNiseelL4NTHrk5qYr0.png)
 
-**Multi Select & Single Select (Beta):**
+**[Multi Select & Single Select (Beta):](https://github.com/mistek131995/freedom-ui/wiki/%D0%AD%D0%BB%D0%B5%D0%BC%D0%B5%D0%BD%D1%82%D1%8B-%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F#multi-select--single-select-beta)**
 
 >`<Select isMulti={true} placeholder="Выберите что-то" name: "select-multi" options={[]}/>`
 
-![Multi Select](https://s2.radikal.cloud/2024/09/14/bandicam-2024-09-14-08-41-12-933.gif)
-![Multi Select](https://s2.radikal.cloud/2024/09/14/bandicam-2024-09-14-08-45-09-299.gif)
+![Multi Select](https://s2.radikal.cloud/2024/09/14/bandicam-2024-09-14-08-40-38-145.gif)
+![Single Select](https://s2.radikal.cloud/2024/09/14/bandicam-2024-09-14-08-45-09-299.gif)
 
 ## Сетки (Позиционирование элементов)
 
