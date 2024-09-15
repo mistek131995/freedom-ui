@@ -19,33 +19,20 @@ const App = () => {
         <Form handleSubmit={(form) => console.log(form)}>
             <Flex justifyContent={JustifyContent.around}>
                 <Input name="name" placeholder="Placeholder" iconLeft={<Profile/>} label="Label:"/>
-
-                {/*<Select placeholder="Выберите что-то" inputAttributes={{style: {width: "50%"}, name: "select-single"}} options={[*/}
-                {/*    {value: "test1", label: "Test 1"},*/}
-                {/*    {value: "test2", label: "Test 2"},*/}
-                {/*    {value: "test3", label: "Test 3"},*/}
-                {/*    {value: "test4", label: "Test 4"},*/}
-                {/*    {value: "test5", label: "Test 5"},*/}
-                {/*    {value: "test6", label: "Test 6"},*/}
-                {/*    {value: "test7", label: "Test 7"},*/}
-                {/*    {value: "test8", label: "Test 8"},*/}
-                {/*    {value: "test9", label: "Test 9"},*/}
-                {/*]}/>*/}
-
                 <Select label="Multi-select:" placeholder="Выберите что-то"
-                    //isMulti={true}
-                        name="milti-select"
-                        options={[
-                            {value: "test1", label: "Test 1"},
-                            {value: "test2", label: "Test 2"},
-                            {value: "test3", label: "Test 3"},
-                            {value: "test4", label: "Test 4"},
-                            {value: "test5", label: "Test 5"},
-                            {value: "test6", label: "Test 6"},
-                            {value: "test7", label: "Test 7"},
-                            {value: "test8", label: "Test 8"},
-                            {value: "test9", label: "Test 9"},
-                        ]}/>
+                    isMulti={true}
+                    name="milti-select"
+                    options={[
+                        {value: "test1", label: "Test 1"},
+                        {value: "test2", label: "Test 2"},
+                        {value: "test3", label: "Test 3"},
+                        {value: "test4", label: "Test 4"},
+                        {value: "test5", label: "Test 5"},
+                        {value: "test6", label: "Test 6"},
+                        {value: "test7", label: "Test 7"},
+                        {value: "test8", label: "Test 8"},
+                        {value: "test9", label: "Test 9"},
+                    ]}/>
             </Flex>
 
             <br/>
@@ -59,21 +46,6 @@ const App = () => {
                     <Radio label="Radio 2" name="radio" value="test2"/>
                     <Radio label="Radio 3" name="radio" value="test3"/>
                 </Flex>
-
-                <Select style={{maxWidth: "20%"}} label="Single-select:" placeholder="Выберите что-то"
-                    //isMulti={true}
-                        name="milti-select"
-                        options={[
-                            {value: "test1", label: "Test 1"},
-                            {value: "test2", label: "Test 2"},
-                            {value: "test3", label: "Test 3"},
-                            {value: "test4", label: "Test 4"},
-                            {value: "test5", label: "Test 5"},
-                            {value: "test6", label: "Test 6"},
-                            {value: "test7", label: "Test 7"},
-                            {value: "test8", label: "Test 8"},
-                            {value: "test9", label: "Test 9"},
-                        ]}/>
 
                 <Button bg={ButtonBackground.success} type="submit">
                     Отправить

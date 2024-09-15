@@ -1,6 +1,6 @@
 import styles from "./styles.module.scss"
 import {Option} from "./Option.ts";
-import {FC, useContext} from "react";
+import {FC, useCallback, useContext} from "react";
 import {SelectContext} from "./index.tsx";
 
 type ListOptionsProps = {
@@ -11,7 +11,7 @@ type ListOptionsProps = {
 export const ListOptions : FC<ListOptionsProps> = (props) => {
     const context = useContext(SelectContext)
 
-    const selectValue = (value: string) => {
+    const selectValue = useCallback((value: string) => {
         const option = props.options.find(x => x.value === value)!;
 
         if(props.isMulti){
@@ -22,7 +22,7 @@ export const ListOptions : FC<ListOptionsProps> = (props) => {
         }
 
         context?.setSearchValue("")
-    }
+    }, [props.options, props.isMulti, context])
 
     return <div className={styles.selectListOptions}
                 style={{display: context?.isOptionVisible ? "block" : "none"}}>

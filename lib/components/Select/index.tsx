@@ -1,5 +1,5 @@
 import {Option} from "./Option.ts";
-import {createContext, FC, InputHTMLAttributes, useCallback, useEffect, useRef, useState} from "react";
+import {createContext, FC, InputHTMLAttributes, useCallback, useEffect, useMemo, useRef, useState} from "react";
 import styles from "./styles.module.scss";
 import {MultiSelectLabel} from "./MultiSelectLabel.tsx";
 import {ListOptions} from "./ListOptions.tsx";
@@ -17,7 +17,6 @@ export type SelectProps = InputHTMLAttributes<HTMLInputElement> & ISelect
 
 interface ISelectContext {
     options: Option[],
-    setOptions: (options: Option[]) => void,
     searchValue: string,
     setSearchValue: (value: string) => void,
     selectedOptions: Option[],
@@ -31,7 +30,6 @@ export const SelectContext = createContext<ISelectContext | null>(null)
 export const Select : FC<SelectProps> = ({className, style, options, isMulti, placeholder, label, ...props}) => {
     const [selectedOptions, setSelectedOptions] = useState<Option[]>([]);
     const [searchValue, setSearchValue] = useState<string>("");
-    const [optionsList, setOptionList] = useState<Option[]>(options)
     const [isOptionsVisible, setOptionsVisible] = useState<boolean>(false);
     const ref = useRef<HTMLDivElement>(null);
 
@@ -52,22 +50,21 @@ export const Select : FC<SelectProps> = ({className, style, options, isMulti, pl
         };
     }, [handleClickOutside])
 
-    useEffect(() => {
+    const filteredOptions = useMemo(() => {
         if(isMulti){
-            setOptionList(options.filter(x =>
+            return options.filter(x =>
                 x.label.toLowerCase().trim().includes(searchValue.toLowerCase().trim() || "") &&
-                !selectedOptions.includes(x)))
+                !selectedOptions.includes(x))
         }
         else
         {
-            setOptionList(options.filter(x =>
-                x.label.toLowerCase().trim().includes(searchValue.toLowerCase().trim() || "")))
+            return options.filter(x =>
+                x.label.toLowerCase().trim().includes(searchValue.toLowerCase().trim() || ""))
         }
-    }, [searchValue, options, selectedOptions, isMulti])
+    }, [options, searchValue, selectedOptions, isMulti])
 
     return <SelectContext.Provider value={{
-        options: optionsList,
-        setOptions: setOptionList,
+        options: filteredOptions,
         searchValue: searchValue,
         setSearchValue: setSearchValue,
         selectedOptions: selectedOptions,
