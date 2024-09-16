@@ -4,12 +4,11 @@ import styles from "./styles.module.scss"
 
 export interface IToastContext {
     addToast: (toast: IToast) => void,
-    setToastList: (toasts: ReactNode[]) => void,
-    toastList: ReactNode[]
+    //setToastList: (toasts: ReactNode[]) => void,
+    //toastList: ReactNode[]
 }
 
 export interface IToast {
-    //id?: number,
     label: string,
     description: string,
     time?: number
@@ -18,23 +17,29 @@ export interface IToast {
 export const ToastContext = createContext<IToastContext | undefined>(undefined)
 
 export const ToastProvider = (props: {children: ReactNode}) => {
-    const [toastList, setToastToList] = useState<ReactNode[]>([]);
+    const [toastList, setToastToList] = useState<Record<number, ReactNode>[]>([]);
 
     const addToast = (toast: IToast) => {
-        //toast.id = (toastList.at(-1)?.id || 0) + 1;
-        setToastToList([...toastList, <Toast {...toast}/>]);
+        const keys = Object.keys(toastList).map(Number);
+        const id = (keys.length == 0 ? 0 :  Math.max(...keys) + 1);
+
+        const newToast = {
+            [id]: <Toast {...toast} />
+        };
+
+        setToastToList([...toastList, newToast])
     };
 
     return (
         <ToastContext.Provider value={{
             addToast: addToast,
-            setToastList: (toasts: ReactNode[]) => setToastToList(toasts),
-            toastList: toastList
+            //setToastList: (toasts: ReactNode[]) => setToastToList(toasts),
+            //toastList: toastList
         }}>
             <div className={styles.toastContainer}>
-                {
-                    toastList.map(toast => toast)
-                }
+                {/*{*/}
+                {/*    toastList.map(toast => toast)*/}
+                {/*}*/}
             </div>
             {props.children}
         </ToastContext.Provider>
