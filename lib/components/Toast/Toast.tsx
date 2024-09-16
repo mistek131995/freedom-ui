@@ -7,17 +7,13 @@ export const Toast: FC<IToast> = (props) => {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            setToastList(
-                toastList.map(x =>
-                    x.id === props.id ? {...x, isVisible: false} : x
-                )
-            );
+            console.log("hide")
         }, props.time || 5000);
 
-        return () => clearTimeout(timer);
-    }, [props.id, props.time, setToastList, toastList]);
+        console.log("render")
 
-    if (!props.isVisible) return null;
+        return () => clearTimeout(timer);
+    }, []);
 
     return (
         <div>

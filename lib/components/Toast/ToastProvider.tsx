@@ -4,39 +4,37 @@ import styles from "./styles.module.scss"
 
 export interface IToastContext {
     addToast: (toast: IToast) => void,
-    setToastList: (toasts: IToast[]) => void,
-    toastList: IToast[]
+    setToastList: (toasts: ReactNode[]) => void,
+    toastList: ReactNode[]
 }
 
 export interface IToast {
-    id?: number,
+    //id?: number,
     label: string,
     description: string,
-    time?: number,
-    isVisible?: boolean
+    time?: number
 }
 
 export const ToastContext = createContext<IToastContext | undefined>(undefined)
 
 export const ToastProvider = (props: {children: ReactNode}) => {
-    const [toastList, setToastToList] = useState<IToast[]>([]);
+    const [toastList, setToastToList] = useState<ReactNode[]>([]);
 
     const addToast = (toast: IToast) => {
-        toast.id = (toastList.at(-1)?.id || 0) + 1;
-        toast.isVisible = true;
-        setToastToList([...toastList, toast]);
+        //toast.id = (toastList.at(-1)?.id || 0) + 1;
+        setToastToList([...toastList, <Toast {...toast}/>]);
     };
 
     return (
         <ToastContext.Provider value={{
             addToast: addToast,
-            setToastList: (toasts: IToast[]) => setToastToList(toasts),
+            setToastList: (toasts: ReactNode[]) => setToastToList(toasts),
             toastList: toastList
         }}>
             <div className={styles.toastContainer}>
-                {toastList.map(toast => (
-                    toast.isVisible && <Toast key={toast.id} {...toast} />
-                ))}
+                {
+                    toastList.map(toast => toast)
+                }
             </div>
             {props.children}
         </ToastContext.Provider>
