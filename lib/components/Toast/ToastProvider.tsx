@@ -4,11 +4,12 @@ import styles from "./styles.module.scss"
 
 export interface IToastContext {
     addToast: (toast: IToast) => void,
-    //setToastList: (toasts: ReactNode[]) => void,
-    //toastList: ReactNode[]
+    setToastList: (toasts: Record<number, ReactNode>[]) => void,
+    toastList: Record<number, ReactNode>[]
 }
 
 export interface IToast {
+    id: number,
     label: string,
     description: string,
     time?: number
@@ -23,6 +24,7 @@ export const ToastProvider = (props: {children: ReactNode}) => {
         const keys = Object.keys(toastList).map(Number);
         const id = (keys.length == 0 ? 0 :  Math.max(...keys) + 1);
 
+        toast.id = id;
         const newToast = {
             [id]: <Toast {...toast} />
         };
@@ -33,13 +35,17 @@ export const ToastProvider = (props: {children: ReactNode}) => {
     return (
         <ToastContext.Provider value={{
             addToast: addToast,
-            //setToastList: (toasts: ReactNode[]) => setToastToList(toasts),
-            //toastList: toastList
+            setToastList: (toasts: Record<number, ReactNode>[]) => setToastToList(toasts),
+            toastList: toastList
         }}>
             <div className={styles.toastContainer}>
-                {/*{*/}
-                {/*    toastList.map(toast => toast)*/}
-                {/*}*/}
+                {toastList.map((record) =>
+                    Object.keys(record).map((key) => (
+                        <div key={key}>
+                            {record[+key]}
+                        </div>
+                    ))
+                )}
             </div>
             {props.children}
         </ToastContext.Provider>
