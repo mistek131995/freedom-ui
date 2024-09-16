@@ -9,7 +9,7 @@ const App = () => {
 
     return <>
         <Flex justifyContent={JustifyContent.around} alignItems={AlignmentItems.center}>
-          <Button bg={ButtonBackground.primary} onClick={() => addToast("Text")}>Button primary</Button>
+          <Button bg={ButtonBackground.primary} onClick={() => addToast({label: "test 1", description: "Test"})}>Button primary</Button>
           <Button bg={ButtonBackground.secondary}>Button secondary</Button>
           <Button bg={ButtonBackground.success}>Button success</Button>
           <Button bg={ButtonBackground.warning}>Button warning</Button>
