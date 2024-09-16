@@ -12,3 +12,4 @@ export { Select } from './components/Select'
 export type { SelectProps } from './components/Select'
 export type { Option } from './components/Select/Option.ts'
 export { Form } from './components/Form'
+export { ToastProvider } from "./components/Toast/ToastProvider.tsx"

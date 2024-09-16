@@ -43,17 +43,6 @@ export const MultiSelectLabel : FC<SelectLabelProps> = ({className, ...props}) =
                     </div>)
                 }
 
-                {/*<div className={styles.searchField}>*/}
-                {/*    <input ref={searchFieldRef}*/}
-                {/*           placeholder={props.placeholder}*/}
-                {/*           onClick={(event) => {*/}
-                {/*               if (props.onClick) {*/}
-                {/*                   props.onClick(event);*/}
-                {/*               }*/}
-                {/*           }}*/}
-                {/*           onChange={(event) => context?.setSearchValue(event.currentTarget.value || "")}/>*/}
-                {/*</div>*/}
-
                 <div {...props}
                      ref={searchFieldRef}
                      className={styles.searchField}

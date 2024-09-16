@@ -2,12 +2,14 @@ import "../dist/assets/style.css"
 import {Button, ButtonBackground, Flex, AlignmentItems, JustifyContent} from "../dist/main";
 import {Checkbox, Form, Input, Radio, Select} from "../lib/main.ts";
 import {Profile} from "./assets/images/Profile.tsx";
+import {useToast} from "../lib/components/Toast/useToast.tsx";
 
 const App = () => {
+    const {addToast} = useToast()
 
     return <>
         <Flex justifyContent={JustifyContent.around} alignItems={AlignmentItems.center}>
-          <Button bg={ButtonBackground.primary}>Button primary</Button>
+          <Button bg={ButtonBackground.primary} onClick={() => addToast("Text")}>Button primary</Button>
           <Button bg={ButtonBackground.secondary}>Button secondary</Button>
           <Button bg={ButtonBackground.success}>Button success</Button>
           <Button bg={ButtonBackground.warning}>Button warning</Button>
