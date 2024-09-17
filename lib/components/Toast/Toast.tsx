@@ -44,6 +44,6 @@ export const Toast: FC<IToast> = (props) => {
 
     return <div className={unionClassName}>
             <div className={styles.toastLabel}>{props.label}</div>
-            <div>{props.description}</div>
+            <div className={styles.toastBody}>{props.description}</div>
         </div>
 }

@@ -1,4 +1,5 @@
 .toast-container {
+  display: flex;
   position: absolute;
   top: 0;
   z-index: 60;
@@ -6,16 +7,19 @@
   &.left{
     top: 0;
     left: 0;
+    justify-content: start;
   }
 
   &.right{
     top: 0;
     right: 0;
+    justify-content: end;
   }
 
   &.center{
     left: 50%;
     right: 50%;
+    justify-content: center;
   }
 
   .toast {
@@ -23,6 +27,7 @@
     margin: 0.5rem 1rem;
     padding: 0.5rem 1rem;
     border-radius: 3px;
+    width: min(100%, 200px);
 
     &.primary{
       background-color: var(--toast-primary-bg-color);
@@ -50,6 +55,12 @@
 
     .toast-label{
       font-family: "Overpass-Bold", serif;
+      padding: 0.5rem 0 0.3rem 0;
+      overflow-x: hidden;
+    }
+
+    .toast-body{
+      padding: 0.5rem 0 0.3rem 0;
     }
 
     &.hide {
