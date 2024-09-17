@@ -1,23 +1,29 @@
 import React, {createContext, ReactNode, useState} from "react";
-import {Toast} from "./Toast.tsx";
+import {IToast, Toast} from "./Toast.tsx";
 import styles from "./styles.module.scss"
+import {HorizontalPosition} from "../../types/HorizontalPosition.ts";
+
+export interface IToastContainer{
+    children: ReactNode,
+    position?: HorizontalPosition
+}
 
 export interface IToastContext {
     addToast: (toast: IToast) => void,
     removeToast: (id: number) => void,
 }
 
-export interface IToast {
-    id: number,
-    label: string,
-    description: string,
-    time?: number
-}
-
 export const ToastContext = createContext<IToastContext | undefined>(undefined)
 
-export const ToastProvider = (props: {children: ReactNode}) => {
+const positionClassMap = {
+    [HorizontalPosition.left]: styles.left,
+    [HorizontalPosition.center]: styles.center,
+    [HorizontalPosition.right]: styles.right,
+};
+
+export const ToastProvider = (props: IToastContainer) => {
     const [toastList, setToastToList] = useState<Record<number, ReactNode>>({});
+    const unionClassName = [styles.toastContainer, positionClassMap[props.position || HorizontalPosition.right]].join(" ");
 
     const addToast = (toast: IToast) => {
         const keys = Object.keys(toastList).map(x => Number(x))
@@ -43,7 +49,7 @@ export const ToastProvider = (props: {children: ReactNode}) => {
             addToast: addToast,
             removeToast: removeToast
         }}>
-            <div className={styles.toastContainer}>
+            <div className={unionClassName}>
                 {
                     Object.keys(toastList).map(x => <React.Fragment key={x}>{toastList[Number(x)]}</React.Fragment>)
                 }

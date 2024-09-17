@@ -1,11 +1,31 @@
-import {IToast} from "./ToastProvider.tsx";
 import {FC, useEffect, useState} from "react";
 import {useToast} from "./useToast.tsx";
 import styles from "./styles.module.scss"
+import {ToastBackground} from "../../types/ToastBackground.ts";
+
+export interface IToast {
+    id?: number,
+    label: string,
+    description: string,
+    time?: number,
+    bg?: ToastBackground
+}
+
+const backgroundClassMap = {
+    [ToastBackground.primary]: styles.primary,
+    [ToastBackground.success]: styles.success,
+    [ToastBackground.warning]: styles.warning,
+    [ToastBackground.danger]: styles.danger,
+}
 
 export const Toast: FC<IToast> = (props) => {
     const { removeToast } = useToast();
     const [isHide, setHide] = useState<boolean>(false)
+    const unionClassName = [
+        styles.toast,
+        (isHide ? styles.hide : styles.show),
+        backgroundClassMap[props.bg || ToastBackground.primary]
+    ].join(" ")
 
     useEffect(() => {
         const timer1 = setTimeout(() => {
@@ -13,7 +33,7 @@ export const Toast: FC<IToast> = (props) => {
         }, props.time || 5000);
 
         const timer2 = setTimeout(() => {
-            removeToast(props.id)
+            removeToast(props.id!)
         }, props.time || 5000 + 500);
 
         return () => {
@@ -22,8 +42,8 @@ export const Toast: FC<IToast> = (props) => {
         }
     }, []);
 
-    return <div className={[styles.toast, (isHide ? styles.hide : styles.show)].join(" ")}>
-            <div>{props.label}</div>
+    return <div className={unionClassName}>
+            <div className={styles.toastLabel}>{props.label}</div>
             <div>{props.description}</div>
         </div>
 }

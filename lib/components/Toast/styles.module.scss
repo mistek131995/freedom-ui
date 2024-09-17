@@ -1,11 +1,56 @@
 .toast-container {
   position: absolute;
   top: 0;
-  left: 0;
+  z-index: 60;
+
+  &.left{
+    top: 0;
+    left: 0;
+  }
+
+  &.right{
+    top: 0;
+    right: 0;
+  }
+
+  &.center{
+    left: 50%;
+    right: 50%;
+  }
 
   .toast {
     transition: opacity 0.5s ease-in-out;
-    opacity: 1;
+    margin: 0.5rem 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+
+    &.primary{
+      background-color: var(--toast-primary-bg-color);
+      color: var(--toast-primary-font-color);
+
+      div:first-child{
+        border-bottom: 2px white solid;
+      }
+    }
+
+    &.success{
+      background-color: var(--toast-success-bg-color);
+      color: var(--toast-success-font-color);
+    }
+
+    &.warning{
+      background-color: var(--toast-warning-bg-color);
+      color: var(--toast-warning-font-color);
+    }
+
+    &.danger{
+      background-color: var(--toast-danger-bg-color);
+      color: var(--toast-danger-font-color);
+    }
+
+    .toast-label{
+      font-family: "Overpass-Bold", serif;
+    }
 
     &.hide {
       opacity: 0;
