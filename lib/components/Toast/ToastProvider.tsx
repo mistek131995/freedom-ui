@@ -1,11 +1,10 @@
-import {createContext, ReactNode, useState} from "react";
+import React, {createContext, ReactNode, useState} from "react";
 import {Toast} from "./Toast.tsx";
 import styles from "./styles.module.scss"
 
 export interface IToastContext {
     addToast: (toast: IToast) => void,
-    setToastList: (toasts: Record<number, ReactNode>[]) => void,
-    toastList: Record<number, ReactNode>[]
+    removeToast: (id: number) => void,
 }
 
 export interface IToast {
@@ -18,34 +17,36 @@ export interface IToast {
 export const ToastContext = createContext<IToastContext | undefined>(undefined)
 
 export const ToastProvider = (props: {children: ReactNode}) => {
-    const [toastList, setToastToList] = useState<Record<number, ReactNode>[]>([]);
+    const [toastList, setToastToList] = useState<Record<number, ReactNode>>({});
 
     const addToast = (toast: IToast) => {
-        const keys = Object.keys(toastList).map(Number);
-        const id = (keys.length == 0 ? 0 :  Math.max(...keys) + 1);
+        const keys = Object.keys(toastList).map(x => Number(x))
+        const maxId = keys.length == 0 ? 0 : Math.max(...keys) + 1
 
-        toast.id = id;
-        const newToast = {
-            [id]: <Toast {...toast} />
-        };
-
-        setToastToList([...toastList, newToast])
+        toast.id = maxId;
+        setToastToList({[maxId]: <Toast {...toast}/>, ...toastList});
     };
+
+    const removeToast = (id: number) => {
+        setToastToList(prevToastList => {
+            return Object.keys(prevToastList)
+                .filter(key => Number(key) !== id)
+                .reduce((acc, key) => {
+                    acc[Number(key)] = prevToastList[Number(key)];
+                    return acc;
+                }, {} as Record<number, ReactNode>);
+        });
+    }
 
     return (
         <ToastContext.Provider value={{
             addToast: addToast,
-            setToastList: (toasts: Record<number, ReactNode>[]) => setToastToList(toasts),
-            toastList: toastList
+            removeToast: removeToast
         }}>
             <div className={styles.toastContainer}>
-                {toastList.map((record) =>
-                    Object.keys(record).map((key) => (
-                        <div key={key}>
-                            {record[+key]}
-                        </div>
-                    ))
-                )}
+                {
+                    Object.keys(toastList).map(x => <React.Fragment key={x}>{toastList[Number(x)]}</React.Fragment>)
+                }
             </div>
             {props.children}
         </ToastContext.Provider>
