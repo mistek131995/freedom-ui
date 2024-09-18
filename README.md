@@ -1,5 +1,5 @@
 # Freedom UI
-![Logo](https://s.iimg.su/s/18/DvoBHKPTPJigxIzjCchKCujtY52q7KmVk4hjXuvM.png)
+![Logo](https://s.iimg.su/s/18/np00iYYLIx0OUucYmfCOm9Ms8NpdQzzWwKXJfcXQ.png)
 
 ## Элементы интерфейса
 - [Toast](https://github.com/mistek131995/freedom-ui/wiki/%D0%AD%D0%BB%D0%B5%D0%BC%D0%B5%D0%BD%D1%82%D1%8B-%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0#toast)
