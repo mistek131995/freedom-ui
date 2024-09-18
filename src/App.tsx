@@ -52,7 +52,7 @@ const App = () => {
                 <Flex justifyContent={JustifyContent.around} style={{width: "300px"}}>
                     <Radio label="Radio 1" name="radio" value="test1" defaultChecked={true}/>
                     <Radio label="Radio 2" name="radio" value="test2"/>
-                    <Radio label="Radio 3" name="radio" value="test3"/>
+                    <Radio label="Radio 3" name="radio" value="test3" disabled={true}/>
                 </Flex>
 
                 <Button bg={ButtonBackground.success} type="submit">

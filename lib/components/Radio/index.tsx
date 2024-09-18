@@ -12,6 +12,10 @@ type RadioProps = InputHTMLAttributes<HTMLInputElement> & IRadio
 export const Radio : FC<RadioProps> = ({label, orientation, className, style, ...props}) => {
     const radioRef = useRef<HTMLInputElement>(null);
     orientation = orientation || Orientation.horizontal;
+    const unionCheckmarkClassName = [
+        styles.radioCheckmark,
+        props.disabled ? styles.disabled : ""
+    ].filter(x => x).join(" ")
 
 
     return <Flex orientation={orientation} alignItems={AlignmentItems.center} className={className} style={style}>
@@ -20,9 +24,9 @@ export const Radio : FC<RadioProps> = ({label, orientation, className, style, ..
         }
         <div className={styles.customRadio}>
             <input ref={radioRef} id={props.value?.toString()} {...props} type="radio"/>
-            <span className={styles.radioCheckmark}
+            <span className={unionCheckmarkClassName}
                   onClick={() => {
-                      if(radioRef.current)
+                      if(radioRef.current && !props.disabled)
                         radioRef.current.checked = true
                   }}/>
         </div>
