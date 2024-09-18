@@ -1,5 +1,6 @@
 export { Button } from './components/Button'
 export { ButtonBackground } from './components/Button/ButtonBackground.ts'
+export type { IButton, ButtonProps } from "./components/Button"
 export { Input } from './components/Input'
 export { Checkbox } from './components/Checkbox'
 export { Radio } from './components/Radio'
@@ -16,4 +17,5 @@ export { ToastProvider } from "./components/Toast/ToastProvider.tsx"
 export { useToast } from "./components/Toast/useToast.tsx"
 export { ToastBackground } from "./types/ToastBackground.ts"
 export type { IToastContext, IToastContainer} from "./components/Toast/ToastProvider.tsx"
+export type { IToast } from "./components/Toast/Toast.tsx"
 export { HorizontalPosition } from "./types/HorizontalPosition.ts"
