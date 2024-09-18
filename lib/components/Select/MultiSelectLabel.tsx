@@ -6,19 +6,20 @@ import {X} from "../../assets/images/X.tsx";
 import {ArrowDown} from "../../assets/images/ArrowDown.tsx";
 
 interface ISelectLabel {
-    placeholder: string
+    placeholder: string,
+    isDisabled?: boolean
 }
 
 type SelectLabelProps = React.HTMLAttributes<HTMLDivElement> & ISelectLabel
 
-export const MultiSelectLabel : FC<SelectLabelProps> = ({className, ...props}) => {
+export const MultiSelectLabel : FC<SelectLabelProps> = ({className, isDisabled, ...props}) => {
     const unionClassNames = [className || "", styles.selectLabelContainer].filter(x => x).join(" ");
     const context = useContext(SelectContext);
     const searchFieldRef = useRef<HTMLInputElement>(null);
+    isDisabled = isDisabled || false;
 
     useEffect(() => {
         if(context?.isOptionVisible && context?.selectedOptions.length > 0){
-            //searchFieldRef.current!.value = context?.searchValue || ""
             searchFieldRef.current!.innerText = context?.searchValue || ""
         }
 
@@ -46,10 +47,13 @@ export const MultiSelectLabel : FC<SelectLabelProps> = ({className, ...props}) =
                 <div {...props}
                      ref={searchFieldRef}
                      className={styles.searchField}
-                     onClick={() => context?.setIsOptionVisible(true)}
+                     onClick={() => {
+                         if(!isDisabled)
+                            context?.setIsOptionVisible(true)
+                     }}
                      onInput={(event) => context?.setSearchValue(event.currentTarget.textContent || "")}
-                     contentEditable={true}
-                     suppressContentEditableWarning={true}>
+                     contentEditable={!isDisabled}
+                     suppressContentEditableWarning={!isDisabled}>
                     {!context?.isOptionVisible && context?.selectedOptions.length == 0 &&
                         props.placeholder
                     }
@@ -60,7 +64,8 @@ export const MultiSelectLabel : FC<SelectLabelProps> = ({className, ...props}) =
                     <X/>
                 </div>
                 <div onClick={() => {
-                    context?.setIsOptionVisible(!context?.isOptionVisible)
+                    if(!isDisabled)
+                        context?.setIsOptionVisible(!context?.isOptionVisible)
                 }}>
                     <ArrowDown/>
                 </div>

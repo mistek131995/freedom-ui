@@ -80,10 +80,10 @@ export const Select : FC<SelectProps> = ({className, style, options, isMulti, pl
             <div className={unionClassName} ref={ref}>
                 <input {...props} value={selectedOptions.map(x => x.value)} type="hidden"/>
                 {!isMulti &&
-                    <SingleSelectLabel placeholder={placeholder || ""}/>
+                    <SingleSelectLabel placeholder={placeholder || ""} isDisabled={props.disabled}/>
                 }
                 {isMulti &&
-                    <MultiSelectLabel placeholder={placeholder || ""}/>
+                    <MultiSelectLabel placeholder={placeholder || ""} isDisabled={props.disabled}/>
                 }
                 <ListOptions isMulti={isMulti}
                              options={options}/>
