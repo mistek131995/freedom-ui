@@ -47,7 +47,7 @@ const App = () => {
             <br/>
 
             <Flex justifyContent={JustifyContent.around}>
-                <Checkbox label="Checkbox:" name="checkbox"/>
+                <Checkbox label="Checkbox:" name="checkbox" disabled={true}/>
 
                 <Flex justifyContent={JustifyContent.around} style={{width: "300px"}}>
                     <Radio label="Radio 1" name="radio" value="test1" defaultChecked={true}/>
