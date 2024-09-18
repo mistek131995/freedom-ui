@@ -11,10 +11,14 @@ interface ISelectLabel {
 
 type SelectLabelProps = React.HTMLAttributes<HTMLDivElement> & ISelectLabel
 
-export const SingleSelectLabel: FC<SelectLabelProps> = ({className, ...props}) => {
-    const unionClassNames = [className || "", styles.selectLabelContainer].filter(x => x).join(" ");
+export const SingleSelectLabel: FC<SelectLabelProps> = ({className, isDisabled, ...props}) => {
+    const unionClassNames = [
+        className || "",
+        styles.selectLabelContainer,
+        isDisabled ? styles.disabled : ""
+    ].filter(x => x).join(" ");
     const context = useContext(SelectContext);
-    const isDisabled = props.isDisabled || false;
+    isDisabled = isDisabled || false;
 
     return <>
         <div className={unionClassNames}>

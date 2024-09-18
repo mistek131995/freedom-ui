@@ -29,7 +29,6 @@ const App = () => {
             <Flex justifyContent={JustifyContent.around}>
                 <Input name="name" placeholder="Placeholder" iconLeft={<Profile/>} label="Label:"/>
                 <Select label="Multi-select:" placeholder="Выберите что-то"
-                    isMulti={true}
                     name="milti-select"
                     options={[
                         {value: "test1", label: "Test 1"},

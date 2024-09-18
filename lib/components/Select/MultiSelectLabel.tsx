@@ -13,7 +13,11 @@ interface ISelectLabel {
 type SelectLabelProps = React.HTMLAttributes<HTMLDivElement> & ISelectLabel
 
 export const MultiSelectLabel : FC<SelectLabelProps> = ({className, isDisabled, ...props}) => {
-    const unionClassNames = [className || "", styles.selectLabelContainer].filter(x => x).join(" ");
+    const unionClassNames = [
+        className || "",
+        styles.selectLabelContainer,
+        isDisabled ? styles.disabled : ""
+    ].filter(x => x).join(" ");
     const context = useContext(SelectContext);
     const searchFieldRef = useRef<HTMLInputElement>(null);
     isDisabled = isDisabled || false;

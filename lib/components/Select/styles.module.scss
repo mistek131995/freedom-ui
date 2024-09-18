@@ -17,6 +17,11 @@
   .select-label-container{
     display: flex;
 
+    &.disabled{
+      background-color: var(--select-disabled-bg-color);
+      cursor: not-allowed;
+    }
+
     .label-options-container{
       display: flex;
       flex-wrap: wrap;
@@ -67,6 +72,11 @@
         &::placeholder{
           color: black;
           font-size: 1rem;
+        }
+
+        &:disabled{
+          background-color: var(--select-disabled-bg-color);
+          cursor: not-allowed;
         }
 
         &:focus{
