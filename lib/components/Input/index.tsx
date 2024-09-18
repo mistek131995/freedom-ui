@@ -11,12 +11,16 @@ interface IInput {
 type InputProps = InputHTMLAttributes<HTMLInputElement> & IInput
 
 export const Input : FC<InputProps> = ({ label, iconLeft, iconRight, className, ...props }) => {
+  const unionContainerClassName = [
+    styles.inputContainer,
+    props.disabled ? styles.disabled : ""
+  ].filter(x => x).join(" ")
 
   return <div className={className}>
     {label &&
       <Label htmlFor={props.name}>{label}</Label>
     }
-    <Flex alignItems={AlignmentItems.center} className={styles.inputContainer}>
+    <Flex alignItems={AlignmentItems.center} className={unionContainerClassName}>
       {iconLeft &&
           <span className={styles.inputIconLeft}>{iconLeft}</span>
       }

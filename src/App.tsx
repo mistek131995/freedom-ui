@@ -27,7 +27,7 @@ const App = () => {
 
         <Form handleSubmit={(form) => console.log(form)}>
             <Flex justifyContent={JustifyContent.around}>
-                <Input name="name" placeholder="Placeholder" iconLeft={<Profile/>} label="Label:"/>
+                <Input name="name" placeholder="Placeholder" iconLeft={<Profile/>} label="Label:" disabled={true}/>
                 <Select label="Multi-select:" placeholder="Выберите что-то"
                     name="milti-select"
                     options={[

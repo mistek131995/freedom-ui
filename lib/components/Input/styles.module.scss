@@ -3,6 +3,11 @@
     background-color: var(--input-bg-color);
     border-radius: 3px;
 
+    &.disabled{
+        background-color: var(--input-disabled-bg-color);
+        cursor: not-allowed;
+    }
+
     .input {
         appearance: none;
         -webkit-appearance: none;
@@ -12,6 +17,11 @@
         outline: none;
         padding: 0.74rem;
         color: var(--input-text-color);
+
+        &:disabled{
+            background-color: var(--input-disabled-bg-color);
+            cursor: not-allowed;
+        }
 
         &::placeholder{
             color: var(--input-text-color);
