@@ -1,6 +1,6 @@
 import "../dist/assets/style.css"
-import {Button, ButtonBackground, Flex, AlignmentItems, JustifyContent} from "../dist/main";
-import {Checkbox, Form, Input, Radio, Select} from "../lib/main.ts";
+import {AlignmentItems, Button, ButtonBackground, Flex, JustifyContent} from "../dist/main";
+import {Checkbox, Form, Input, Radio, Select, ToastBackground} from "../lib/main.ts";
 import {Profile} from "./assets/images/Profile.tsx";
 import {useToast} from "../lib/components/Toast/useToast.tsx";
 
@@ -12,7 +12,8 @@ const App = () => {
           <Button bg={ButtonBackground.primary}
                   onClick={() => addToast({
                       label: "Уведомление для уведомления",
-                      description: "Уведомляю о бла бла бла бла"
+                      description: "Уведомляю о бла бла бла бла",
+                      bg: ToastBackground.warning
                   })}>Button primary</Button>
           <Button bg={ButtonBackground.secondary}>Button secondary</Button>
           <Button bg={ButtonBackground.success}>Button success</Button>

@@ -1,5 +1,6 @@
 .toast-container {
   display: flex;
+  flex-direction: column;
   position: absolute;
   top: 0;
   z-index: 60;
@@ -7,19 +8,19 @@
   &.left{
     top: 0;
     left: 0;
-    justify-content: start;
+    align-items: start;
   }
 
   &.right{
     top: 0;
     right: 0;
-    justify-content: end;
+    align-items: end;
   }
 
   &.center{
     left: 50%;
     right: 50%;
-    justify-content: center;
+    align-items: center;
   }
 
   .toast {
@@ -41,16 +42,28 @@
     &.success{
       background-color: var(--toast-success-bg-color);
       color: var(--toast-success-font-color);
+
+      div:first-child{
+        border-bottom: 2px white solid;
+      }
     }
 
     &.warning{
       background-color: var(--toast-warning-bg-color);
       color: var(--toast-warning-font-color);
+
+      div:first-child{
+        border-bottom: 2px white solid;
+      }
     }
 
     &.danger{
       background-color: var(--toast-danger-bg-color);
       color: var(--toast-danger-font-color);
+
+      div:first-child{
+        border-bottom: 2px white solid;
+      }
     }
 
     .toast-label{

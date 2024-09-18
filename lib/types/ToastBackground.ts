@@ -1,6 +1,6 @@
 export enum ToastBackground {
-    primary = 'primary',
-    success = 'success',
-    warning = 'warning',
-    danger = 'danger',
+    primary,
+    success,
+    warning,
+    danger
 }

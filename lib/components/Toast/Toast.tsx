@@ -4,12 +4,13 @@ import styles from "./styles.module.scss"
 import {ToastBackground} from "../../types/ToastBackground.ts";
 
 export interface IToast {
-    id?: number,
     label: string,
     description: string,
     time?: number,
-    bg?: ToastBackground
+    bg: ToastBackground
 }
+
+export type ToastProps = IToast & { id: number }
 
 const backgroundClassMap = {
     [ToastBackground.primary]: styles.primary,
@@ -18,7 +19,7 @@ const backgroundClassMap = {
     [ToastBackground.danger]: styles.danger,
 }
 
-export const Toast: FC<IToast> = (props) => {
+export const Toast: FC<ToastProps> = (props) => {
     const { removeToast } = useToast();
     const [isHide, setHide] = useState<boolean>(false)
     const unionClassName = [

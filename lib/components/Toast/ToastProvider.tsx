@@ -26,11 +26,10 @@ export const ToastProvider = (props: IToastContainer) => {
     const unionClassName = [styles.toastContainer, positionClassMap[props.position || HorizontalPosition.right]].join(" ");
 
     const addToast = (toast: IToast) => {
-        const keys = Object.keys(toastList).map(x => Number(x))
-        const maxId = keys.length == 0 ? 0 : Math.max(...keys) + 1
+        const keys = Object.keys(toastList).map(x => Number(x));
+        const maxId = keys.length == 0 ? 0 : Math.max(...keys) + 1;
 
-        toast.id = maxId;
-        setToastToList({[maxId]: <Toast {...toast}/>, ...toastList});
+        setToastToList({[maxId]: <Toast id={maxId} {...toast}/>, ...toastList});
     };
 
     const removeToast = (id: number) => {

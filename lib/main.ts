@@ -13,3 +13,7 @@ export type { SelectProps } from './components/Select'
 export type { Option } from './components/Select/Option.ts'
 export { Form } from './components/Form'
 export { ToastProvider } from "./components/Toast/ToastProvider.tsx"
+export { useToast } from "./components/Toast/useToast.tsx"
+export { ToastBackground } from "./types/ToastBackground.ts"
+export type { IToastContext, IToastContainer} from "./components/Toast/ToastProvider.tsx"
+export { HorizontalPosition } from "./types/HorizontalPosition.ts"
