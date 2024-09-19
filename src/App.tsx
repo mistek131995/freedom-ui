@@ -1,6 +1,6 @@
 import "../dist/assets/style.css"
-import {AlignmentItems, Button, ButtonBackground, Flex, JustifyContent} from "../dist/main";
-import {Checkbox, Form, Input, Radio, Select, ToastBackground} from "../lib/main.ts";
+import {AlignmentItems, Flex, JustifyContent} from "../dist/main";
+import {Checkbox, Form, Input, Radio, Select, ToastBackground, Button, ButtonBackground} from "../lib/main.ts";
 import {Profile} from "./assets/images/Profile.tsx";
 import {useToast} from "../lib/components/Toast/useToast.tsx";
 
@@ -20,7 +20,7 @@ const App = () => {
           <Button bg={ButtonBackground.secondary}>Button secondary</Button>
           <Button bg={ButtonBackground.success}>Button success</Button>
           <Button bg={ButtonBackground.warning}>Button warning</Button>
-          <Button bg={ButtonBackground.danger}>Button danger</Button>
+          <Button bg={ButtonBackground.danger} disabled={true}>Button danger</Button>
         </Flex>
 
         <br/>

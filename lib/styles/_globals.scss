@@ -4,63 +4,6 @@
 :global{
   font-size: var(--font-size);
   font-family: var(--font-regular), serif;
-  
-  
-  button{
-    padding: 0.75rem 1.5rem;
-    border: 0;
-    border-radius: 3px;
-    font-family: "Overpass-Bold", serif;
-
-    &:active{
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
-    }
-
-    &.primary{
-      background-color: var(--primary-btn-color);
-      color: var(--primary-btn-font-color);
-
-      &:active{
-        box-shadow: 0 0 7px var(--primary-btn-shadow-color);
-      }
-    }
-
-    &.secondary{
-      background-color: var(--secondary-btn-color);
-      color: var(--secondary-btn-font-color);
-
-      &:active{
-        box-shadow: 0 0 7px var(--secondary-btn-shadow-color);
-      }
-    }
-
-    &.success{
-      background-color: var(--success-btn-color);
-      color: var(--success-btn-font-color);
-
-      &:active{
-        box-shadow: 0 0 7px var(--success-btn-shadow-color);
-      }
-    }
-
-    &.warning{
-      background-color: var(--warning-btn-color);
-      color: var(--warning-btn-font-color);
-
-      &:active{
-        box-shadow: 0 0 7px var(--warning-btn-shadow-color);
-      }
-    }
-
-    &.danger{
-      background-color: var(--danger-btn-color);
-      color: var(--danger-btn-font-color);
-
-      &:active{
-        box-shadow: 0 0 7px var(--danger-btn-shadow-color);
-      }
-    }
-  }
 
   div{
 
