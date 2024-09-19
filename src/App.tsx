@@ -1,6 +1,16 @@
 import "../dist/assets/style.css"
 import {AlignmentItems, Flex, JustifyContent} from "../dist/main";
-import {Checkbox, Form, Input, Radio, Select, ToastBackground, Button, ButtonBackground} from "../lib/main.ts";
+import {
+    Button,
+    ButtonBackground,
+    Checkbox,
+    Form,
+    Input,
+    Orientation,
+    Radio,
+    Select,
+    ToastBackground
+} from "../lib/main.ts";
 import {Profile} from "./assets/images/Profile.tsx";
 import {useToast} from "../lib/components/Toast/useToast.tsx";
 import {Textarea} from "../lib/components/Textarea";
@@ -28,8 +38,8 @@ const App = () => {
 
         <Form handleSubmit={(form) => console.log(form)}>
             <Flex justifyContent={JustifyContent.around}>
-                <Input name="name" placeholder="Placeholder" iconLeft={<Profile/>} label="Label:"/>
-                <Select label="Multi-select:" placeholder="Выберите что-то"
+                <Input orientation={Orientation.horizontal} name="name" placeholder="Placeholder" iconLeft={<Profile/>} label="Label:"/>
+                <Select orientation={Orientation.horizontal} label="Multi-select:" placeholder="Выберите что-то"
                         name="milti-select"
                         options={[
                             {value: "test1", label: "Test 1"},

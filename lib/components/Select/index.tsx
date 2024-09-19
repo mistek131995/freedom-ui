@@ -4,7 +4,7 @@ import styles from "./styles.module.scss";
 import {MultiSelectLabel} from "./MultiSelectLabel.tsx";
 import {ListOptions} from "./ListOptions.tsx";
 import {SingleSelectLabel} from "./SingleSelectLabel.tsx";
-import {Flex, Label, Orientation} from "../../main.ts";
+import {AlignmentItems, Flex, Label, Orientation} from "../../main.ts";
 
 export interface ISelect {
     placeholder?: string,
@@ -28,7 +28,14 @@ interface ISelectContext {
 
 export const SelectContext = createContext<ISelectContext | null>(null)
 
-export const Select : FC<SelectProps> = ({className, style, options, isMulti, orientation = Orientation.horizontal, placeholder, label, ...props}) => {
+const alignItemsClassMap = {
+    [Orientation.vertical]: AlignmentItems.start,
+    [Orientation.vertical_reverse]: AlignmentItems.start,
+    [Orientation.horizontal]: AlignmentItems.center,
+    [Orientation.horizontal_reverse]: AlignmentItems.center
+}
+
+export const Select : FC<SelectProps> = ({className, style, options, isMulti, orientation = Orientation.vertical, placeholder, label, ...props}) => {
     const [selectedOptions, setSelectedOptions] = useState<Option[]>([]);
     const [searchValue, setSearchValue] = useState<string>("");
     const [isOptionsVisible, setOptionsVisible] = useState<boolean>(false);
@@ -73,7 +80,7 @@ export const Select : FC<SelectProps> = ({className, style, options, isMulti, or
         isOptionVisible: isOptionsVisible,
         setIsOptionVisible: setOptionsVisible
     }}>
-        <Flex orientation={orientation} className={className} style={style}>
+        <Flex orientation={orientation} className={className} style={style} alignItems={alignItemsClassMap[orientation]}>
             {label &&
                 <Label>{label}</Label>
             }

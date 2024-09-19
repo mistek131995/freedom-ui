@@ -11,13 +11,20 @@ interface IInput {
 
 type InputProps = InputHTMLAttributes<HTMLInputElement> & IInput
 
+const alignItemsClassMap = {
+  [Orientation.vertical]: AlignmentItems.start,
+  [Orientation.vertical_reverse]: AlignmentItems.start,
+  [Orientation.horizontal]: AlignmentItems.center,
+  [Orientation.horizontal_reverse]: AlignmentItems.center
+}
+
 export const Input : FC<InputProps> = ({ label, orientation = Orientation.vertical, iconLeft, iconRight, className, ...props }) => {
   const unionContainerClassName = [
     styles.inputContainer,
     props.disabled ? styles.disabled : ""
   ].filter(x => x).join(" ")
 
-  return <Flex className={className} orientation={orientation}>
+  return <Flex className={className} orientation={orientation} alignItems={alignItemsClassMap[orientation]}>
     {label &&
       <Label htmlFor={props.name}>{label}</Label>
     }
