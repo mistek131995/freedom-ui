@@ -1,6 +1,8 @@
 import {FC, InputHTMLAttributes, useRef} from "react";
-import {AlignmentItems, Flex, Label, Orientation} from "../../main.ts";
+import {Flex, Label} from "../../main.ts";
 import styles from "./styles.module.scss"
+import { Orientation } from "../../../dist/types/Orientation";
+import { AlignmentItems } from "../../../dist/types/AlignmentItems";
 
 interface IRadio{
     label?: string,

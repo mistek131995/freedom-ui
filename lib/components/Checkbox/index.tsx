@@ -1,6 +1,8 @@
 import styles from "./styles.module.scss"
 import {FC, InputHTMLAttributes} from "react";
-import {AlignmentItems, Flex, Label, Orientation} from "../../main.ts";
+import {Flex, Label} from "../../main.ts";
+import { Orientation } from "../../../dist/types/Orientation";
+import { AlignmentItems } from "../../../dist/types/AlignmentItems";
 
 interface ICheckbox{
     label?: string,
