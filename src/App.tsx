@@ -14,6 +14,7 @@ import {
 import {Profile} from "./assets/images/Profile.tsx";
 import {useToast} from "../lib/components/Toast/useToast.tsx";
 import {Textarea} from "../lib/components/Textarea";
+import DatePicker from "../lib/components/Datapicker";
 
 const App = () => {
     const {addToast} = useToast()
@@ -78,6 +79,8 @@ const App = () => {
 
             <Flex justifyContent={JustifyContent.around}>
                 <Textarea orientation={Orientation.horizontal} label="Textarea:" placeholder="Placeholder" rows={3}/>
+
+                <DatePicker label="Choose a date" onDateChange={(date) => console.log(date)} />
             </Flex>
         </Form>
     </>

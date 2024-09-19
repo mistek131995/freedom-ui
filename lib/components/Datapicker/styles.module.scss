@@ -1,0 +1,108 @@
+.datePicker {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    width: 250px;
+  }
+
+  &Label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    font-size: 1rem;
+
+    @media (min-width: 768px) {
+      font-size: 1.1rem;
+    }
+  }
+
+  &Input {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    user-select: none;
+    width: 100%;
+    text-align: center;
+    transition: border-color 0.2s ease-in-out;
+
+    &:hover {
+      border-color: #007bff;
+    }
+
+    @media (min-width: 768px) {
+      width: 100%;
+    }
+  }
+}
+
+.calendar {
+  position: absolute;
+  top: 4rem;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+
+  @media (min-width: 768px) {
+    width: 250px;
+  }
+
+  &Header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.2rem;
+      color: #007bff;
+
+      &:hover {
+        color: #0056b3;
+      }
+    }
+  }
+
+  &Grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.2rem;
+
+    &Header {
+      text-align: center;
+      font-weight: bold;
+    }
+
+    &Day {
+      padding: 0.5rem;
+      text-align: center;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.2s ease-in-out;
+
+      &:hover {
+        background-color: #007bff;
+        color: white;
+      }
+
+      &.selected {
+        background-color: #0056b3;
+        color: white;
+      }
+    }
+
+    &EmptyCell {
+      visibility: hidden;
+    }
+  }
+}
