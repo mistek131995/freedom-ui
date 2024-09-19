@@ -1,0 +1,20 @@
+.textarea-container{
+  .textarea {
+    appearance: none;
+    outline: 0.1rem solid var(--textarea-border-color);
+    border: none;
+    background-color: var(--textarea-bg-color);
+    border-radius: 3px;
+
+    &:focus-visible{
+      outline: 0.1rem solid var(--textarea-border-focus-color);
+      box-shadow: 0 0 1rem var(--textarea-focus-shadow-color)
+    }
+
+    &:disabled{
+      background-color: var(--textarea-disabled-bg-color);
+      cursor: not-allowed;
+    }
+  }
+}
+

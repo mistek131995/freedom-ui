@@ -3,6 +3,7 @@ import {AlignmentItems, Flex, JustifyContent} from "../dist/main";
 import {Checkbox, Form, Input, Radio, Select, ToastBackground, Button, ButtonBackground} from "../lib/main.ts";
 import {Profile} from "./assets/images/Profile.tsx";
 import {useToast} from "../lib/components/Toast/useToast.tsx";
+import {Textarea} from "../lib/components/Textarea";
 
 const App = () => {
     const {addToast} = useToast()
@@ -27,20 +28,20 @@ const App = () => {
 
         <Form handleSubmit={(form) => console.log(form)}>
             <Flex justifyContent={JustifyContent.around}>
-                <Input name="name" placeholder="Placeholder" iconLeft={<Profile/>} label="Label:" disabled={true}/>
+                <Input name="name" placeholder="Placeholder" iconLeft={<Profile/>} label="Label:"/>
                 <Select label="Multi-select:" placeholder="Выберите что-то"
-                    name="milti-select"
-                    options={[
-                        {value: "test1", label: "Test 1"},
-                        {value: "test2", label: "Test 2"},
-                        {value: "test3", label: "Test 3"},
-                        {value: "test4", label: "Test 4"},
-                        {value: "test5", label: "Test 5"},
-                        {value: "test6", label: "Test 6"},
-                        {value: "test7", label: "Test 7"},
-                        {value: "test8", label: "Test 8"},
-                        {value: "test9", label: "Test 9"},
-                    ]} disabled={true}/>
+                        name="milti-select"
+                        options={[
+                            {value: "test1", label: "Test 1"},
+                            {value: "test2", label: "Test 2"},
+                            {value: "test3", label: "Test 3"},
+                            {value: "test4", label: "Test 4"},
+                            {value: "test5", label: "Test 5"},
+                            {value: "test6", label: "Test 6"},
+                            {value: "test7", label: "Test 7"},
+                            {value: "test8", label: "Test 8"},
+                            {value: "test9", label: "Test 9"},
+                        ]} disabled={true}/>
             </Flex>
 
             <br/>
@@ -59,8 +60,15 @@ const App = () => {
                     Отправить
                 </Button>
             </Flex>
+
+            <br/>
+            <br/>
+
+            <Flex justifyContent={JustifyContent.around}>
+                <Textarea label="Textarea:" rows={3} disabled={true}/>
+            </Flex>
         </Form>
     </>
-      }
+}
 
 export default App
