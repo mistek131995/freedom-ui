@@ -4,7 +4,9 @@ import styles from "./styles.module.scss";
 import {MultiSelectLabel} from "./MultiSelectLabel.tsx";
 import {ListOptions} from "./ListOptions.tsx";
 import {SingleSelectLabel} from "./SingleSelectLabel.tsx";
-import {AlignmentItems, Flex, Label, Orientation} from "../../main.ts";
+import {Flex, Label} from "../../main.ts";
+import { AlignmentItems } from "../../../dist/types/AlignmentItems";
+import { Orientation } from "../../../dist/types/Orientation";
 
 export interface ISelect {
     placeholder?: string,
@@ -33,6 +35,13 @@ const alignItemsClassMap = {
     [Orientation.vertical_reverse]: AlignmentItems.start,
     [Orientation.horizontal]: AlignmentItems.center,
     [Orientation.horizontal_reverse]: AlignmentItems.center
+}
+
+const labelClassMap = {
+    [Orientation.vertical]: "",
+    [Orientation.vertical_reverse]: "",
+    [Orientation.horizontal]: "me-1",
+    [Orientation.horizontal_reverse]: "ms-1"
 }
 
 export const Select : FC<SelectProps> = ({className, style, options, isMulti, orientation = Orientation.vertical, placeholder, label, ...props}) => {
@@ -82,7 +91,7 @@ export const Select : FC<SelectProps> = ({className, style, options, isMulti, or
     }}>
         <Flex orientation={orientation} className={className} style={style} alignItems={alignItemsClassMap[orientation]}>
             {label &&
-                <Label>{label}</Label>
+                <Label className={labelClassMap[orientation]}>{label}</Label>
             }
 
             <div className={unionClassName} ref={ref}>

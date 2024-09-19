@@ -1,6 +1,8 @@
 import styles from './styles.module.scss'
 import {FC, InputHTMLAttributes, ReactNode} from "react";
-import {AlignmentItems, Flex, Label, Orientation} from "../../main.ts";
+import {Flex, Label} from "../../main.ts";
+import { Orientation } from '../../../dist/types/Orientation';
+import { AlignmentItems } from '../../../dist/types/AlignmentItems';
 
 interface IInput {
   label?: string;
@@ -18,6 +20,13 @@ const alignItemsClassMap = {
   [Orientation.horizontal_reverse]: AlignmentItems.center
 }
 
+const labelClassMap = {
+  [Orientation.vertical]: "",
+  [Orientation.vertical_reverse]: "",
+  [Orientation.horizontal]: "me-1",
+  [Orientation.horizontal_reverse]: "ms-1"
+}
+
 export const Input : FC<InputProps> = ({ label, orientation = Orientation.vertical, iconLeft, iconRight, className, ...props }) => {
   const unionContainerClassName = [
     styles.inputContainer,
@@ -26,7 +35,7 @@ export const Input : FC<InputProps> = ({ label, orientation = Orientation.vertic
 
   return <Flex className={className} orientation={orientation} alignItems={alignItemsClassMap[orientation]}>
     {label &&
-      <Label htmlFor={props.name}>{label}</Label>
+      <Label className={labelClassMap[orientation]} htmlFor={props.name}>{label}</Label>
     }
     <Flex alignItems={AlignmentItems.center} className={unionContainerClassName}>
       {iconLeft &&

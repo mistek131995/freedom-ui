@@ -39,7 +39,9 @@ const App = () => {
         <Form handleSubmit={(form) => console.log(form)}>
             <Flex justifyContent={JustifyContent.around}>
                 <Input orientation={Orientation.horizontal} name="name" placeholder="Placeholder" iconLeft={<Profile/>} label="Label:"/>
-                <Select orientation={Orientation.horizontal} label="Multi-select:" placeholder="Выберите что-то"
+                <Select orientation={Orientation.horizontal}
+                        label="Multi-select:"
+                        placeholder="Выберите что-то"
                         name="milti-select"
                         options={[
                             {value: "test1", label: "Test 1"},
@@ -58,7 +60,7 @@ const App = () => {
             <br/>
 
             <Flex justifyContent={JustifyContent.around}>
-                <Checkbox label="Checkbox:" name="checkbox" disabled={true}/>
+                <Checkbox orientation={Orientation.horizontal} label="Checkbox:" name="checkbox" disabled={true}/>
 
                 <Flex justifyContent={JustifyContent.around} style={{width: "300px"}}>
                     <Radio label="Radio 1" name="radio" value="test1" defaultChecked={true}/>
@@ -75,7 +77,7 @@ const App = () => {
             <br/>
 
             <Flex justifyContent={JustifyContent.around}>
-                <Textarea label="Textarea:" placeholder="Placeholder" rows={3}/>
+                <Textarea orientation={Orientation.horizontal} label="Textarea:" placeholder="Placeholder" rows={3}/>
             </Flex>
         </Form>
     </>

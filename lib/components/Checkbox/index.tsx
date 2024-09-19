@@ -7,6 +7,13 @@ interface ICheckbox{
     orientation?: Orientation
 }
 
+const labelClassMap = {
+    [Orientation.vertical]: "",
+    [Orientation.vertical_reverse]: "",
+    [Orientation.horizontal]: "me-1",
+    [Orientation.horizontal_reverse]: "ms-1"
+}
+
 type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & ICheckbox
 
 export const Checkbox : FC<CheckboxProps> = ({label, orientation = Orientation.horizontal, className, style, ...props}) => {
@@ -17,7 +24,7 @@ export const Checkbox : FC<CheckboxProps> = ({label, orientation = Orientation.h
 
     return <Flex orientation={orientation} alignItems={AlignmentItems.center} className={unionClassName} style={style}>
         {label &&
-            <Label htmlFor={props.name} className={styles.checkboxLabel}>{label}</Label>
+            <Label htmlFor={props.name} className={labelClassMap[orientation]}>{label}</Label>
         }
 
         <input id={props.name} {...props} className={styles.checkbox} type="checkbox"/>

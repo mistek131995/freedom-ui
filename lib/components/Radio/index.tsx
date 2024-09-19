@@ -7,6 +7,13 @@ interface IRadio{
     orientation?: Orientation
 }
 
+const labelClassMap = {
+    [Orientation.vertical]: "",
+    [Orientation.vertical_reverse]: "",
+    [Orientation.horizontal]: "me-1",
+    [Orientation.horizontal_reverse]: "ms-1"
+}
+
 type RadioProps = InputHTMLAttributes<HTMLInputElement> & IRadio
 
 export const Radio : FC<RadioProps> = ({label, orientation = Orientation.horizontal, className, style, ...props}) => {
@@ -19,7 +26,7 @@ export const Radio : FC<RadioProps> = ({label, orientation = Orientation.horizon
 
     return <Flex orientation={orientation} alignItems={AlignmentItems.center} className={className} style={style}>
         {label &&
-            <Label htmlFor={props.value?.toString()}>{label}</Label>
+            <Label className={labelClassMap[orientation]} htmlFor={props.value?.toString()}>{label}</Label>
         }
         <div className={styles.customRadio}>
             <input ref={radioRef} id={props.value?.toString()} {...props} type="radio"/>
