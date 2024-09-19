@@ -5,6 +5,7 @@
     border: none;
     background-color: var(--textarea-bg-color);
     border-radius: 3px;
+    padding: 0.74rem;
 
     &:focus-visible{
       outline: 0.1rem solid var(--textarea-border-focus-color);
@@ -14,6 +15,12 @@
     &:disabled{
       background-color: var(--textarea-disabled-bg-color);
       cursor: not-allowed;
+    }
+
+    &::placeholder{
+      color: var(--input-text-color);
+      font-size: 16px;
+      font-family: var(--font-regular), serif;
     }
   }
 }

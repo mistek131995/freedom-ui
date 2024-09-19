@@ -41,7 +41,7 @@ const App = () => {
                             {value: "test7", label: "Test 7"},
                             {value: "test8", label: "Test 8"},
                             {value: "test9", label: "Test 9"},
-                        ]} disabled={true}/>
+                        ]}/>
             </Flex>
 
             <br/>
@@ -65,7 +65,7 @@ const App = () => {
             <br/>
 
             <Flex justifyContent={JustifyContent.around}>
-                <Textarea label="Textarea:" rows={3} disabled={true}/>
+                <Textarea label="Textarea:" placeholder="Placeholder" rows={3}/>
             </Flex>
         </Form>
     </>
