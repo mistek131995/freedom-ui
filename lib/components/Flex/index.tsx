@@ -11,12 +11,18 @@ interface IFlex{
 
 type FlexProps = React.HTMLAttributes<HTMLDivElement> & IFlex
 
-export const Flex : FC<FlexProps> = ({orientation, justifyContent, alignItems, className, children, ...props}) => {
+export const Flex : FC<FlexProps> = ({
+                                         orientation = Orientation.horizontal,
+                                         justifyContent = JustifyContent.start,
+                                         alignItems = AlignmentItems.stretch,
+                                         className,
+                                         children,
+                                         ...props}) => {
     const unionClassName = [
         "flex",
-        orientation || Orientation.horizontal,
-        justifyContent || JustifyContent.start,
-        alignItems || AlignmentItems.stretch,
+        orientation,
+        justifyContent,
+        alignItems,
         className
     ].filter(x => x).join(" ")
 

@@ -9,9 +9,8 @@ interface IRadio{
 
 type RadioProps = InputHTMLAttributes<HTMLInputElement> & IRadio
 
-export const Radio : FC<RadioProps> = ({label, orientation, className, style, ...props}) => {
+export const Radio : FC<RadioProps> = ({label, orientation = Orientation.horizontal, className, style, ...props}) => {
     const radioRef = useRef<HTMLInputElement>(null);
-    orientation = orientation || Orientation.horizontal;
     const unionCheckmarkClassName = [
         styles.radioCheckmark,
         props.disabled ? styles.disabled : ""

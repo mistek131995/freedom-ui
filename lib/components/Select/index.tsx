@@ -4,13 +4,14 @@ import styles from "./styles.module.scss";
 import {MultiSelectLabel} from "./MultiSelectLabel.tsx";
 import {ListOptions} from "./ListOptions.tsx";
 import {SingleSelectLabel} from "./SingleSelectLabel.tsx";
-import {Label} from "../../main.ts";
+import {Flex, Label, Orientation} from "../../main.ts";
 
 export interface ISelect {
     placeholder?: string,
     options: Option[],
     isMulti?: boolean,
     label?: string,
+    orientation?: Orientation
 }
 
 export type SelectProps = InputHTMLAttributes<HTMLInputElement> & ISelect
@@ -27,7 +28,7 @@ interface ISelectContext {
 
 export const SelectContext = createContext<ISelectContext | null>(null)
 
-export const Select : FC<SelectProps> = ({className, style, options, isMulti, placeholder, label, ...props}) => {
+export const Select : FC<SelectProps> = ({className, style, options, isMulti, orientation = Orientation.horizontal, placeholder, label, ...props}) => {
     const [selectedOptions, setSelectedOptions] = useState<Option[]>([]);
     const [searchValue, setSearchValue] = useState<string>("");
     const [isOptionsVisible, setOptionsVisible] = useState<boolean>(false);
@@ -72,7 +73,7 @@ export const Select : FC<SelectProps> = ({className, style, options, isMulti, pl
         isOptionVisible: isOptionsVisible,
         setIsOptionVisible: setOptionsVisible
     }}>
-        <div className={className} style={style}>
+        <Flex orientation={orientation} className={className} style={style}>
             {label &&
                 <Label>{label}</Label>
             }
@@ -88,7 +89,6 @@ export const Select : FC<SelectProps> = ({className, style, options, isMulti, pl
                 <ListOptions isMulti={isMulti}
                              options={options}/>
             </div>
-        </div>
-
+        </Flex>
     </SelectContext.Provider>
 }

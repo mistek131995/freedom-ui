@@ -11,9 +11,8 @@ export interface ITextarea {
 
 export type TextareaProps = ITextarea & TextareaHTMLAttributes<HTMLTextAreaElement>
 
-export const Textarea : FC<TextareaProps> = ({label, orientation, className, style, ...props}) => {
+export const Textarea : FC<TextareaProps> = ({label, orientation = Orientation.vertical, className, style, ...props}) => {
     const unionClassName = [styles.textareaContainer, className].filter(x => x).join(" ")
-    orientation = orientation || Orientation.vertical;
 
     return <Flex orientation={orientation} className={unionClassName} style={style}>
         <Label>{label}</Label>

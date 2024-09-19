@@ -16,12 +16,10 @@ const backgroundClassMap = {
   [ButtonBackground.danger]: styles.danger,
 }
 
-export const Button : FC<ButtonProps> = ({bg, className, ...props}) => {
-  const unionClassName = [className || "", backgroundClassMap[bg || ButtonBackground.primary], styles.button]
+export const Button : FC<ButtonProps> = ({bg = ButtonBackground.primary, className, ...props}) => {
+  const unionClassName = [className || "", backgroundClassMap[bg], styles.button]
       .filter(x => x)
       .join(" ")
-
-  console.log(backgroundClassMap[bg || ButtonBackground.primary])
 
   return <button className={unionClassName} {...props} />
 }

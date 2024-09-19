@@ -1,22 +1,23 @@
 import styles from './styles.module.scss'
 import {FC, InputHTMLAttributes, ReactNode} from "react";
-import {AlignmentItems, Flex, Label} from "../../main.ts";
+import {AlignmentItems, Flex, Label, Orientation} from "../../main.ts";
 
 interface IInput {
   label?: string;
   iconLeft?: ReactNode,
   iconRight?: ReactNode,
+  orientation?: Orientation
 }
 
 type InputProps = InputHTMLAttributes<HTMLInputElement> & IInput
 
-export const Input : FC<InputProps> = ({ label, iconLeft, iconRight, className, ...props }) => {
+export const Input : FC<InputProps> = ({ label, orientation = Orientation.vertical, iconLeft, iconRight, className, ...props }) => {
   const unionContainerClassName = [
     styles.inputContainer,
     props.disabled ? styles.disabled : ""
   ].filter(x => x).join(" ")
 
-  return <div className={className}>
+  return <Flex className={className} orientation={orientation}>
     {label &&
       <Label htmlFor={props.name}>{label}</Label>
     }
@@ -29,6 +30,6 @@ export const Input : FC<InputProps> = ({ label, iconLeft, iconRight, className, 
           <span className={styles.inputIconRight}>{iconRight}</span>
       }
     </Flex>
-  </div>
+  </Flex>
 
 }
