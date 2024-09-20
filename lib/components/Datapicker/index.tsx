@@ -4,8 +4,10 @@ import {Calendar} from "./Calendar.tsx";
 import {Label} from "../Label";
 
 interface DatePickerProps {
-    label?: string;
-    onDateChange?: (date: Date) => void;
+    label?: string,
+    defaultValue: Date,
+    placeholder?: string,
+    onDateChange?: (date: Date) => void,
 }
 
 interface IDatePickerContext {
@@ -19,9 +21,9 @@ interface IDatePickerContext {
 
 export const DatePikerContext = React.createContext<IDatePickerContext | null>(null)
 
-export const DatePicker: React.FC<DatePickerProps> = ({ label = "Select Date", onDateChange }) => {
+export const DatePicker: React.FC<DatePickerProps> = ({ label, placeholder = "Выберите дату", defaultValue, onDateChange }) => {
     const [currentDate, setCurrentDate] = useState<Date>(new Date());
-    const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+    const [selectedDate, setSelectedDate] = useState<Date | null>(defaultValue);
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
     const toggleCalendar = () => {
@@ -37,9 +39,11 @@ export const DatePicker: React.FC<DatePickerProps> = ({ label = "Select Date", o
         onDateChange: onDateChange
     }}>
         <div className={styles.datePicker}>
-            {label && <Label className={styles.datePickerLabel}>{label}</Label>}
+            {label &&
+                <Label className={styles.datePickerLabel}>{label}</Label>
+            }
             <div className={styles.datePickerInput} onClick={toggleCalendar}>
-                {selectedDate ? selectedDate.toLocaleDateString() : 'Select Date'}
+                {selectedDate ? selectedDate.toLocaleDateString() : placeholder}
             </div>
             {isOpen && <Calendar/>}
         </div>
