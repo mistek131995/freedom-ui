@@ -5,7 +5,7 @@ import {Label} from "../Label";
 
 interface DatePickerProps {
     label?: string,
-    defaultValue: Date,
+    defaultValue?: Date,
     placeholder?: string,
     onDateChange?: (date: Date) => void,
 }
@@ -21,7 +21,7 @@ interface IDatePickerContext {
 
 export const DatePikerContext = React.createContext<IDatePickerContext | null>(null)
 
-export const DatePicker: React.FC<DatePickerProps> = ({ label, placeholder = "Выберите дату", defaultValue, onDateChange }) => {
+export const DatePicker: React.FC<DatePickerProps> = ({ label, placeholder = "Выберите дату", defaultValue = null, onDateChange }) => {
     const [currentDate, setCurrentDate] = useState<Date>(new Date());
     const [selectedDate, setSelectedDate] = useState<Date | null>(defaultValue);
     const [isOpen, setIsOpen] = useState<boolean>(false);
