@@ -38,11 +38,11 @@ export const Calendar = () => {
 
     return <div className={styles.calendar}>
             <div className={styles.calendarHeader}>
-                <button onClick={handlePrevMonth}>‹</button>
+                <button type="button" onClick={handlePrevMonth}>‹</button>
                     <span>
                         {context!.currentDate.toLocaleString('default', { month: 'long' })} {context!.currentDate.getFullYear()}
                     </span>
-                <button onClick={handleNextMonth}>›</button>
+                <button type="button" onClick={handleNextMonth}>›</button>
             </div>
             <div className={styles.calendarGrid}>
                 {['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'].map((day) => <div key={day}
