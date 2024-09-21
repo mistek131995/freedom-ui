@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import styles from './styles.module.scss';
 import {Calendar} from "./Calendar.tsx";
 import {Label} from "../Label";
@@ -26,6 +26,23 @@ export const DatePicker: React.FC<DatePickerProps> = ({ label, placeholder = "В
     const [selectedDate, setSelectedDate] = useState<Date | null>(defaultValue);
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
+    const datepickerRef = useRef<HTMLDivElement>(null);
+    const handleClickOutside = useCallback((event: MouseEvent) => {
+
+        if(datepickerRef.current && !datepickerRef.current.contains(event.target as Node)) {
+            setIsOpen(false);
+        }
+    }, [])
+
+    useEffect(() => {
+        document.addEventListener("mousedown", handleClickOutside)
+
+        return () =>
+        {
+            document.removeEventListener("mousedown", handleClickOutside)
+        }
+    }, [handleClickOutside]);
+
     const toggleCalendar = () => {
         setIsOpen(!isOpen);
     };
@@ -42,7 +59,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({ label, placeholder = "В
             {label &&
                 <Label className={styles.datePickerLabel}>{label}</Label>
             }
-            <div className={styles.datePickerInput} onClick={toggleCalendar}>
+            <div ref={datepickerRef} className={styles.datePickerInput} onClick={toggleCalendar}>
                 {selectedDate ? selectedDate.toLocaleDateString() : placeholder}
             </div>
             {isOpen && <Calendar/>}

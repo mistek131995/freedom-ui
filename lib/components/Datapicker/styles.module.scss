@@ -91,7 +91,7 @@
       transition: background-color 0.2s ease-in-out;
 
       &:hover {
-        background-color: #007bff;
+        background-color: var(--datapicker-day-hover-color);
         color: white;
       }
 
