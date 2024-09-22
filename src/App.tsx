@@ -84,7 +84,7 @@ const App = () => {
                 <Textarea orientation={Orientation.horizontal} label="Textarea:" placeholder="Placeholder"
                           rows={3}/>
 
-                <DatePicker label="Календарь:" onDateChange={(date) => console.log(date)} name="datapicker"/>
+                <DatePicker orientation={Orientation.vertical} label="Календарь:" onDateChange={(date) => console.log(date)} name="datapicker"/>
 
                 {/*<DateRangePicker onRangeSelect={(startDate, endDate) => console.log(`${startDate} ${endDate}`)} />*/}
             </Flex>
