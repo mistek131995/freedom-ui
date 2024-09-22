@@ -3,7 +3,7 @@
   display: inline-block;
   width: 100%;
   font-family: var(--font-regular), serif;
-  color: var(--datapicker-first-font-color);;
+  color: var(--datepicker-first-font-color);;
 
   @media (min-width: 768px) {
     width: 250px;
@@ -23,18 +23,18 @@
   &Input {
     padding: 0.74rem;
     font-size: 1rem;
-    outline: 0.1rem solid var(--datapicker-border-color);
+    outline: 0.1rem solid var(--datepicker-border-color);
     border-radius: 4px;
     cursor: pointer;
     user-select: none;
     width: 100%;
     text-align: center;
     transition: border-color 0.2s ease-in-out;
-    background-color: var(--datapicker-bg-color);
+    background-color: var(--datepicker-bg-color);
 
     &.selected{
-      outline: 0.1rem solid var(--datapicker-border-focus-color);
-      box-shadow: 0 0 1rem var(--datapicker-focus-shadow-color);
+      outline: 0.1rem solid var(--datepicker-border-focus-color);
+      box-shadow: 0 0 1rem var(--datepicker-focus-shadow-color);
     }
 
     @media (min-width: 768px) {
@@ -48,8 +48,8 @@
   top: 4.75rem;
   left: 0;
   width: 100%;
-  background-color: var(--datapicker-bg-color);
-  border: 1px solid var(--datapicker-border-color);
+  background-color: var(--datepicker-bg-color);
+  border: 1px solid var(--datepicker-border-color);
   border-radius: 4px;
   padding: 0.74rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -91,13 +91,13 @@
       transition: background-color 0.2s ease-in-out;
 
       &:hover {
-        background-color: var(--datapicker-day-hover-color);
-        color: var(--datapicker-second-font-color);
+        background-color: var(--datepicker-day-hover-color);
+        color: var(--datepicker-second-font-color);
       }
 
       &.selected {
-        background-color: var(--datapicker-selected-day-color);
-        color: var(--datapicker-second-font-color);
+        background-color: var(--datepicker-selected-day-color);
+        color: var(--datepicker-second-font-color);
       }
     }
 
