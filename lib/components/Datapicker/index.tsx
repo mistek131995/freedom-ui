@@ -1,14 +1,15 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, {InputHTMLAttributes, useCallback, useEffect, useRef, useState} from 'react';
 import styles from './styles.module.scss';
 import {Calendar} from "./Calendar.tsx";
 import {Label} from "../Label";
 
-interface DatePickerProps {
+export interface IDatePicker {
     label?: string,
-    defaultValue?: Date,
     placeholder?: string,
     onDateChange?: (date: Date) => void,
 }
+
+export type DatePickerProps = InputHTMLAttributes<HTMLInputElement> & IDatePicker;
 
 interface IDatePickerContext {
     currentDate: Date,
@@ -16,14 +17,21 @@ interface IDatePickerContext {
     selectedDate: Date | null,
     setSelectedDate: (date: Date) => void,
     setIsOpen: (isOpen: boolean) => void,
-    onDateChange?: (date: Date) => void,
+    onDateChange?: (date: Date) => void
 }
 
 export const DatePikerContext = React.createContext<IDatePickerContext | null>(null)
 
-export const DatePicker: React.FC<DatePickerProps> = ({ label, placeholder = "Выберите дату", defaultValue = null, onDateChange }) => {
+export const DatePicker: React.FC<DatePickerProps> = ({
+                                                          label,
+                                                          placeholder = "Выберите дату",
+                                                          defaultValue,
+                                                          className,
+                                                          onDateChange,
+                                                          style,
+                                                          ...props }) => {
     const [currentDate, setCurrentDate] = useState<Date>(new Date());
-    const [selectedDate, setSelectedDate] = useState<Date | null>(defaultValue);
+    const [selectedDate, setSelectedDate] = useState<Date | null>(defaultValue == null ? null : new Date(defaultValue as string));
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
     const datepickerRef = useRef<HTMLDivElement>(null);
@@ -55,13 +63,14 @@ export const DatePicker: React.FC<DatePickerProps> = ({ label, placeholder = "В
         setIsOpen: setIsOpen,
         onDateChange: onDateChange
     }}>
-        <div className={styles.datePicker}>
+        <div ref={datepickerRef} className={[styles.datePicker, className].filter(x => x).join(" ")} style={style}>
             {label &&
                 <Label className={styles.datePickerLabel}>{label}</Label>
             }
-            <div ref={datepickerRef} className={styles.datePickerInput} onClick={toggleCalendar}>
+            <div className={[styles.datePickerInput, (isOpen ? styles.selected : "")].filter(x => x).join(" ")} onClick={toggleCalendar}>
                 {selectedDate ? selectedDate.toLocaleDateString() : placeholder}
             </div>
+            <input type="hidden" {...props} value={(selectedDate || defaultValue || "")?.toString()}/>
             {isOpen && <Calendar/>}
         </div>
     </DatePikerContext.Provider>

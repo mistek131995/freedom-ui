@@ -2,6 +2,8 @@
   position: relative;
   display: inline-block;
   width: 100%;
+  font-family: var(--font-regular), serif;
+  color: var(--datapicker-first-font-color);;
 
   @media (min-width: 768px) {
     width: 250px;
@@ -28,9 +30,11 @@
     width: 100%;
     text-align: center;
     transition: border-color 0.2s ease-in-out;
+    background-color: var(--datapicker-bg-color);
 
-    &:hover {
-      border-color: #007bff;
+    &.selected{
+      outline: 0.1rem solid var(--datapicker-border-focus-color);
+      box-shadow: 0 0 1rem var(--datapicker-focus-shadow-color);
     }
 
     @media (min-width: 768px) {
@@ -41,11 +45,11 @@
 
 .calendar {
   position: absolute;
-  top: 4.5rem;
+  top: 4.75rem;
   left: 0;
   width: 100%;
-  background-color: white;
-  border: 1px solid #ccc;
+  background-color: var(--datapicker-bg-color);
+  border: 1px solid var(--datapicker-border-color);
   border-radius: 4px;
   padding: 0.74rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -58,6 +62,7 @@
   &Header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 0.5rem;
 
     button {
@@ -65,11 +70,6 @@
       border: none;
       cursor: pointer;
       font-size: 1.2rem;
-      color: #007bff;
-
-      &:hover {
-        color: #0056b3;
-      }
     }
   }
 
@@ -84,7 +84,7 @@
     }
 
     &Day {
-      padding: 0.5rem;
+      padding: 0.25rem;
       text-align: center;
       cursor: pointer;
       border-radius: 4px;
@@ -92,12 +92,12 @@
 
       &:hover {
         background-color: var(--datapicker-day-hover-color);
-        color: white;
+        color: var(--datapicker-second-font-color);
       }
 
       &.selected {
-        background-color: #0056b3;
-        color: white;
+        background-color: var(--datapicker-selected-day-color);
+        color: var(--datapicker-second-font-color);
       }
     }
 

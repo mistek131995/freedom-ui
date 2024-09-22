@@ -15,7 +15,7 @@ import {Profile} from "./assets/images/Profile.tsx";
 import {useToast} from "../lib/components/Toast/useToast.tsx";
 import {Textarea} from "../lib/components/Textarea";
 import {DatePicker} from "../lib/components/Datapicker";
-import {DateRangePicker} from "../lib/components/DateRangePicker";
+// import {DateRangePicker} from "../lib/components/DateRangePicker";
 
 const App = () => {
     const {addToast} = useToast()
@@ -40,7 +40,8 @@ const App = () => {
 
         <Form handleSubmit={(form) => console.log(form)}>
             <Flex justifyContent={JustifyContent.around}>
-                <Input orientation={Orientation.horizontal} name="name" placeholder="Placeholder" iconLeft={<Profile/>} label="Label:"/>
+                <Input orientation={Orientation.horizontal} name="name" placeholder="Placeholder" iconLeft={<Profile/>}
+                       label="Label:"/>
                 <Select orientation={Orientation.horizontal}
                         label="Multi-select:"
                         placeholder="Выберите что-то"
@@ -76,12 +77,14 @@ const App = () => {
             </Flex>
 
             <br/>
+
             <br/>
 
             <Flex justifyContent={JustifyContent.around}>
-                <Textarea orientation={Orientation.horizontal} label="Textarea:" placeholder="Placeholder" rows={3}/>
+                <Textarea orientation={Orientation.horizontal} label="Textarea:" placeholder="Placeholder"
+                          rows={3}/>
 
-                <DatePicker label="Каледарь:" onDateChange={(date) => console.log(date)} />
+                <DatePicker label="Календарь:" onDateChange={(date) => console.log(date)} name="datapicker"/>
 
                 {/*<DateRangePicker onRangeSelect={(startDate, endDate) => console.log(`${startDate} ${endDate}`)} />*/}
             </Flex>
