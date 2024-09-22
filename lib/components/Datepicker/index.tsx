@@ -2,11 +2,15 @@ import React, {InputHTMLAttributes, useCallback, useEffect, useRef, useState} fr
 import styles from './styles.module.scss';
 import {Calendar} from "./Calendar.tsx";
 import {Label} from "../Label";
+import {Flex} from "../Flex";
+import {Orientation} from "../../../dist/types/Orientation";
+import {AlignmentItems} from "../../../dist/types/AlignmentItems";
 
 export interface IDatePicker {
     label?: string,
     placeholder?: string,
     onDateChange?: (date: Date) => void,
+    orientation?: Orientation
 }
 
 export type DatePickerProps = InputHTMLAttributes<HTMLInputElement> & IDatePicker;
@@ -20,6 +24,20 @@ interface IDatePickerContext {
     onDateChange?: (date: Date) => void
 }
 
+const labelClassMap = {
+    [Orientation.vertical]: "",
+    [Orientation.vertical_reverse]: "",
+    [Orientation.horizontal]: "me-1",
+    [Orientation.horizontal_reverse]: "ms-1"
+}
+
+const alignItemsClassMap = {
+    [Orientation.vertical]: AlignmentItems.start,
+    [Orientation.vertical_reverse]: AlignmentItems.start,
+    [Orientation.horizontal]: AlignmentItems.center,
+    [Orientation.horizontal_reverse]: AlignmentItems.center
+}
+
 export const DatePikerContext = React.createContext<IDatePickerContext | null>(null)
 
 export const DatePicker: React.FC<DatePickerProps> = ({
@@ -28,6 +46,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
                                                           defaultValue,
                                                           className,
                                                           onDateChange,
+                                                          orientation = Orientation.vertical,
                                                           style,
                                                           ...props }) => {
     const [currentDate, setCurrentDate] = useState<Date>(new Date());
@@ -43,9 +62,14 @@ export const DatePicker: React.FC<DatePickerProps> = ({
     }, [])
 
     const unionClassName = [
+        styles.datePicker,
+        className
+    ].filter(x => x).join(" ")
+    const unionPlaceholderClassName = [
         styles.datePickerInput,
         (isOpen ? styles.selected : "")
     ].filter(x => x).join(" ")
+    const unionLabelClassName = [styles.datePickerLabel, labelClassMap[orientation]].filter(x => x).join(" ")
 
     useEffect(() => {
         document.addEventListener("mousedown", handleClickOutside)
@@ -64,16 +88,20 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         setIsOpen: setIsOpen,
         onDateChange: onDateChange
     }}>
-        <div ref={datepickerRef} className={[styles.datePicker, className].filter(x => x).join(" ")} style={style}>
-            {label &&
-                <Label className={styles.datePickerLabel}>{label}</Label>
-            }
-            <div className={unionClassName} onClick={() => setIsOpen(!isOpen)}>
-                {selectedDate ? selectedDate.toLocaleDateString() : placeholder}
-            </div>
-            <input type="hidden" {...props} value={(selectedDate || defaultValue || "")?.toString()}/>
-            {isOpen && <Calendar/>}
+        <div>
+            <Flex alignItems={alignItemsClassMap[orientation]} orientation={orientation} ref={datepickerRef} className={unionClassName} style={style}>
+                {label &&
+                    <Label className={unionLabelClassName}>{label}</Label>
+                }
+                <div className={unionPlaceholderClassName} onClick={() => setIsOpen(!isOpen)}>
+                    {selectedDate ? selectedDate.toLocaleDateString() : placeholder}
+
+                    {isOpen && <Calendar/>}
+                </div>
+                <input type="hidden" {...props} value={(selectedDate || defaultValue || "")?.toString()}/>
+            </Flex>
         </div>
+
     </DatePikerContext.Provider>
 
 };
