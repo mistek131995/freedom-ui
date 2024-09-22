@@ -42,6 +42,11 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         }
     }, [])
 
+    const unionClassName = [
+        styles.datePickerInput,
+        (isOpen ? styles.selected : "")
+    ].filter(x => x).join(" ")
+
     useEffect(() => {
         document.addEventListener("mousedown", handleClickOutside)
 
@@ -50,10 +55,6 @@ export const DatePicker: React.FC<DatePickerProps> = ({
             document.removeEventListener("mousedown", handleClickOutside)
         }
     }, [handleClickOutside]);
-
-    const toggleCalendar = () => {
-        setIsOpen(!isOpen);
-    };
 
     return <DatePikerContext.Provider value={{
         currentDate: currentDate,
@@ -67,7 +68,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
             {label &&
                 <Label className={styles.datePickerLabel}>{label}</Label>
             }
-            <div className={[styles.datePickerInput, (isOpen ? styles.selected : "")].filter(x => x).join(" ")} onClick={toggleCalendar}>
+            <div className={unionClassName} onClick={() => setIsOpen(!isOpen)}>
                 {selectedDate ? selectedDate.toLocaleDateString() : placeholder}
             </div>
             <input type="hidden" {...props} value={(selectedDate || defaultValue || "")?.toString()}/>
