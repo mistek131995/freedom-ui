@@ -1,4 +1,4 @@
-import {useContext} from "react";
+import React, { useContext } from "react";
 import {DatePikerContext} from "./index.tsx";
 import styles from './styles.module.scss';
 
@@ -15,11 +15,15 @@ export const Calendar = () => {
         return day === 0 ? 6 : day - 1; // Сдвиг на понедельник
     };
 
-    const handlePrevMonth = () => {
+    const handlePrevMonth = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        event.stopPropagation();
+
         context?.setCurrentDate(new Date(context?.currentDate.getFullYear(), context?.currentDate.getMonth() - 1, 1));
     };
 
-    const handleNextMonth = () => {
+    const handleNextMonth = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        event.stopPropagation();
+
         context?.setCurrentDate(new Date(context?.currentDate.getFullYear(), context?.currentDate.getMonth() + 1, 1));
     };
 

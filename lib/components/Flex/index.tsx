@@ -1,5 +1,5 @@
 import {Orientation} from "../../types/Orientation.ts";
-import React, {FC, RefObject} from "react";
+import React, {RefObject, forwardRef} from "react";
 import {JustifyContent} from "../../types/JustifyContent.ts";
 import {AlignmentItems} from "../../types/AlignmentItems.ts";
 
@@ -12,23 +12,24 @@ interface IFlex{
 
 type FlexProps = React.HTMLAttributes<HTMLDivElement> & IFlex
 
-export const Flex : FC<FlexProps> = ({
-                                         orientation = Orientation.horizontal,
-                                         justifyContent = JustifyContent.start,
-                                         alignItems = AlignmentItems.stretch,
-                                         className,
-                                         children,
-                                         ref,
-                                         ...props}) => {
+// Используем forwardRef для передачи ref
+export const Flex = forwardRef<HTMLDivElement, FlexProps>(({
+                                                               orientation = Orientation.horizontal,
+                                                               justifyContent = JustifyContent.start,
+                                                               alignItems = AlignmentItems.stretch,
+                                                               className,
+                                                               children,
+                                                               ...props
+                                                           }, ref) => {
     const unionClassName = [
         "flex",
         orientation,
         justifyContent,
         alignItems,
         className
-    ].filter(x => x).join(" ")
+    ].filter(x => x).join(" ");
 
     return <div ref={ref} className={unionClassName} {...props}>
         {children}
-    </div>
-}
+    </div>;
+});
