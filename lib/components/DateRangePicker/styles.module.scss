@@ -9,7 +9,6 @@
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 15px;
-  margin: 0 auto;
 
   .toggleButton {
     width: 100%;
@@ -28,6 +27,9 @@
 
   .calendar {
     margin-top: 15px;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ddd;
   }
 
   .header {
@@ -67,7 +69,6 @@
   .days {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    width: 100%;
     padding: 10px;
     text-align: center;
     gap: 5px;

@@ -78,9 +78,9 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({ onRangeSelect 
                 <div className={styles.calendar}>
                     <div className={styles.header}>
                         <button onClick={handlePrevMonth} className={styles.control}>{"<"}</button>
-                        <span className={styles.monthYear}>
-              {months[currentDate.getMonth()]} {currentDate.getFullYear()}
-            </span>
+                            <span className={styles.monthYear}>
+                                {months[currentDate.getMonth()]} {currentDate.getFullYear()}
+                            </span>
                         <button onClick={handleNextMonth} className={styles.control}>{">"}</button>
                     </div>
                     <div className={styles.weekDays}>
@@ -99,20 +99,13 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({ onRangeSelect 
                                 date.getTime() > startDate.getTime() && date.getTime() < endDate.getTime();
 
                             return (
-                                <span
-                                    key={index}
-                                    className={`${styles.day} ${isSelected ? styles.selectedDay : ""} ${isInRange ? styles.inRange : ""}`}
-                                    onClick={() => handleDayClick(day)}
-                                >
-                  {day}
-                </span>
+                                <span key={index}
+                                      className={`${styles.day} ${isSelected ? styles.selectedDay : ""} ${isInRange ? styles.inRange : ""}`}
+                                      onClick={() => handleDayClick(day)}>
+                                        {day}
+                                </span>
                             );
                         })}
-                    </div>
-                    <div className={styles.footer}>
-                        <button onClick={() => setIsSelectingStartDate(true)} className={styles.selectButton}>
-                            {isSelectingStartDate ? "Выбор начальной даты" : "Выбор конечной даты"}
-                        </button>
                     </div>
                 </div>
             )}

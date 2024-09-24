@@ -15,6 +15,7 @@ import {Profile} from "./assets/images/Profile.tsx";
 import {useToast} from "../lib/components/Toast/useToast.tsx";
 import {Textarea} from "../lib/components/Textarea";
 import {DatePicker} from "../lib/components/Datepicker";
+import {DateRangePicker} from "../lib/components/DateRangePicker";
 // import {DateRangePicker} from "../lib/components/DateRangePicker";
 
 const App = () => {
@@ -86,7 +87,7 @@ const App = () => {
 
                 <DatePicker label="Календарь:" onDateChange={(date) => console.log(date)} name="datapicker"/>
 
-                {/*<DateRangePicker onRangeSelect={(startDate, endDate) => console.log(`${startDate} ${endDate}`)} />*/}
+                <DateRangePicker onRangeSelect={(startDate, endDate) => console.log(`${startDate} ${endDate}`)} />
             </Flex>
         </Form>
     </>
