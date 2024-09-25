@@ -17,7 +17,7 @@
     border-radius: 3px;
     cursor: pointer;
     user-select: none;
-    width: 100%;
+    min-width: 15rem;
     text-align: center;
     transition: border-color 0.2s ease-in-out;
     background-color: var(--datepicker-bg-color);
