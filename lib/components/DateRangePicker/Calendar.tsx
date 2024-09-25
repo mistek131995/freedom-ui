@@ -1,7 +1,6 @@
 import styles from "./styles.module.scss";
 import React, {useContext, useState} from "react";
 import {DateRangePickerContext} from "./index.tsx";
-import {months} from "../../entity/months.ts";
 
 const getDaysInMonth = (date: Date) => {
     return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
@@ -30,7 +29,7 @@ export const Calendar = () => {
             } else {
                 context!.setEndDate(selectedDate);
                 setIsSelectingStartDate(true);
-                context!.setIsCalendarOpen(false);
+                //context!.setIsCalendarOpen(false);
                 context!.onRangeSelect(context!.startDate, context!.endDate);
             }
         }
@@ -49,11 +48,11 @@ export const Calendar = () => {
 
     return <div className={styles.calendar}>
         <div className={styles.header}>
-            <button onClick={handlePrevMonth} className={styles.control}>{"<"}</button>
+            <button onClick={handlePrevMonth} className={styles.control}>‹</button>
             <span className={styles.monthYear}>
-                {months[context!.currentDate.getMonth()]} {context!.currentDate.getFullYear()}
+                {context!.currentDate.toLocaleString('default', { month: 'long' })} {context!.currentDate.getFullYear()}
             </span>
-            <button onClick={handleNextMonth} className={styles.control}>{">"}</button>
+            <button onClick={handleNextMonth} className={styles.control}>›</button>
         </div>
         <div className={styles.weekDays}>
             {["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"].map((day) => (

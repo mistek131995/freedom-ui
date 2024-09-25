@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import styles from "./styles.module.scss";
 import {Calendar} from "./Calendar.tsx";
-import {months} from "../../entity/months.ts";
 import {Label} from "../Label";
 import {Flex} from "../Flex";
 import {Orientation} from "../../types/Orientation.ts";
@@ -32,7 +31,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({ label, onRange
     const [isCalendarOpen, setIsCalendarOpen] = useState(false); // Состояние для свернутого/развернутого календаря
 
     const formatDate = (date: Date | null) => {
-        return date ? `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}` : "";
+        return date ? `${date.getDate()} ${date.toLocaleString('default', { month: 'short' })} ${date.getFullYear()}` : "";
     };
 
     return <DateRangePickerContext.Provider value={{
