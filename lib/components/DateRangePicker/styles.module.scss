@@ -1,5 +1,6 @@
 .dateRangePicker {
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
   width: 100%;
@@ -26,6 +27,7 @@
   }
 
   .calendar {
+    top: 3.5rem;
     margin-top: 15px;
     position: absolute;
     background-color: white;
