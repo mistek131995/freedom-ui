@@ -10,11 +10,15 @@ export const Calendar = () => {
     const context = useContext(DateRangePickerContext);
     const [isSelectingStartDate, setIsSelectingStartDate] = useState(true);
 
-    const handlePrevMonth = () => {
+    const handlePrevMonth = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        event.stopPropagation();
+
         context!.setCurrentDate(new Date(context!.currentDate.getFullYear(), context!.currentDate.getMonth() - 1, 1));
     };
 
-    const handleNextMonth = () => {
+    const handleNextMonth = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        event.stopPropagation();
+
         context!.setCurrentDate(new Date(context!.currentDate.getFullYear(), context!.currentDate.getMonth() + 1, 1));
     };
 
@@ -29,7 +33,7 @@ export const Calendar = () => {
             } else {
                 context!.setEndDate(selectedDate);
                 setIsSelectingStartDate(true);
-                //context!.setIsCalendarOpen(false);
+                context!.setIsCalendarOpen(false);
                 context!.onRangeSelect(context!.startDate, context!.endDate);
             }
         }

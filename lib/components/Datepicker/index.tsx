@@ -55,7 +55,6 @@ export const DatePicker: React.FC<DatePickerProps> = ({
 
     const datepickerRef = useRef<HTMLDivElement>(null);
     const handleClickOutside = useCallback((event: MouseEvent) => {
-
         if(datepickerRef.current && !datepickerRef.current.contains(event.target as Node)) {
             setIsOpen(false);
         }

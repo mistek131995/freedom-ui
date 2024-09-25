@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useCallback, useEffect, useRef, useState} from "react";
 import styles from "./styles.module.scss";
 import {Calendar} from "./Calendar.tsx";
 import {Label} from "../Label";
@@ -28,11 +28,32 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({ label, onRange
     const [currentDate, setCurrentDate] = useState(new Date());
     const [startDate, setStartDate] = useState<Date | null>(null);
     const [endDate, setEndDate] = useState<Date | null>(null);
-    const [isCalendarOpen, setIsCalendarOpen] = useState(false); // Состояние для свернутого/развернутого календаря
+    const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+
+    const inputUnionClassName = [
+        styles.dateRangePickerInput,
+        isCalendarOpen ? styles.selected : ""
+    ].filter(x => x).join(" ")
 
     const formatDate = (date: Date | null) => {
         return date ? `${date.getDate()} ${date.toLocaleString('default', { month: 'short' })} ${date.getFullYear()}` : "";
     };
+
+    const datepickerRef = useRef<HTMLDivElement>(null);
+    const handleClickOutside = useCallback((event: MouseEvent) => {
+        if(datepickerRef.current && !datepickerRef.current.contains(event.target as Node)) {
+            setIsCalendarOpen(false);
+        }
+    }, [])
+
+    useEffect(() => {
+        document.addEventListener("mousedown", handleClickOutside)
+
+        return () =>
+        {
+            document.removeEventListener("mousedown", handleClickOutside)
+        }
+    }, [handleClickOutside]);
 
     return <DateRangePickerContext.Provider value={{
         currentDate: currentDate,
@@ -46,13 +67,13 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({ label, onRange
         onRangeSelect: onRangeSelect,
     }}>
         <div>
-            <Flex orientation={Orientation.vertical} className={styles.dateRangePicker}>
+            <Flex ref={datepickerRef} orientation={Orientation.vertical} className={styles.dateRangePicker}>
                 {label &&
                     <Label>
                         {label}
                     </Label>
                 }
-                <div className={styles.dateRangePickerInput} onClick={() => setIsCalendarOpen(!isCalendarOpen)}>
+                <div className={inputUnionClassName} onClick={() => setIsCalendarOpen(!isCalendarOpen)}>
                     {startDate && endDate ? (
                         <span>{`${formatDate(startDate)} - ${formatDate(endDate)}`}</span>
                     ) : (

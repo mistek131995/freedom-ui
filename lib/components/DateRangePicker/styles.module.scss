@@ -17,6 +17,11 @@
     text-align: center;
     transition: border-color 0.2s ease-in-out;
     background-color: var(--datepicker-bg-color);
+
+    &.selected{
+      outline: 0.1rem solid var(--daterangepicker-border-focus-color);
+      box-shadow: 0 0 1rem var(--daterangepicker-focus-shadow-color);
+    }
   }
 
   .calendar {
@@ -25,8 +30,14 @@
     right: 0;
     padding: 0.74rem;
     position: absolute;
-    background-color: white;
-    border: 1px solid #ddd;
+    background-color: var(--daterangepicker-bg-color);
+    border: 1px solid var(--daterangepicker-border-color);
+    border-radius: 3px;
+
+    &.selected{
+      outline: 0.1rem solid var(--daterangepicker-border-focus-color);
+      box-shadow: 0 0 1rem var(--daterangepicker-focus-shadow-color);
+    }
   }
 
   .header {
@@ -43,6 +54,7 @@
 
     .monthYear {
       font-size: 1rem;
+      color: var(--daterangepicker-first-font-color);
     }
   }
 
@@ -55,6 +67,7 @@
 
     .weekDay {
       padding: 0.25rem;
+      color: var(--daterangepicker-first-font-color);
     }
   }
 
@@ -66,30 +79,31 @@
 
     .empty-day{
       padding: 0.25rem;
-      background-color: #fff;
+      background-color: rgba(0, 0, 0, 0);
     }
 
     .day {
       padding: 0.25rem;
-      background-color: #fff;
+      background-color: rgba(0, 0, 0, 0);
       border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.2s;
+      color: var(--daterangepicker-first-font-color);
 
       &:hover {
-        background-color: #007bff;
-        color: #fff;
+        background-color: var(--daterangepicker-day-hover-color);
+        color: var(--daterangepicker-second-font-color);
       }
     }
 
     .selectedDay {
-      background-color: #007bff;
-      color: #fff;
+      background-color: var(--daterangepicker-selected-day-color);
+      color: var(--daterangepicker-second-font-color);
       font-weight: bold;
     }
 
     .inRange {
-      background-color: rgba(0, 123, 255, 0.1);
+      background-color: var(--daterangepicker-in-range-day-color);
     }
   }
 }
