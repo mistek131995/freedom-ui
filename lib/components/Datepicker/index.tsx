@@ -89,7 +89,11 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         onDateChange: onDateChange
     }}>
         <div>
-            <Flex alignItems={alignItemsClassMap[orientation]} orientation={orientation} ref={datepickerRef} className={unionClassName} style={style}>
+            <Flex alignItems={alignItemsClassMap[orientation]}
+                  orientation={orientation}
+                  ref={datepickerRef}
+                  className={unionClassName}
+                  style={style}>
                 {label &&
                     <Label className={unionLabelClassName}>{label}</Label>
                 }

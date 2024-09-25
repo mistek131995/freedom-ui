@@ -1,5 +1,6 @@
 :root{
   --font-regular: "Overpass-Regular";
+  --font-bold: "Overpass-Bold";
   --font-size: 1rem;
 
   --primary-btn-color: #43AA8B;
@@ -42,6 +43,9 @@
   --datepicker-selected-day-color: #388c73;
   --datepicker-border-focus-color: #388c73;
   --datepicker-focus-shadow-color: #388c73;
+
+  --daterangepicker-bg-color: white;
+  --daterangepicker-border-color: #277DA1;
 
   --textarea-bg-color: white;
   --textarea-disabled-bg-color: lightgray;

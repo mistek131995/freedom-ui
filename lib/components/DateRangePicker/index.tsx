@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import styles from "./styles.module.scss";
 import {Calendar} from "./Calendar.tsx";
 import {months} from "../../entity/months.ts";
+import {Label} from "../Label";
+import {Flex} from "../Flex";
+import {Orientation} from "../../types/Orientation.ts";
 
 type DateRangePickerProps = {
+    label?: string,
     onRangeSelect: (startDate: Date | null, endDate: Date | null) => void;
 };
 
@@ -21,7 +25,7 @@ interface IDateRangePickerContext {
 
 export const DateRangePickerContext = React.createContext<IDateRangePickerContext | null>(null)
 
-export const DateRangePicker: React.FC<DateRangePickerProps> = ({ onRangeSelect }) => {
+export const DateRangePicker: React.FC<DateRangePickerProps> = ({ label, onRangeSelect }) => {
     const [currentDate, setCurrentDate] = useState(new Date());
     const [startDate, setStartDate] = useState<Date | null>(null);
     const [endDate, setEndDate] = useState<Date | null>(null);
@@ -29,10 +33,6 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({ onRangeSelect 
 
     const formatDate = (date: Date | null) => {
         return date ? `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}` : "";
-    };
-
-    const toggleCalendar = () => {
-        setIsCalendarOpen(!isCalendarOpen);
     };
 
     return <DateRangePickerContext.Provider value={{
@@ -46,17 +46,25 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({ onRangeSelect 
         setEndDate: setEndDate,
         onRangeSelect: onRangeSelect,
     }}>
-        <div className={styles.dateRangePicker}>
-            <div className={styles.toggleButton} onClick={toggleCalendar}>
-                {startDate && endDate ? (
-                    <span>{`${formatDate(startDate)} - ${formatDate(endDate)}`}</span>
-                ) : (
-                    <span>Выберите даты</span>
-                )}
-            </div>
-            {isCalendarOpen &&
-                <Calendar/>
-            }
+        <div>
+            <Flex orientation={Orientation.vertical} className={styles.dateRangePicker}>
+                {label &&
+                    <Label>
+                        {label}
+                    </Label>
+                }
+                <div className={styles.dateRangePickerInput} onClick={() => setIsCalendarOpen(!isCalendarOpen)}>
+                    {startDate && endDate ? (
+                        <span>{`${formatDate(startDate)} - ${formatDate(endDate)}`}</span>
+                    ) : (
+                        <span>Выберите даты</span>
+                    )}
+
+                    {isCalendarOpen &&
+                        <Calendar/>
+                    }
+                </div>
+            </Flex>
         </div>
     </DateRangePickerContext.Provider>
 };

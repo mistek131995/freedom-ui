@@ -1,5 +1,5 @@
 import styles from "./styles.module.scss";
-import {useContext, useState} from "react";
+import React, {useContext, useState} from "react";
 import {DateRangePickerContext} from "./index.tsx";
 import {months} from "../../entity/months.ts";
 
@@ -19,7 +19,9 @@ export const Calendar = () => {
         context!.setCurrentDate(new Date(context!.currentDate.getFullYear(), context!.currentDate.getMonth() + 1, 1));
     };
 
-    const handleDayClick = (day: number | null) => {
+    const handleDayClick = (event: React.MouseEvent<HTMLSpanElement, MouseEvent>, day: number | null) => {
+        event.stopPropagation();
+
         if (day) {
             const selectedDate = new Date(context!.currentDate.getFullYear(), context!.currentDate.getMonth(), day);
             if (isSelectingStartDate) {
@@ -68,9 +70,15 @@ export const Calendar = () => {
                 const isInRange = date && context?.startDate && context?.endDate &&
                     date.getTime() > context?.startDate.getTime() && date.getTime() < context?.endDate.getTime();
 
+                const dayUnionClassName = [
+                    day ? styles.day : styles.emptyDay,
+                    isSelected ? styles.selectedDay : "",
+                    isInRange ? styles.inRange : ""
+                ].filter(x => x).join(" ")
+
                 return <span key={index}
-                             className={`${styles.day} ${isSelected ? styles.selectedDay : ""} ${isInRange ? styles.inRange : ""}`}
-                             onClick={() => handleDayClick(day)}>
+                             className={dayUnionClassName}
+                             onClick={(event) => handleDayClick(event, day)}>
                     {day}
                 </span>
             })}

@@ -87,7 +87,7 @@ const App = () => {
 
                 <DatePicker label="Календарь:" onDateChange={(date) => console.log(date)} name="datapicker"/>
 
-                <DateRangePicker onRangeSelect={(startDate, endDate) => console.log(`${startDate} ${endDate}`)} />
+                <DateRangePicker label="Календарь:" onRangeSelect={(startDate, endDate) => console.log(`${startDate} ${endDate}`)} />
             </Flex>
         </Form>
     </>
