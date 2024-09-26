@@ -34,7 +34,6 @@ export const Calendar = () => {
                 context!.setEndDate(selectedDate);
                 setIsSelectingStartDate(true);
                 context!.setIsCalendarOpen(false);
-                context!.onRangeSelect(context!.startDate, context!.endDate);
             }
         }
     };

@@ -16,7 +16,6 @@ import {useToast} from "../lib/components/Toast/useToast.tsx";
 import {Textarea} from "../lib/components/Textarea";
 import {DatePicker} from "../lib/components/Datepicker";
 import {DateRangePicker} from "../lib/components/DateRangePicker";
-// import {DateRangePicker} from "../lib/components/DateRangePicker";
 
 const App = () => {
     const {addToast} = useToast()
@@ -87,7 +86,7 @@ const App = () => {
 
                 <DatePicker orientation={Orientation.horizontal} label="Календарь:" onDateChange={(date) => console.log(date)} name="datapicker"/>
 
-                <DateRangePicker orientation={Orientation.horizontal} label="Календарь:" onRangeSelect={(startDate, endDate) => console.log(`${startDate} ${endDate}`)} />
+                <DateRangePicker orientation={Orientation.vertical} label="Календарь:" onRangeSelect={(startDate, endDate) => console.log(`${startDate} ${endDate}`)} />
             </Flex>
         </Form>
     </>

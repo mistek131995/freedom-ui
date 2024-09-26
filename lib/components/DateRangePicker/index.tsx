@@ -1,4 +1,4 @@
-import React, {HTMLAttributes, useCallback, useEffect, useRef, useState} from "react";
+import React, {useCallback, useEffect, useRef, useState} from "react";
 import styles from "./styles.module.scss";
 import {Calendar} from "./Calendar.tsx";
 import {Label} from "../Label";
@@ -6,13 +6,18 @@ import {Flex} from "../Flex";
 import {Orientation} from "../../types/Orientation.ts";
 import {AlignmentItems} from "../../../dist/types/AlignmentItems";
 
-interface IDateRangePickerProps {
+export interface IDateRangePickerProps {
     label?: string,
+    placeholder?: string,
+    dateStartName?: string,
+    defaultStartDate?: Date,
+    defaultEndDate?: Date,
+    dateEndName?: string,
     onRangeSelect: (startDate: Date | null, endDate: Date | null) => void,
-    orientation?: Orientation
+    orientation?: Orientation,
+    style?: React.CSSProperties,
+    className?: string,
 }
-
-export type DateRangePickerProps = HTMLAttributes<HTMLInputElement> & IDateRangePickerProps
 
 interface IDateRangePickerContext {
     currentDate: Date,
@@ -22,8 +27,7 @@ interface IDateRangePickerContext {
     startDate: Date | null,
     setStartDate: (date: Date) => void,
     endDate: Date | null,
-    setEndDate: (date: Date) => void,
-    onRangeSelect: (startDate: Date | null, endDate: Date | null) => void
+    setEndDate: (date: Date) => void
 }
 
 const labelClassMap = {
@@ -42,16 +46,20 @@ const alignItemsClassMap = {
 
 export const DateRangePickerContext = React.createContext<IDateRangePickerContext | null>(null)
 
-export const DateRangePicker: React.FC<DateRangePickerProps> = ({
-                                                                    label,
+export const DateRangePicker: React.FC<IDateRangePickerProps> = ({   label,
+                                                                    placeholder = "Выберите даты",
+                                                                    dateStartName = "startDate",
+                                                                    defaultStartDate = null,
+                                                                    defaultEndDate = null,
+                                                                    dateEndName = "endDate",
                                                                     className,
                                                                     style,
                                                                     onRangeSelect,
                                                                     orientation = Orientation.vertical
 }) => {
     const [currentDate, setCurrentDate] = useState(new Date());
-    const [startDate, setStartDate] = useState<Date | null>(null);
-    const [endDate, setEndDate] = useState<Date | null>(null);
+    const [startDate, setStartDate] = useState<Date | null>(defaultStartDate);
+    const [endDate, setEndDate] = useState<Date | null>(defaultEndDate);
     const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
     const unionClassName = [
@@ -83,6 +91,12 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({
         }
     }, [handleClickOutside]);
 
+    useEffect(() => {
+        if (startDate && endDate) {
+            onRangeSelect(startDate, endDate);
+        }
+    }, [startDate, endDate, onRangeSelect]);
+
     return <DateRangePickerContext.Provider value={{
         currentDate: currentDate,
         setCurrentDate: setCurrentDate,
@@ -91,10 +105,11 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({
         startDate: startDate,
         setStartDate: setStartDate,
         endDate: endDate,
-        setEndDate: setEndDate,
-        onRangeSelect: onRangeSelect,
+        setEndDate: setEndDate
     }}>
         <div>
+            <input name={dateStartName} type="hidden" value={startDate?.toString() || ""}/>
+            <input name={dateEndName} type="hidden" value={endDate?.toString() || ""}/>
             <Flex ref={datepickerRef}
                   orientation={orientation}
                   alignItems={alignItemsClassMap[orientation]}
@@ -108,7 +123,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({
                     {startDate && endDate ? (
                         <span>{`${formatDate(startDate)} - ${formatDate(endDate)}`}</span>
                     ) : (
-                        <span>Выберите даты</span>
+                        <span>{placeholder}</span>
                     )}
 
                     {isCalendarOpen &&
