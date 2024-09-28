@@ -11,6 +11,10 @@
       display: flex;
       flex-wrap: wrap;
 
+      &.no-wrap{
+        flex-wrap: nowrap;
+      }
+
       &.vertical{
         flex-direction: column;
       }

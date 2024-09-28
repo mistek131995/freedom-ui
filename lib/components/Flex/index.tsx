@@ -7,7 +7,8 @@ interface IFlex{
     ref?: RefObject<HTMLDivElement>
     orientation?: Orientation,
     justifyContent?: JustifyContent,
-    alignItems?: AlignmentItems
+    alignItems?: AlignmentItems,
+    noWrap?: boolean,
 }
 
 type FlexProps = React.HTMLAttributes<HTMLDivElement> & IFlex
@@ -17,12 +18,14 @@ export const Flex = forwardRef<HTMLDivElement, FlexProps>(({
                                                                orientation = Orientation.horizontal,
                                                                justifyContent = JustifyContent.start,
                                                                alignItems = AlignmentItems.stretch,
+                                                               noWrap = false,
                                                                className,
                                                                children,
                                                                ...props
                                                            }, ref) => {
     const unionClassName = [
         "flex",
+        noWrap ? "no-wrap" : "",
         orientation,
         justifyContent,
         alignItems,

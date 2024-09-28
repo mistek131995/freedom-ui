@@ -1,8 +1,8 @@
 import styles from './styles.module.scss'
 import {FC, InputHTMLAttributes, ReactNode, useState} from "react";
 import {Flex, Label} from "../../main.ts";
-import { Orientation } from '../../../dist/types/Orientation';
-import { AlignmentItems } from '../../../dist/types/AlignmentItems';
+import {Orientation} from '../../../dist/types/Orientation';
+import {AlignmentItems} from '../../../dist/types/AlignmentItems';
 import {Eye} from "../../assets/images/Eye.tsx";
 
 interface IInput {
@@ -41,7 +41,7 @@ export const Input : FC<InputProps> = ({ label, orientation = Orientation.vertic
     {label &&
       <Label className={labelClassMap[orientation]} htmlFor={props.name}>{label}</Label>
     }
-    <Flex alignItems={AlignmentItems.center} className={unionContainerClassName}>
+    <Flex noWrap={true} alignItems={AlignmentItems.center} className={unionContainerClassName}>
       {iconLeft &&
           <span className={styles.inputIconLeft}>{iconLeft}</span>
       }
