@@ -41,7 +41,7 @@ const App = () => {
         <Form handleSubmit={(form) => console.log(form)}>
             <Flex justifyContent={JustifyContent.around}>
                 <Input orientation={Orientation.horizontal} name="name" placeholder="Placeholder" iconLeft={<Profile/>}
-                       label="Label:"/>
+                       label="Label:" type="password"/>
                 <Select orientation={Orientation.horizontal}
                         label="Multi-select:"
                         placeholder="Выберите что-то"

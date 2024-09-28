@@ -1,14 +1,16 @@
 import styles from './styles.module.scss'
-import {FC, InputHTMLAttributes, ReactNode} from "react";
+import {FC, InputHTMLAttributes, ReactNode, useState} from "react";
 import {Flex, Label} from "../../main.ts";
 import { Orientation } from '../../../dist/types/Orientation';
 import { AlignmentItems } from '../../../dist/types/AlignmentItems';
+import {Eye} from "../../assets/images/Eye.tsx";
 
 interface IInput {
   label?: string;
   iconLeft?: ReactNode,
   iconRight?: ReactNode,
-  orientation?: Orientation
+  orientation?: Orientation,
+  showVisibleSwitcher?: boolean,
 }
 
 type InputProps = InputHTMLAttributes<HTMLInputElement> & IInput
@@ -27,7 +29,9 @@ const labelClassMap = {
   [Orientation.horizontal_reverse]: "ms-1"
 }
 
-export const Input : FC<InputProps> = ({ label, orientation = Orientation.vertical, iconLeft, iconRight, className, ...props }) => {
+export const Input : FC<InputProps> = ({ label, orientation = Orientation.vertical, iconLeft, iconRight, className, showVisibleSwitcher = true, type, ...props }) => {
+  const [inputType, setInputType] = useState(type || "text")
+
   const unionContainerClassName = [
     styles.inputContainer,
     props.disabled ? styles.disabled : ""
@@ -41,9 +45,20 @@ export const Input : FC<InputProps> = ({ label, orientation = Orientation.vertic
       {iconLeft &&
           <span className={styles.inputIconLeft}>{iconLeft}</span>
       }
-      <input className={styles.input} {...props} id={props.name}/>
-      {iconRight &&
+      <input className={styles.input} type={inputType} {...props} id={props.name}/>
+      {iconRight && type !== "password" &&
           <span className={styles.inputIconRight}>{iconRight}</span>
+      }
+
+      {type === "password" && showVisibleSwitcher &&
+        <span className={styles.inputIconRight} onClick={() => setInputType(inputType == "password" ? "text" : "password")}>
+          {iconRight &&
+              iconRight
+          }
+          {!iconRight &&
+              <Eye/>
+          }
+        </span>
       }
     </Flex>
   </Flex>
