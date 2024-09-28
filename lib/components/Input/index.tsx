@@ -29,7 +29,7 @@ const labelClassMap = {
   [Orientation.horizontal_reverse]: "ms-1"
 }
 
-export const Input : FC<InputProps> = ({ label, orientation = Orientation.vertical, iconLeft, iconRight, className, showVisibleSwitcher = true, type, ...props }) => {
+export const Input : FC<InputProps> = ({ label, orientation = Orientation.vertical, iconLeft, iconRight, className, style, showVisibleSwitcher = true, type, ...props }) => {
   const [inputType, setInputType] = useState(type || "text")
 
   const unionContainerClassName = [
@@ -37,7 +37,7 @@ export const Input : FC<InputProps> = ({ label, orientation = Orientation.vertic
     props.disabled ? styles.disabled : ""
   ].filter(x => x).join(" ")
 
-  return <Flex className={className} orientation={orientation} alignItems={alignItemsClassMap[orientation]}>
+  return <Flex className={className} style={style} orientation={orientation} alignItems={alignItemsClassMap[orientation]}>
     {label &&
       <Label className={labelClassMap[orientation]} htmlFor={props.name}>{label}</Label>
     }
