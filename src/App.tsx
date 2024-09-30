@@ -24,7 +24,9 @@ const App = () => {
 
     return <>
         <TopMenu>
-            <TopMenuItems children="asdasd"/>
+            <TopMenuItems children="Item 1"/>
+            <TopMenuItems children="Item 2"/>
+            <TopMenuItems children="Item 3"/>
         </TopMenu>
 
         <br/>
