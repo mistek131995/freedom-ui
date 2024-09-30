@@ -16,11 +16,19 @@ import {useToast} from "../lib/components/Toast/useToast.tsx";
 import {Textarea} from "../lib/components/Textarea";
 import {DatePicker} from "../lib/components/Datepicker";
 import {DateRangePicker} from "../lib/components/DateRangePicker";
+import {TopMenu} from "../lib/components/TopMenu";
+import {TopMenuItems} from "../lib/components/TopMenu/TopMenuItem.tsx";
 
 const App = () => {
     const {addToast} = useToast()
 
     return <>
+        <TopMenu>
+            <TopMenuItems children="asdasd"/>
+        </TopMenu>
+
+        <br/>
+
         <Flex justifyContent={JustifyContent.around} alignItems={AlignmentItems.center}>
           <Button bg={ButtonBackground.primary}
                   onClick={() => addToast({
