@@ -5,7 +5,7 @@ interface ITopMenuItem {
     title: string;
 }
 
-export const TopMenuItems = ({title, className, ...props}: HTMLAttributes<HTMLDivElement> & ITopMenuItem) => {
+export const TopMenuItem = ({title, className, ...props}: HTMLAttributes<HTMLDivElement> & ITopMenuItem) => {
     const unionClassName = [
         className,
         styles.topMenuItem

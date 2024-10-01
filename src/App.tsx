@@ -17,22 +17,22 @@ import {Textarea} from "../lib/components/Textarea";
 import {DatePicker} from "../lib/components/Datepicker";
 import {DateRangePicker} from "../lib/components/DateRangePicker";
 import {TopMenu} from "../lib/components/TopMenu";
-import {TopMenuItems} from "../lib/components/TopMenu/TopMenuItem.tsx";
+import {TopMenuItem} from "../lib/components/TopMenu/TopMenuItem.tsx";
 import {TopMenuDropdownItem} from "../lib/components/TopMenu/TopMenuDropdownItem.tsx";
+import {HorizontalOrientation} from "../lib/types/HorizontalOrientation.ts";
 
 const App = () => {
     const {addToast} = useToast()
 
     return <>
-        <TopMenu>
-            <TopMenuItems title="Item 1"/>
-            <TopMenuItems title="Item 2"/>
-            <TopMenuItems title="Item 3"/>
-            <TopMenuDropdownItem title="Dropdown 1">
-                <TopMenuItems title="Item 4"/>
-                <TopMenuItems title="Item 5"/>
-                <TopMenuItems title="Item 6"/>
+        <TopMenu orientation={HorizontalOrientation.horizontalReverse}>
+            <TopMenuDropdownItem title="Аккаунт">
+                <TopMenuItem title="Регистрация"/>
+                <TopMenuItem title="Вход"/>
             </TopMenuDropdownItem>
+            <TopMenuItem title="Item 1"/>
+            <TopMenuItem title="Item 2"/>
+            <TopMenuItem title="Item 3"/>
         </TopMenu>
 
         <br/>

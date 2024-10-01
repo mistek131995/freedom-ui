@@ -12,6 +12,7 @@ export const TopMenuDropdownItem = ({title, className, ...props}: HTMLAttributes
     ].filter(x => x).join(" ")
 
     return <div className={unionClassName} {...props}>
+
         <span>{title}</span>
         <div>
             {props.children}
