@@ -26,7 +26,7 @@ const App = () => {
     return <>
         <TopMenu>
             <TopMenuDropdownItem title="Аккаунт">
-                <TopMenuItem title="Регистрация"/>
+                <TopMenuItem title="1111"/>
                 <TopMenuItem title="Вход"/>
             </TopMenuDropdownItem>
             <TopMenuItem title="Item 1"/>
@@ -56,7 +56,7 @@ const App = () => {
         <Form handleSubmit={(form) => console.log(form)}>
             <Flex justifyContent={JustifyContent.around}>
                 <Input orientation={Orientation.horizontal} name="name" placeholder="Placeholder" iconLeft={<Profile/>}
-                       label="Label:" type="password"/>
+                       label="Label:"/>
                 <Select orientation={Orientation.horizontal}
                         label="Multi-select:"
                         placeholder="Выберите что-то"

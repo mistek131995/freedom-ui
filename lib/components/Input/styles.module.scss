@@ -19,6 +19,7 @@
         padding: 0.74rem;
         color: var(--input-text-color);
         width: 100%;
+        font-family: var(--font-regular), serif;
 
         &:disabled{
             background-color: var(--input-disabled-bg-color);
@@ -27,7 +28,6 @@
 
         &::placeholder{
             color: var(--input-text-color);
-            font-family: var(--font-regular), serif;
             font-size: 16px;
         }
     }
