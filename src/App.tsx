@@ -19,13 +19,12 @@ import {DateRangePicker} from "../lib/components/DateRangePicker";
 import {TopMenu} from "../lib/components/TopMenu";
 import {TopMenuItem} from "../lib/components/TopMenu/TopMenuItem.tsx";
 import {TopMenuDropdownItem} from "../lib/components/TopMenu/TopMenuDropdownItem.tsx";
-import {HorizontalOrientation} from "../lib/types/HorizontalOrientation.ts";
 
 const App = () => {
     const {addToast} = useToast()
 
     return <>
-        <TopMenu orientation={HorizontalOrientation.horizontalReverse}>
+        <TopMenu>
             <TopMenuDropdownItem title="Аккаунт">
                 <TopMenuItem title="Регистрация"/>
                 <TopMenuItem title="Вход"/>
