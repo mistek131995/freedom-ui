@@ -1,10 +1,14 @@
 import {HTMLAttributes} from "react";
 
-export const TopMenuItems = ({className, ...props}: HTMLAttributes<HTMLDivElement>) => {
+interface ITopMenuItem {
+    title: string;
+}
+
+export const TopMenuItems = ({title, className, ...props}: HTMLAttributes<HTMLDivElement> & ITopMenuItem) => {
     const unionClassName = [
         className,
 
     ].filter(x => x).join(" ")
 
-    return <div className={unionClassName} {...props}/>
+    return <div className={unionClassName} {...props}>{title}</div>
 }
