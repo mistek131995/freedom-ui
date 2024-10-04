@@ -1,0 +1,27 @@
+.alert-container{
+  border-radius: 3px;
+  font-family: var(--font-bold), serif;
+  margin: 0 1rem;
+  padding: 1rem;
+  color: var(--alert-font-color);
+
+  &.primary{
+    background-color: var(--alert-primary-bg-color);
+    border: 3px solid var(--alert-primary-border-color);
+  }
+
+  &.success{
+    background-color: var(--alert-success-bg-color);
+    border: 3px solid var(--alert-success-border-color);
+  }
+
+  &.warning{
+    background-color: var(--alert-warning-bg-color);
+    border: 3px solid var(--alert-warning-border-color);
+  }
+
+  &.danger{
+    background-color: var(--alert-danger-bg-color);
+    border: 3px solid var(--alert-danger-border-color);
+  }
+}

@@ -1,16 +1,6 @@
 import "../dist/assets/style.css"
 import {AlignmentItems, Flex, JustifyContent} from "../dist/main";
-import {
-    Button,
-    ButtonBackground,
-    Checkbox,
-    Form,
-    Input,
-    Orientation,
-    Radio,
-    Select,
-    ToastBackground
-} from "../lib/main.ts";
+import {Background, Button, ButtonBackground, Checkbox, Form, Input, Orientation, Radio, Select} from "../lib/main.ts";
 import {Profile} from "./assets/images/Profile.tsx";
 import {useToast} from "../lib/components/Toast/useToast.tsx";
 import {Textarea} from "../lib/components/Textarea";
@@ -19,6 +9,7 @@ import {DateRangePicker} from "../lib/components/DateRangePicker";
 import {TopMenu} from "../lib/components/TopMenu";
 import {TopMenuItem} from "../lib/components/TopMenu/TopMenuItem.tsx";
 import {TopMenuDropdownItem} from "../lib/components/TopMenu/TopMenuDropdownItem.tsx";
+import {Alert} from "../lib/components/Alert";
 
 const App = () => {
     const {addToast} = useToast()
@@ -41,7 +32,7 @@ const App = () => {
                   onClick={() => addToast({
                       label: "Уведомление для уведомления",
                       description: "Уведомляю о бла бла бла бла",
-                      bg: ToastBackground.success
+                      bg: Background.success
                   })}>
               Button primary
           </Button>
@@ -104,6 +95,15 @@ const App = () => {
                 <DateRangePicker orientation={Orientation.vertical} label="Календарь:" onRangeSelect={(startDate, endDate) => console.log(`${startDate} ${endDate}`)} />
             </Flex>
         </Form>
+
+        <br/>
+        <Alert>Какой-то текст... бла, бла, бла...</Alert>
+        <br/>
+        <Alert background={Background.success}>Какой-то текст... бла, бла, бла...</Alert>
+        <br/>
+        <Alert background={Background.warning}>Какой-то текст... бла, бла, бла...</Alert>
+        <br/>
+        <Alert background={Background.danger}>Какой-то текст... бла, бла, бла...</Alert>
     </>
 }
 

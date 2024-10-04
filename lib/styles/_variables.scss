@@ -3,7 +3,7 @@
   --font-bold: "Overpass-Bold";
   --font-size: 1rem;
 
-  --primary-btn-color: #43AA8B;
+  --primary-btn-color: rgba(67, 170, 139, 1);;
   --primary-disabled-btn-color: rgba(87, 214, 176, 0.5);
   --primary-btn-font-color: white;
   --primary-btn-shadow-color: #388c73;
@@ -13,17 +13,17 @@
   --secondary-btn-font-color: white;
   --secondary-btn-shadow-color: #226d8c;
 
-  --success-btn-color: #90BE6D;
+  --success-btn-color: rgba(144, 190, 109, 1);;
   --success-disabled-btn-color: rgba(144, 190, 109, 0.5);
   --success-btn-font-color: white;
   --success-btn-shadow-color: #709555;
 
-  --warning-btn-color: #F9C74F;
+  --warning-btn-color: rgba(249, 199, 79, 1);;
   --warning-disabled-btn-color: rgba(249, 199, 79, 0.5);
   --warning-btn-font-color: white;
   --warning-btn-shadow-color: #ba953d;
 
-  --danger-btn-color: #F94144;
+  --danger-btn-color: rgba(249, 65, 68, 1);;
   --danger-disabled-btn-color: rgba(249, 65, 68, 0.5);
   --danger-btn-font-color: white;
   --danger-btn-shadow-color: #a82d2f;
@@ -31,25 +31,25 @@
   --input-bg-color: white;
   --input-disabled-bg-color: lightgray;
   --input-border-color: #277DA1;
-  --input-border-focus-color: #388c73;
-  --input-focus-shadow-color: #388c73;
+  --input-border-focus-color: rgba(67, 170, 139, 1);;
+  --input-focus-shadow-color: rgba(67, 170, 139, 1);;
   --input-text-color: black;
 
   --datepicker-bg-color: white;
   --datepicker-border-color: #277DA1;
   --datepicker-first-font-color: black;
   --datepicker-second-font-color: white;
-  --datepicker-day-hover-color: #388c73;
-  --datepicker-selected-day-color: #388c73;
-  --datepicker-border-focus-color: #388c73;
-  --datepicker-focus-shadow-color: #388c73;
+  --datepicker-day-hover-color: rgba(67, 170, 139, 1);;
+  --datepicker-selected-day-color: rgba(67, 170, 139, 1);;
+  --datepicker-border-focus-color: rgba(67, 170, 139, 1);;
+  --datepicker-focus-shadow-color: rgba(67, 170, 139, 1);;
 
   --daterangepicker-bg-color: white;
   --daterangepicker-border-color: #277DA1;
-  --daterangepicker-border-focus-color: #388c73;
-  --daterangepicker-focus-shadow-color: #388c73;
-  --daterangepicker-day-hover-color: #388c73;
-  --daterangepicker-selected-day-color: #388c73;
+  --daterangepicker-border-focus-color: rgba(67, 170, 139, 1);;
+  --daterangepicker-focus-shadow-color: rgba(67, 170, 139, 1);;
+  --daterangepicker-day-hover-color: rgba(67, 170, 139, 1);;
+  --daterangepicker-selected-day-color: rgba(67, 170, 139, 1);;
   --daterangepicker-in-range-day-color: rgba(0, 123, 255, 0.1);
   --daterangepicker-first-font-color: black;
   --daterangepicker-second-font-color: white;
@@ -57,20 +57,20 @@
   --textarea-bg-color: white;
   --textarea-disabled-bg-color: lightgray;
   --textarea-border-color: #277DA1;
-  --textarea-border-focus-color: #388c73;
-  --textarea-focus-shadow-color: #388c73;
+  --textarea-border-focus-color: rgba(67, 170, 139, 1);;
+  --textarea-focus-shadow-color: rgba(67, 170, 139, 1);;
   --textarea-text-color: black;
 
   --checkbox-bg-color: white;
   --checkbox-disabled-bg-color: lightgray;
   --checkbox-border-color: #277DA1;
-  --checkbox-border-focus-color: #388c73;
-  --checkbox-checked-shadow-color: #388c73;
+  --checkbox-border-focus-color: rgba(67, 170, 139, 1);;
+  --checkbox-checked-shadow-color: rgba(67, 170, 139, 1);;
 
   --radio-bg-color: white;
   --radio-disabled-bg-color: lightgray;
   --radio-border-color: #277DA1;
-  --radio-checked-shadow-color: #388c73;
+  --radio-checked-shadow-color: rgba(67, 170, 139, 1);;
 
   --select-bg-color: white;
   --select-disabled-bg-color: lightgray;
@@ -83,13 +83,23 @@
 
   --toast-primary-bg-color: #43AA8B;
   --toast-primary-font-color: white;
-  --toast-success-bg-color: #90BE6D;
+  --toast-success-bg-color: rgba(144, 190, 109, 1);;
   --toast-success-font-color: white;
-  --toast-warning-bg-color: #F9C74F;
+  --toast-warning-bg-color: rgba(249, 199, 79, 1);;
   --toast-warning-font-color: white;
-  --toast-danger-bg-color: #F94144;
+  --toast-danger-bg-color: rgba(249, 65, 68, 1);;
   --toast-danger-font-color: white;
 
   --horizontal-menu-bg-color: #277DA1;
   --horizontal-menu-font-color: white;
+
+  --alert-primary-bg-color: rgba(67, 170, 139, 1);
+  --alert-primary-border-color: rgb(58, 149, 122);
+  --alert-success-bg-color: rgba(144, 190, 109, 1);
+  --alert-success-border-color: rgb(128, 170, 96);
+  --alert-warning-bg-color: rgba(249, 199, 79, 1);
+  --alert-warning-border-color: rgb(181, 144, 56);
+  --alert-danger-bg-color: rgba(249, 65, 68, 1);
+  --alert-danger-border-color: rgb(184, 47, 49);
+  --alert-font-color: white;
 }

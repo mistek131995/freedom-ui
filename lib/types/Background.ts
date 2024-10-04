@@ -1,4 +1,4 @@
-export enum ToastBackground {
+export enum Background {
     primary,
     success,
     warning,

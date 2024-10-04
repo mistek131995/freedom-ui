@@ -1,22 +1,22 @@
 import {FC, useEffect, useState} from "react";
 import {useToast} from "./useToast.tsx";
 import styles from "./styles.module.scss"
-import {ToastBackground} from "../../types/ToastBackground.ts";
+import {Background} from "../../types/Background.ts";
 
 export interface IToast {
     label: string,
     description: string,
     time?: number,
-    bg: ToastBackground
+    bg: Background
 }
 
 export type ToastProps = IToast & { id: number }
 
 const backgroundClassMap = {
-    [ToastBackground.primary]: styles.primary,
-    [ToastBackground.success]: styles.success,
-    [ToastBackground.warning]: styles.warning,
-    [ToastBackground.danger]: styles.danger,
+    [Background.primary]: styles.primary,
+    [Background.success]: styles.success,
+    [Background.warning]: styles.warning,
+    [Background.danger]: styles.danger,
 }
 
 export const Toast: FC<ToastProps> = (props) => {
@@ -25,7 +25,7 @@ export const Toast: FC<ToastProps> = (props) => {
     const unionClassName = [
         styles.toast,
         (isHide ? styles.hide : styles.show),
-        backgroundClassMap[props.bg || ToastBackground.primary]
+        backgroundClassMap[props.bg || Background.primary]
     ].join(" ")
 
     useEffect(() => {
