@@ -109,7 +109,7 @@ const App = () => {
 
         <br/>
 
-        <div style={{maxWidth: "25%"}}>
+        <div style={{maxWidth: "25%", padding: "1rem"}}>
             <VerticalMenu>
                 <VerticalMenuItem>Аккаунт</VerticalMenuItem>
                 <VerticalMenuItem>Платежи</VerticalMenuItem>
