@@ -10,6 +10,8 @@ import {TopMenu} from "../lib/components/TopMenu";
 import {TopMenuItem} from "../lib/components/TopMenu/TopMenuItem.tsx";
 import {TopMenuDropdownItem} from "../lib/components/TopMenu/TopMenuDropdownItem.tsx";
 import {Alert} from "../lib/components/Alert";
+import {VerticalMenuItem} from "../lib/components/VerticalMenu/VerticalMenuItem.tsx";
+import {VerticalMenu} from "../lib/components/VerticalMenu";
 
 const App = () => {
     const {addToast} = useToast()
@@ -104,6 +106,17 @@ const App = () => {
         <Alert background={Background.warning}>Какой-то текст... бла, бла, бла...</Alert>
         <br/>
         <Alert background={Background.danger}>Какой-то текст... бла, бла, бла...</Alert>
+
+        <br/>
+
+        <div style={{maxWidth: "25%"}}>
+            <VerticalMenu>
+                <VerticalMenuItem>Аккаунт</VerticalMenuItem>
+                <VerticalMenuItem>Платежи</VerticalMenuItem>
+                <VerticalMenuItem>Курсы</VerticalMenuItem>
+                <VerticalMenuItem>Выход</VerticalMenuItem>
+            </VerticalMenu>
+        </div>
     </>
 }
 
