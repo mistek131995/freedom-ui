@@ -8,7 +8,5 @@ export const VerticalMenuItem = (props: HTMLAttributes<HTMLDivElement>) => {
         className
     ].filter(x => x).join(" ")
 
-    return <div className={unionClassName} {...divProps}>
-
-    </div>
+    return <div className={unionClassName} {...divProps}/>
 }

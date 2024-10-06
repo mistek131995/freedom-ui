@@ -1,6 +1,20 @@
 .vertical-menu-container{
+  border: 1px solid var(--vertical-menu-item-border-color);
+  border-radius: 3px;
+  background-color: var(--vertical-menu-bg-color);
+  font-family: var(--font-regular), serif;
 
   .vertical-menu-item{
+    padding: 0.75rem 0 0.75rem 0.2rem;
+    cursor: pointer;
+    text-indent: 0.5rem;
 
+    &:hover{
+      background-color: var(--vertical-menu-item-hover-bg-color);
+    }
+
+    &:not(:last-child){
+      border-bottom: 1px solid var(--vertical-menu-item-border-color);
+    }
   }
 }
